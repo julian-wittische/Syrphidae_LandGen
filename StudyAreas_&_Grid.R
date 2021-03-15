@@ -28,7 +28,7 @@ sum(getValues(cell_number)!="NaN")
 cell_number[which(getValues(cell_number)!="NaN")] <- 1:sum(getValues(cell_number)!="NaN")
 
 plot(cologne1km, colNA = "black")
-text(cell_number, cex=0.4)
+text(cell_number, cex=0.45)
 # 
 # cell_sel <- cologne1km
 # cell_sel <- cellFromXY(cell_sel, cbind(c(130000,135000), c(220500, 230000)))
