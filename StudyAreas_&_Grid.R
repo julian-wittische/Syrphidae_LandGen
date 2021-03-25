@@ -51,6 +51,12 @@ text(teams)
 
 
 
+<<<<<<< HEAD
+=======
+plot(cologne1km, colNA = "black")
+text(cell_number, cex=0.45)
+# 
+>>>>>>> e1353ee89da134150d1670a600dfa2fbfa509863
 # cell_sel <- cologne1km
 # cell_sel <- cellFromXY(cell_sel, cbind(c(130000,135000), c(220500, 230000)))
 # # cell_sel <- cellFromRowColCombine(cell_sel, row=2:8, col=5:15)
