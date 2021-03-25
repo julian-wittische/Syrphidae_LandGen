@@ -16,3 +16,4 @@ crs(lux) <- CRS('+init=EPSG:2169')
 
 
 lux_stars <- read_stars("ascii/lux_in.asc")
+plot(lux_stars)
