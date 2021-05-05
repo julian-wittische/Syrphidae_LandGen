@@ -32,44 +32,44 @@ library(htmlwidgets)
 
 ##### Load the ascii file from Alain, define CRS, resample
 # to simplify it for you I put this interactive line, pick the .asc file
-lux <- raster("ascii/lux_in.asc")
+cologne <- raster("ascii/cologne_in.asc")
 
-crs(lux) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
+crs(cologne) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
 ### Checking steps
-# lux
-# nlayers(lux)
-# plot(lux)
-# res(lux)
-# sum(is.na(values(lux)))
-# sum(!is.na(values(lux)))
+# cologne
+# nlayers(cologne)
+# plot(cologne)
+# res(cologne)
+# sum(is.na(values(cologne)))
+# sum(!is.na(values(cologne)))
 
 ### Change resolution to 1 kilometer, check
-lux1km <- aggregate(lux, fact=1000/res(lux))
+cologne1km <- aggregate(cologne, fact=1000/res(cologne))
 #### Checking steps
-# res(lux1km) #checking step
-# dim(lux1km)
-# ncell(lux1km)
-# plot(lux1km)
+# res(cologne1km) #checking step
+# dim(cologne1km)
+# ncell(cologne1km)
+# plot(cologne1km)
 
-cell_number_lux <- lux1km
-cell_number_lux[!is.na(cell_number_lux)] <- 1:length(cell_number_lux[!is.na(cell_number_lux)])
+cell_number_cologne <- cologne1km
+cell_number_cologne[!is.na(cell_number_cologne)] <- 1:length(cell_number_cologne[!is.na(cell_number_cologne)])
 
 ##### Create polygon from raster to be able to plot grid on interactive map
-rtp <- rasterToPolygons(cell_number_lux, digits=20)
+rtp <- rasterToPolygons(cell_number_cologne, digits=20)
 
 
 ##### Plotting procedure
 m <- mapview(rtp,
-        method = "ngb", 
-        na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
-        query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
-        trim = TRUE,
-        legend = FALSE, #no need for legend
-        map.types = "OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
-        alpha.regions = 0,
-        lwd=2,
-        color="red") #get rid of color
+             method = "ngb", 
+             na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
+             query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
+             trim = TRUE,
+             legend = FALSE, #no need for legend
+             map.types = "Esri.WorldImagery",#"OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+             alpha.regions = 0,
+             lwd=2,
+             color="red") #get rid of color
 m
-mapshot(m, url="luxmap2.html", selfcontained=FALSE)
+mapshot(m, url="colognemap.html", selfcontained=FALSE)
 
 ### Cheers
