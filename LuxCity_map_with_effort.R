@@ -1,6 +1,6 @@
 ##### Julian Wittische 
 ##### April 2021
-
+mapviewOptions(fgb = FALSE)
 
 # /!\ I included checking steps for your own curiosity, no need to run them /!\
 
@@ -35,9 +35,6 @@ library(googledrive)
 library(googlesheets4)
 library(ggplot2)
 
-###### Important as fgb is not recognised by pandoc
-mapviewOptions(fgb = FALSE)
-
 ################################# Authentication #might be weird the first time, just run everyhting several times
 
 sheets_auth(scope = "https://www.googleapis.com/auth/drive")
@@ -48,30 +45,30 @@ drive_auth(token = sheets_token())
 
 ##### Load the ascii file from Alain, define CRS, resample
 # to simplify it for you I put this interactive line, pick the .asc file
-cologne <- raster("ascii/cologne_in.asc")
+lux <- raster("ascii/lux_in.asc")
 
-crs(cologne) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
+crs(lux) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
 ### Checking steps
-# cologne
-# nlayers(cologne)
-# plot(cologne)
-# res(cologne)
-# sum(is.na(values(cologne)))
-# sum(!is.na(values(cologne)))
+# lux
+# nlayers(lux)
+# plot(lux)
+# res(lux)
+# sum(is.na(values(lux)))
+# sum(!is.na(values(lux)))
 
 ### Change resolution to 1 kilometer, check
-cologne1km <- aggregate(cologne, fact=1000/res(cologne))
+lux1km <- aggregate(lux, fact=1000/res(lux))
 #### Checking steps
-# res(cologne1km) #checking step
-# dim(cologne1km)
-# ncell(cologne1km)
-# plot(cologne1km)
+# res(lux1km) #checking step
+# dim(lux1km)
+# ncell(lux1km)
+# plot(lux1km)
 
-cell_number_cologne <- cologne1km
-cell_number_cologne[!is.na(cell_number_cologne)] <- 1:length(cell_number_cologne[!is.na(cell_number_cologne)])
+cell_number_lux <- lux1km
+cell_number_lux[!is.na(cell_number_lux)] <- 1:length(cell_number_lux[!is.na(cell_number_lux)])
 
 ##### Create polygon from raster to be able to plot grid on interactive map
-rtp <- rasterToPolygons(cell_number_cologne, digits=20)
+rtp <- rasterToPolygons(cell_number_lux, digits=20)
 
 ##### Read from our online document
 table <- read_sheet("https://docs.google.com/spreadsheets/d/1eey0sTASSw02a6Yvze8-UPziqRF1VGnqPX5RLcsWTmk/edit#gid=0", na="")
@@ -83,9 +80,9 @@ cells_done <- which(table$`DONE?`==1)
 length(cells_done)-1
 cells_done <- cells_done[-length(cells_done)]
 cells_done
-effort <- cell_number_cologne
+effort <- cell_number_lux
 effort[] <- NA
-effort[which(values(cell_number_cologne)%in%cells_done)] <- cells_done
+effort[which(values(cell_number_lux)%in%cells_done)] <- cells_done
 
 rtp_effort <- rasterToPolygons(effort, digits=20)
 rtp_effort
@@ -96,25 +93,25 @@ m <- mapview(rtp,
              query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
              trim = TRUE,
              legend = FALSE, #no need for legend
-             map.types =  "Esri.WorldImagery",#,#"OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+             map.types =  "OpenStreetMap",#,#"OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
              alpha.regions = 0,
              lwd=2,
              color="red") #get rid of color
 m
 eff <- mapview(rtp_effort,
-             method = "ngb", 
-             na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
-             query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
-             trim = TRUE,
-             legend = FALSE, #no need for legend
-             map.types = "Esri.WorldImagery",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
-             alpha.regions = 0.25,
-             col.regions = "blue",
-             lwd=2,
-             color="blue") #get rid of color
+               method = "ngb", 
+               na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
+               query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
+               trim = TRUE,
+               legend = FALSE, #no need for legend
+               map.types = "OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+               alpha.regions = 0.35,
+               col.regions = "white",
+               lwd=2,
+               color="white") #get rid of color
 eff
 comb <- m+eff
 comb
-mapshot(comb, url="colognemap_effort_osm.html")
+mapshot(comb, url="luxmap_effortOSM.html")
 
 ### Cheers
