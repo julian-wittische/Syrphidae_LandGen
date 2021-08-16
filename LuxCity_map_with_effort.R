@@ -77,7 +77,6 @@ rtp <- rasterToPolygons(cell_number_lux, digits=20)
 table_Lux <- read_sheet("https://docs.google.com/spreadsheets/d/1spY_XlLYqT1DtNS_-Eqcz7Ezh2qW5cBISHSpY8tw3aI/edit?usp=sharing", na="")
 table_Lux <- as.data.frame(table_Lux)
 
-
 cells_done_Lux <- which(as.numeric(unlist(table_Lux$`S. pipiens`))>=1)
 
 effort <- cell_number_Lux
@@ -112,7 +111,6 @@ eff <- mapview(rtp_effort,
 
 comb_Lux <- m+eff
 
-
 m_osm <- mapview(rtp,
                  method = "ngb", 
                  na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
@@ -145,3 +143,4 @@ comb_osm_Lux <- m_osm + eff_osm
 sum(table_Lux$`S. pipiens`,na.rm=TRUE)
 length(which(as.numeric(unlist(table_Lux$`S. pipiens` ))>=1))
 length(which(as.numeric(unlist(table_Lux$`M. florea` ))>=1))
+################################################################################

@@ -143,4 +143,4 @@ comb_osm_SW <- m_osm + eff_osm
 sum(table_SW$`S. pipiens`,na.rm=TRUE)
 length(which(as.numeric(unlist(table_SW$`S. pipiens` ))>=1))
 length(which(as.numeric(unlist(table_SW$`M. florea` ))>=1))
-
+################################################################################
