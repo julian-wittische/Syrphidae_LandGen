@@ -77,11 +77,11 @@ rtp <- rasterToPolygons(cell_number_SW, digits=20)
 table_SW <- read_sheet("https://docs.google.com/spreadsheets/d/16uQnmVqKACVurcTPiauHRVpJj-C85lDpAcUeNXWjjxo/edit#gid=0", na="")
 table_SW <- as.data.frame(table_SW)
 
-cells_done <- which(as.numeric(unlist(table_SW$`S. pipiens` ))>=1)
+cells_done_SW <- which(as.numeric(unlist(table_SW$`S. pipiens` ))>=1)
 
 effort <- cell_number_SW
 effort[] <- NA
-effort[which(values(cell_number_SW)%in%cells_done)] <- cells_done
+effort[which(values(cell_number_SW)%in%cells_done_SW)] <- cells_done_SW
 
 rtp_effort <- rasterToPolygons(effort, digits=20)
 

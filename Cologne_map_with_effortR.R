@@ -74,14 +74,14 @@ cell_number_cologne[!is.na(cell_number_cologne)] <- 1:length(cell_number_cologne
 rtp <- rasterToPolygons(cell_number_cologne, digits=20)
 
 ##### Read from our online document
-table <- read_sheet("https://docs.google.com/spreadsheets/d/1eey0sTASSw02a6Yvze8-UPziqRF1VGnqPX5RLcsWTmk/edit#gid=0", na="")
-table <- as.data.frame(table)
+table_Col <- read_sheet("https://docs.google.com/spreadsheets/d/1eey0sTASSw02a6Yvze8-UPziqRF1VGnqPX5RLcsWTmk/edit#gid=0", na="")
+table_Col <- as.data.frame(table_Col)
 
-cells_done <- which(table$`DONE?`==1)
-cells_done <- cells_done[-length(cells_done)]
+cells_done_Col <- which(table_Col$`DONE?`==1)
+cells_done_Col <- cells_done_Col[-length(cells_done_Col)]
 effort <- cell_number_cologne
 effort[] <- NA
-effort[which(values(cell_number_cologne)%in%cells_done)] <- cells_done
+effort[which(values(cell_number_cologne)%in%cells_done_Col)] <- cells_done_Col
 
 rtp_effort <- rasterToPolygons(effort, digits=20)
 
@@ -108,7 +108,8 @@ eff <- mapview(rtp_effort,
              col.regions = "blue",
              lwd=2,
              color="blue") #get rid of color
-comb <- m+eff
+
+comb_Col <- m+eff
 
 m_osm <- mapview(rtp,
              method = "ngb", 
@@ -133,12 +134,14 @@ eff_osm <- mapview(rtp_effort,
                lwd=2,
                color="blue") #get rid of color
 
-comb_osm <- m_osm + eff_osm
+comb_osm_Col <- m_osm + eff_osm
 
 #mapshot(comb, url="colognemap_effort_sat.html")
-#mapshot(comb_osm, url="colognemap_effort_osm.html")
-length(which(as.numeric(unlist(table$`S. pipiens` ))>=1))
-length(which(as.numeric(unlist(table$`M. florea` ))>=1))
-length(which(as.numeric(unlist(table$`DONE?`))>=1))
 
 ### Cheers
+sum(table_Col$`S. pipiens`,na.rm=TRUE)
+sum(as.numeric(unlist(table_Col$`M. florea` )), na.rm=TRUE)
+length(which(as.numeric(unlist(table_Col$`S. pipiens` ))>=1))
+length(which(as.numeric(unlist(table_Col$`M. florea` ))>=1))
+length(which(as.numeric(unlist(table_Col$`DONE?`))>=1))
+################################################################################

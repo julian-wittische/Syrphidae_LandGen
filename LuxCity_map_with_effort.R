@@ -79,7 +79,7 @@ table_Lux <- as.data.frame(table_Lux)
 
 cells_done_Lux <- which(as.numeric(unlist(table_Lux$`S. pipiens`))>=1)
 
-effort <- cell_number_Lux
+effort <- cell_number_lux
 effort[] <- NA
 effort[which(values(cell_number_Lux)%in%cells_done_Lux)] <- cells_done_Lux
 
