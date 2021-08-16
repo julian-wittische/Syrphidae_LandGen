@@ -74,20 +74,17 @@ cell_number_SW[!is.na(cell_number_SW)] <- 1:length(cell_number_SW[!is.na(cell_nu
 rtp <- rasterToPolygons(cell_number_SW, digits=20)
 
 ##### Read from our online document
-table <- read_sheet("https://docs.google.com/spreadsheets/d/16uQnmVqKACVurcTPiauHRVpJj-C85lDpAcUeNXWjjxo/edit#gid=0", na="")
-table <- as.data.frame(table)
-which(table$`S. pipiens`>=1)
-#which(table$`S. pipiens`>=1)
+table_SW <- read_sheet("https://docs.google.com/spreadsheets/d/16uQnmVqKACVurcTPiauHRVpJj-C85lDpAcUeNXWjjxo/edit#gid=0", na="")
+table_SW <- as.data.frame(table_SW)
 
-cells_done <- which(as.numeric(unlist(table$`S. pipiens` ))>=1)
-cells_done
+cells_done <- which(as.numeric(unlist(table_SW$`S. pipiens` ))>=1)
 
 effort <- cell_number_SW
 effort[] <- NA
 effort[which(values(cell_number_SW)%in%cells_done)] <- cells_done
 
 rtp_effort <- rasterToPolygons(effort, digits=20)
-rtp_effort
+
 ##### Plotting procedure
 m <- mapview(rtp,
              method = "ngb", 
@@ -99,7 +96,7 @@ m <- mapview(rtp,
              alpha.regions = 0,
              lwd=2,
              color="red") #get rid of color
-m
+
 eff <- mapview(rtp_effort,
                method = "ngb", 
                na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
@@ -111,9 +108,8 @@ eff <- mapview(rtp_effort,
                col.regions = "blue",
                lwd=2,
                color="blue") #get rid of color
-eff
-comb <- m+eff
-comb
+
+comb_SW <- m+eff
 
 m_osm <- mapview(rtp,
                  method = "ngb", 
@@ -138,13 +134,13 @@ eff_osm <- mapview(rtp_effort,
                    lwd=2,
                    color="blue") #get rid of color
 
-comb_osm <- m_osm + eff_osm
+comb_osm_SW <- m_osm + eff_osm
 
 #mapshot(comb, url="SWmap_effort_Syritta_satellite.html")
-#mapshot(comb_osm, url="SWmap_effort_Syritta_OSM.html")
+
 ### Cheers
-#table(table[cells_done,]$`BOOKED by`)
-#sum(table$`S. pipiens`,na.rm=TRUE)
-length(which(as.numeric(unlist(table$`S. pipiens` ))>=1))
-length(which(as.numeric(unlist(table$`M. florea` ))>=1))
+
+sum(table_SW$`S. pipiens`,na.rm=TRUE)
+length(which(as.numeric(unlist(table_SW$`S. pipiens` ))>=1))
+length(which(as.numeric(unlist(table_SW$`M. florea` ))>=1))
 

@@ -74,20 +74,18 @@ cell_number_lux[!is.na(cell_number_lux)] <- 1:length(cell_number_lux[!is.na(cell
 rtp <- rasterToPolygons(cell_number_lux, digits=20)
 
 ##### Read from our online document
-table <- read_sheet("https://docs.google.com/spreadsheets/d/1spY_XlLYqT1DtNS_-Eqcz7Ezh2qW5cBISHSpY8tw3aI/edit?usp=sharing", na="")
-table <- as.data.frame(table)
-table$`M. florea[]==NULL
-which(table$`M. florea` >=1)
-#which(table$`S. pipiens`>=1)
+table_Lux <- read_sheet("https://docs.google.com/spreadsheets/d/1spY_XlLYqT1DtNS_-Eqcz7Ezh2qW5cBISHSpY8tw3aI/edit?usp=sharing", na="")
+table_Lux <- as.data.frame(table_Lux)
 
-cells_done <- which(as.numeric(unlist(table$`S. pipiens`))>=1)
-cells_done
-effort <- cell_number_lux
+
+cells_done_Lux <- which(as.numeric(unlist(table_Lux$`S. pipiens`))>=1)
+
+effort <- cell_number_Lux
 effort[] <- NA
-effort[which(values(cell_number_lux)%in%cells_done)] <- cells_done
+effort[which(values(cell_number_Lux)%in%cells_done_Lux)] <- cells_done_Lux
 
 rtp_effort <- rasterToPolygons(effort, digits=20)
-rtp_effort
+
 ##### Plotting procedure
 m <- mapview(rtp,
              method = "ngb", 
@@ -99,7 +97,7 @@ m <- mapview(rtp,
              alpha.regions = 0,
              lwd=2,
              color="red") #get rid of color
-m
+
 eff <- mapview(rtp_effort,
                method = "ngb", 
                na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
@@ -111,9 +109,9 @@ eff <- mapview(rtp_effort,
                col.regions = "blue",
                lwd=2,
                color="blue") #get rid of color
-eff
-comb <- m+eff
-comb
+
+comb_Lux <- m+eff
+
 
 m_osm <- mapview(rtp,
                  method = "ngb", 
@@ -138,12 +136,12 @@ eff_osm <- mapview(rtp_effort,
                    lwd=2,
                    color="blue") #get rid of color
 
-comb_osm <- m_osm + eff_osm
+comb_osm_Lux <- m_osm + eff_osm
 
 #mapshot(comb, url="luxmap_effort_Volucella.html")
 
 ### Cheers
-#table(table[cells_done,]$`BOOKED by`)
-#sum(table$`S. pipiens`,na.rm=TRUE)
-length(which(as.numeric(unlist(table$`S. pipiens` ))>=1))
-length(which(as.numeric(unlist(table$`M. florea` ))>=1))
+
+sum(table_Lux$`S. pipiens`,na.rm=TRUE)
+length(which(as.numeric(unlist(table_Lux$`S. pipiens` ))>=1))
+length(which(as.numeric(unlist(table_Lux$`M. florea` ))>=1))
