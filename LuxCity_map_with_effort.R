@@ -1,6 +1,6 @@
 ##### Julian Wittische 
 ##### April 2021
-mapviewOptions(fgb = FALSE)
+
 
 # /!\ I included checking steps for your own curiosity, no need to run them /!\
 
@@ -34,6 +34,9 @@ library(htmlwidgets)
 library(googledrive)
 library(googlesheets4)
 library(ggplot2)
+
+###### Important as fgb is not recognised by pandoc
+mapviewOptions(fgb = FALSE)
 
 ################################# Authentication #might be weird the first time, just run everyhting several times
 
@@ -71,14 +74,13 @@ cell_number_lux[!is.na(cell_number_lux)] <- 1:length(cell_number_lux[!is.na(cell
 rtp <- rasterToPolygons(cell_number_lux, digits=20)
 
 ##### Read from our online document
-table <- read_sheet("https://docs.google.com/spreadsheets/d/1eey0sTASSw02a6Yvze8-UPziqRF1VGnqPX5RLcsWTmk/edit#gid=0", na="")
+table <- read_sheet("https://docs.google.com/spreadsheets/d/1spY_XlLYqT1DtNS_-Eqcz7Ezh2qW5cBISHSpY8tw3aI/edit?usp=sharing", na="")
 table <- as.data.frame(table)
-which(table$`DONE?`==1)
+table$`M. florea[]==NULL
+which(table$`M. florea` >=1)
 #which(table$`S. pipiens`>=1)
 
-cells_done <- which(table$`DONE?`==1)
-length(cells_done)-1
-cells_done <- cells_done[-length(cells_done)]
+cells_done <- which(as.numeric(unlist(table$`S. pipiens`))>=1)
 cells_done
 effort <- cell_number_lux
 effort[] <- NA
@@ -93,7 +95,7 @@ m <- mapview(rtp,
              query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
              trim = TRUE,
              legend = FALSE, #no need for legend
-             map.types =  "OpenStreetMap",#,#"OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+             map.types =  "Esri.WorldImagery",#,#"OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
              alpha.regions = 0,
              lwd=2,
              color="red") #get rid of color
@@ -104,14 +106,44 @@ eff <- mapview(rtp_effort,
                query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
                trim = TRUE,
                legend = FALSE, #no need for legend
-               map.types = "OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
-               alpha.regions = 0.35,
-               col.regions = "white",
+               map.types = "Esri.WorldImagery",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+               alpha.regions = 0.25,
+               col.regions = "blue",
                lwd=2,
-               color="white") #get rid of color
+               color="blue") #get rid of color
 eff
 comb <- m+eff
 comb
-mapshot(comb, url="luxmap_effortOSM.html")
+
+m_osm <- mapview(rtp,
+                 method = "ngb", 
+                 na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
+                 query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
+                 trim = TRUE,
+                 legend = FALSE, #no need for legend
+                 map.types =  "OpenStreetMap",#,#"OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+                 alpha.regions = 0,
+                 lwd=2,
+                 color="red") #get rid of color
+
+eff_osm <- mapview(rtp_effort,
+                   method = "ngb", 
+                   na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
+                   query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
+                   trim = TRUE,
+                   legend = FALSE, #no need for legend
+                   map.types = "OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+                   alpha.regions = 0.25,
+                   col.regions = "blue",
+                   lwd=2,
+                   color="blue") #get rid of color
+
+comb_osm <- m_osm + eff_osm
+
+#mapshot(comb, url="luxmap_effort_Volucella.html")
 
 ### Cheers
+#table(table[cells_done,]$`BOOKED by`)
+#sum(table$`S. pipiens`,na.rm=TRUE)
+length(which(as.numeric(unlist(table$`S. pipiens` ))>=1))
+length(which(as.numeric(unlist(table$`M. florea` ))>=1))

@@ -48,43 +48,46 @@ drive_auth(token = sheets_token())
 
 ##### Load the ascii file from Alain, define CRS, resample
 # to simplify it for you I put this interactive line, pick the .asc file
-cologne <- raster("ascii/cologne_in.asc")
+SW <- raster("ascii/esch_in.asc")
 
-crs(cologne) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
+crs(SW) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
 ### Checking steps
-# cologne
-# nlayers(cologne)
-# plot(cologne)
-# res(cologne)
-# sum(is.na(values(cologne)))
-# sum(!is.na(values(cologne)))
+# SW
+# nlayers(SW)
+# plot(SW)
+# res(SW)
+# sum(is.na(values(SW)))
+# sum(!is.na(values(SW)))
 
 ### Change resolution to 1 kilometer, check
-cologne1km <- aggregate(cologne, fact=1000/res(cologne))
+SW1km <- aggregate(SW, fact=1000/res(SW))
 #### Checking steps
-# res(cologne1km) #checking step
-# dim(cologne1km)
-# ncell(cologne1km)
-# plot(cologne1km)
+# res(SW1km) #checking step
+# dim(SW1km)
+# ncell(SW1km)
+# plot(SW1km)
 
-cell_number_cologne <- cologne1km
-cell_number_cologne[!is.na(cell_number_cologne)] <- 1:length(cell_number_cologne[!is.na(cell_number_cologne)])
+cell_number_SW <- SW1km
+cell_number_SW[!is.na(cell_number_SW)] <- 1:length(cell_number_SW[!is.na(cell_number_SW)])
 
 ##### Create polygon from raster to be able to plot grid on interactive map
-rtp <- rasterToPolygons(cell_number_cologne, digits=20)
+rtp <- rasterToPolygons(cell_number_SW, digits=20)
 
 ##### Read from our online document
-table <- read_sheet("https://docs.google.com/spreadsheets/d/1eey0sTASSw02a6Yvze8-UPziqRF1VGnqPX5RLcsWTmk/edit#gid=0", na="")
+table <- read_sheet("https://docs.google.com/spreadsheets/d/16uQnmVqKACVurcTPiauHRVpJj-C85lDpAcUeNXWjjxo/edit#gid=0", na="")
 table <- as.data.frame(table)
+which(table$`S. pipiens`>=1)
+#which(table$`S. pipiens`>=1)
 
-cells_done <- which(table$`DONE?`==1)
-cells_done <- cells_done[-length(cells_done)]
-effort <- cell_number_cologne
+cells_done <- which(as.numeric(unlist(table$`S. pipiens` ))>=1)
+cells_done
+
+effort <- cell_number_SW
 effort[] <- NA
-effort[which(values(cell_number_cologne)%in%cells_done)] <- cells_done
+effort[which(values(cell_number_SW)%in%cells_done)] <- cells_done
 
 rtp_effort <- rasterToPolygons(effort, digits=20)
-
+rtp_effort
 ##### Plotting procedure
 m <- mapview(rtp,
              method = "ngb", 
@@ -96,49 +99,52 @@ m <- mapview(rtp,
              alpha.regions = 0,
              lwd=2,
              color="red") #get rid of color
-
+m
 eff <- mapview(rtp_effort,
-             method = "ngb", 
-             na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
-             query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
-             trim = TRUE,
-             legend = FALSE, #no need for legend
-             map.types = "Esri.WorldImagery",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
-             alpha.regions = 0.25,
-             col.regions = "blue",
-             lwd=2,
-             color="blue") #get rid of color
-comb <- m+eff
-
-m_osm <- mapview(rtp,
-             method = "ngb", 
-             na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
-             query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
-             trim = TRUE,
-             legend = FALSE, #no need for legend
-             map.types =  "OpenStreetMap",#,#"OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
-             alpha.regions = 0,
-             lwd=2,
-             color="red") #get rid of color
-
-eff_osm <- mapview(rtp_effort,
                method = "ngb", 
                na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
                query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
                trim = TRUE,
                legend = FALSE, #no need for legend
-               map.types = "OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+               map.types = "Esri.WorldImagery",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
                alpha.regions = 0.25,
                col.regions = "blue",
                lwd=2,
                color="blue") #get rid of color
+eff
+comb <- m+eff
+comb
+
+m_osm <- mapview(rtp,
+                 method = "ngb", 
+                 na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
+                 query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
+                 trim = TRUE,
+                 legend = FALSE, #no need for legend
+                 map.types =  "OpenStreetMap",#,#"OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+                 alpha.regions = 0,
+                 lwd=2,
+                 color="red") #get rid of color
+
+eff_osm <- mapview(rtp_effort,
+                   method = "ngb", 
+                   na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
+                   query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
+                   trim = TRUE,
+                   legend = FALSE, #no need for legend
+                   map.types = "OpenStreetMap",#"Esri.WorldImagery",#, # CHANGE TO "Esri.WorldImagery" IF YOU WANT
+                   alpha.regions = 0.25,
+                   col.regions = "blue",
+                   lwd=2,
+                   color="blue") #get rid of color
 
 comb_osm <- m_osm + eff_osm
 
-#mapshot(comb, url="colognemap_effort_sat.html")
-#mapshot(comb_osm, url="colognemap_effort_osm.html")
+#mapshot(comb, url="SWmap_effort_Syritta_satellite.html")
+#mapshot(comb_osm, url="SWmap_effort_Syritta_OSM.html")
+### Cheers
+#table(table[cells_done,]$`BOOKED by`)
+#sum(table$`S. pipiens`,na.rm=TRUE)
 length(which(as.numeric(unlist(table$`S. pipiens` ))>=1))
 length(which(as.numeric(unlist(table$`M. florea` ))>=1))
-length(which(as.numeric(unlist(table$`DONE?`))>=1))
 
-### Cheers
