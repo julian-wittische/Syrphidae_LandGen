@@ -50,7 +50,7 @@ drive_auth(token = sheets_token())
 # to simplify it for you I put this interactive line, pick the .asc file
 cologne <- raster("ascii/cologne_in.asc")
 
-crs(cologne) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
+crs(cologne) <- CRS('+init=EPSG:2169') # this is according to Alain
 ### Checking steps
 # cologne
 # nlayers(cologne)

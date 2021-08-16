@@ -50,7 +50,7 @@ drive_auth(token = sheets_token())
 # to simplify it for you I put this interactive line, pick the .asc file
 lux <- raster("ascii/lux_in.asc")
 
-crs(lux) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
+crs(lux) <- CRS('+init=EPSG:2169') # this is according to Alain
 ### Checking steps
 # lux
 # nlayers(lux)
@@ -81,12 +81,12 @@ cells_done_Lux <- which(as.numeric(unlist(table_Lux$`S. pipiens`))>=1)
 
 effort <- cell_number_lux
 effort[] <- NA
-effort[which(values(cell_number_Lux)%in%cells_done_Lux)] <- cells_done_Lux
+effort[which(values(cell_number_lux)%in%cells_done_Lux)] <- cells_done_Lux
 
 rtp_effort <- rasterToPolygons(effort, digits=20)
 
 ##### Plotting procedure
-m <- mapview(rtp,
+m_Lux <- mapview(rtp,
              method = "ngb", 
              na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
              query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
@@ -97,7 +97,7 @@ m <- mapview(rtp,
              lwd=2,
              color="red") #get rid of color
 
-eff <- mapview(rtp_effort,
+eff_Lux <- mapview(rtp_effort,
                method = "ngb", 
                na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
                query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
@@ -109,9 +109,9 @@ eff <- mapview(rtp_effort,
                lwd=2,
                color="blue") #get rid of color
 
-comb_Lux <- m+eff
+comb_Lux <- m_Lux+eff_Lux
 
-m_osm <- mapview(rtp,
+m_osm_Lux <- mapview(rtp,
                  method = "ngb", 
                  na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
                  query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
@@ -122,7 +122,7 @@ m_osm <- mapview(rtp,
                  lwd=2,
                  color="red") #get rid of color
 
-eff_osm <- mapview(rtp_effort,
+eff_osm_Lux <- mapview(rtp_effort,
                    method = "ngb", 
                    na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
                    query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
@@ -134,7 +134,7 @@ eff_osm <- mapview(rtp_effort,
                    lwd=2,
                    color="blue") #get rid of color
 
-comb_osm_Lux <- m_osm + eff_osm
+comb_osm_Lux <- m_osm_Lux + eff_osm_Lux
 
 #mapshot(comb, url="luxmap_effort_Volucella.html")
 

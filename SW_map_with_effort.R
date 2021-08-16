@@ -50,7 +50,7 @@ drive_auth(token = sheets_token())
 # to simplify it for you I put this interactive line, pick the .asc file
 SW <- raster("ascii/esch_in.asc")
 
-crs(SW) <- CRS('+init=EPSG:2169') # this is accorfing to Alain
+crs(SW) <- CRS('+init=EPSG:2169') # this is according to Alain
 ### Checking steps
 # SW
 # nlayers(SW)
@@ -86,7 +86,7 @@ effort[which(values(cell_number_SW)%in%cells_done_SW)] <- cells_done_SW
 rtp_effort <- rasterToPolygons(effort, digits=20)
 
 ##### Plotting procedure
-m <- mapview(rtp,
+m_SW <- mapview(rtp,
              method = "ngb", 
              na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
              query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
@@ -97,7 +97,7 @@ m <- mapview(rtp,
              lwd=2,
              color="red") #get rid of color
 
-eff <- mapview(rtp_effort,
+eff_SW <- mapview(rtp_effort,
                method = "ngb", 
                na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
                query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
@@ -109,9 +109,9 @@ eff <- mapview(rtp_effort,
                lwd=2,
                color="blue") #get rid of color
 
-comb_SW <- m+eff
+comb_SW <- m_SW+eff_SW
 
-m_osm <- mapview(rtp,
+m_osm_SW <- mapview(rtp,
                  method = "ngb", 
                  na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
                  query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
@@ -122,7 +122,7 @@ m_osm <- mapview(rtp,
                  lwd=2,
                  color="red") #get rid of color
 
-eff_osm <- mapview(rtp_effort,
+eff_osm_SW <- mapview(rtp_effort,
                    method = "ngb", 
                    na.color = rgb(0, 0, 255, max = 255, alpha = 0), #get rid of color
                    query.type = "click", #CLICK ON A PLACE TO KNOW WHICH CELL YOU ARE IN
@@ -134,7 +134,7 @@ eff_osm <- mapview(rtp_effort,
                    lwd=2,
                    color="blue") #get rid of color
 
-comb_osm_SW <- m_osm + eff_osm
+comb_osm_SW <- m_osm_SW + eff_osm_SW
 
 #mapshot(comb, url="SWmap_effort_Syritta_satellite.html")
 
