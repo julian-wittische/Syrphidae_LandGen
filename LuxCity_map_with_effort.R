@@ -141,6 +141,7 @@ comb_osm_Lux <- m_osm_Lux + eff_osm_Lux
 ### Cheers
 
 sum(table_Lux$`S. pipiens`,na.rm=TRUE)
+sum(as.numeric(unlist(table_Lux$`M. florea` )),na.rm=TRUE)
 length(which(as.numeric(unlist(table_Lux$`S. pipiens` ))>=1))
 length(which(as.numeric(unlist(table_Lux$`M. florea` ))>=1))
 ################################################################################
