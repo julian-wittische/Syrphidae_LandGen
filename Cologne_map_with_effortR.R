@@ -203,7 +203,7 @@ eff_osm_both <- mapview(rtp_effort_both,
 comb_osm_Col <- m_osm + eff_osm
 cmap <- comb_osm_Col+eff_MF+eff_both
 mapshot(cmap, url="colognemap_effort_osm.html")
-
+cmap
 ### Cheers
 sum(table_Col$`S. pipiens`,na.rm=TRUE)
 sum(as.numeric(unlist(table_Col$`M. florea` )), na.rm=TRUE)
