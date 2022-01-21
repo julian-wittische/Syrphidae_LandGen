@@ -124,7 +124,7 @@ Cologne_081_1_04-10-21,Cologne,081,1,04/10/2021,51.019810,7.001466,Hinatea Ariey
 Cologne_086_1_23-08-21,Cologne,086,1,23/08/2021,51.010720,6.835992,Hinatea Ariey,0,0,1,0,0,12,,
 Cologne_087_1_13-08-21,Cologne,087,1,13/08/2021,51.009551,6.852223,Hinatea Ariey,1,0,2,0,0,16,,
 Cologne_089_1_04-08-21,Cologne,089,1,04/08/2021,51.005056,6.881501,Hinatea Ariey,1,0,3,0,0,1,,
-Cologne_089_2_04-08-21,Cologne,089,2,04/08/2021,51004605,6.874300,Hinatea Ariey,0,0,4,0,0,8,,
+Cologne_089_2_04-08-21,Cologne,089,2,04/08/2021,51.004605,6.874300,Hinatea Ariey,0,0,4,0,0,8,,
 Cologne_090_1_02-10-21,Cologne,090,1,02/10/2021,51.011073,6.888446,Julian Wittische,0,0,0,0,0,1,,
 Cologne_090_1_05-10-21,Cologne,090,1,05/10/2021,51.010685,6.891933,Julian Wittische,2,0,0,0,0,4,,
 Cologne_091_1_04-08-21,Cologne,091,1,04/08/2021,51.012392,6.909578,Hinatea Ariey,3,0,0,1,0,14,,
@@ -179,7 +179,7 @@ Cologne_125_3_10-07-21,Cologne,125,3,10/07/2021,50.990496,6.873070,Hinatea Ariey
 Cologne_125_4_10-07-21,Cologne,125,4,10/07/2021,50.990410,6.881101,Hinatea Ariey,0,0,0,0,0,7,,
 Cologne_126_1_10-07-21,Cologne,126,1,10/07/2021,50.99413,6.88958,Hinatea Ariey,0,0,0,0,0,4,,
 Cologne_126_1_10-08-21,Cologne,126,1,10/08/2021,50.987564,6.888515,Hinatea Ariey,0,0,4,0,0,1,,
-Cologne_126_1_15-06-21,Cologne,126,1,15/06/2021,50.992152,6.891254,Hinatea Ariey,0,0,0,4,0,1,"Hi Hinatea, your fly was not target, I changed it to bycatch",
+"Cologne_126_1_15-06-21,Cologne,126,1,15/06/2021,50.992152,6.891254,Hinatea Ariey,0,0,0,4,0,1,""Hi Hinatea, your fly was not target, I changed it to bycatch"","
 Cologne_126_1_21-07-21,Cologne,126,1,21/07/2021,50.990737,6.889145,Julian Wittische,1,0,0,0,0,10,,
 Cologne_127_1_03-09-21,Cologne,127,1,03/09/2021,50.989146,6.904929,Hinatea Ariey,1,0,0,0,0,4,,
 Cologne_127_1_21-07-21,Cologne,127,1,21/07/2021,50.989318,6.904934,Julian Wittische,0,0,1,0,0,20,,
@@ -309,7 +309,7 @@ Cologne_185_4_07-07-21,Cologne,185,4,07/07/2021,50.964876,6.845101,Hinatea Ariey
 Cologne_186_1_04-09-21,Cologne,186,1,04/09/2021,50.968107,6.879489,Hinatea Ariey,0,0,0,0,0,9,,
 Cologne_186_1_14-10-21,Cologne,186,1,14/10/2021,50.965955,6.878321,Hinatea Ariey,1,0,0,0,0,3,,
 Cologne_186_1_18-07-21,Cologne,186,1,18/07/2021,50.962096,6.882588,Julian Wittische,0,0,1,0,0,8,,
-Cologne_187_1_14-06-21,Cologne,187,1,14/06/2021,50.960104,6.893025,Hinatea Ariey,0,0,0,0,0,2,"Hi Hinatea, your fly was not target, I changed it to bycatch",
+"Cologne_187_1_14-06-21,Cologne,187,1,14/06/2021,50.960104,6.893025,Hinatea Ariey,0,0,0,0,0,2,""Hi Hinatea, your fly was not target, I changed it to bycatch"","
 Cologne_187_1_18-07-21,Cologne,187,1,18/07/2021,50.959827,6.885455,Hinatea Ariey,0,0,1,0,0,1,,
 Cologne_188_1_12-07-21,Cologne,188,1,12/07/2021,50.961388,6.907777,Hinatea Ariey,0,0,3,0,0,1,,
 Cologne_188_1_14-10-21,Cologne,188,1,14/10/2021,50.961747,6.901182,Hinatea Ariey,0,0,0,0,0,7,,
@@ -381,12 +381,12 @@ Cologne_210_1_18-07-21,Cologne,210,1,18/07/2021,50.948349,6.917909,Hinatea Ariey
 Cologne_210_2_15-10-21,Cologne,210,2,15/10/2021,50.954878,6.913910,Hinatea Ariey,0,0,0,0,0,1,,
 Cologne_210_2_15-10-21,Cologne,210,2,15/10/2021,50.956885,6.913380,Hinatea Ariey,2,0,2,0,0,9,,
 Cologne_210_3_15-10-21,Cologne,210,3,15/10/2021,50.958267,6.918324,Hinatea Ariey,0,0,0,0,0,1,,
-Cologne_211_1_02-08-21,Cologne,211,1,02/08/2021,50.956745,6.930473,Hinatea Ariey,0,0,1,1,0,0,"Site 211_2 was corrupted, so eliminited",
+"Cologne_211_1_02-08-21,Cologne,211,1,02/08/2021,50.956745,6.930473,Hinatea Ariey,0,0,1,1,0,0,""Site 211_2 was corrupted, so eliminited"","
 Cologne_211_1_08-06-21,Cologne,211,1,08/06/2021,50.952994,6.938781,Hinatea Ariey,0,0,0,0,0,6,,
 Cologne_211_1_11-10-21,Cologne,211,1,11/10/2021,50.957035,6.927278,Hinatea Ariey,1,0,0,0,0,6,,
 Cologne_211_1_15-07-21,Cologne,211,1,15/07/2021,50.951296,6.936176,Julian Wittische,8*,0,0,0,0,37,*We hesitate on the ID,
 Cologne_211_2_08-06-21,Cologne,211,2,08/06/2021,50.950620,6.938894,Hinatea Ariey,0,0,0,0,0,6,,
-Cologne_211_3_02-08-21,Cologne,211,3,02/08/2021,50.956738,6.934229,Hinatea Ariey,0,0,6,0,0,0,"Site 211_2 was corrupted, so eliminited",
+"Cologne_211_3_02-08-21,Cologne,211,3,02/08/2021,50.956738,6.934229,Hinatea Ariey,0,0,6,0,0,0,""Site 211_2 was corrupted, so eliminited"","
 Cologne_212_1_02-07-21,Cologne,212,1,02/07/2021,50.956156,6.952128,Hinatea Ariey,0,0,0,0,0,9,8 Syrphidae + 1 Anthrax morio,
 Cologne_212_1_08-06-21,Cologne,212,1,08/06/2021,50.953162,6.941166,Hinatea Ariey,1,0,0,1,0,6,,
 Cologne_212_1_16-07-21,Cologne,212,1,16/07/2021,50.954085,6.946796,Hinatea Ariey,0,0,2,0,0,4,,
@@ -457,7 +457,7 @@ Cologne_233_1_16-07-21,Cologne,233,1,16/07/2021,50.947961,6.935457,Hinatea Ariey
 Cologne_233_2_08-06-21,Cologne,233,2,08/06/2021,50.948933,6.935220,Hinatea Ariey,1,0,0,0,0,7,,
 Cologne_233_3_08-06-21,Cologne,233,3,08/06/2021,50.947272,6.936182,Hinatea Ariey,0,0,0,0,0,5,,
 Cologne_233_4_08-06-21,Cologne,233,4,08/06/2021,50.952616,6.928309,Hinatea Ariey,0,0,0,0,0,7,6 syrphidae + 1 A. morio,
-Cologne_234_1_08-06-21,Cologne,234,1,08/06/2021,50.946781,6.941042,Hinatea Ariey,1,0,1,0,0,7,"Hi Hinatea, one of  your flies was not target, I changed it to bycatch",
+"Cologne_234_1_08-06-21,Cologne,234,1,08/06/2021,50.946781,6.941042,Hinatea Ariey,1,0,1,0,0,7,""Hi Hinatea, one of  your flies was not target, I changed it to bycatch"","
 Cologne_235_1_07-10-21,Cologne,235,1,07/10/2021,50.946751,6.964596,Hinatea Ariey,3,0,2,0,0,6,,
 Cologne_235_1_16-07-21,Cologne,235,1,16/07/2021,50.944776,6.963315,Hinatea Ariey,0,0,1,0,0,12,,
 Cologne_235_1_18-07-21,Cologne,235,1,18/07/2021,50.949018,6.95618,Frank & Jorg,0,0,1,0,0,0,,
@@ -544,7 +544,7 @@ Cologne_256_1_13-06-21,Cologne,256,1,13/06/2021,50.940729,6.922689,Hinatea Ariey
 Cologne_256_1_17-07-21,Cologne,256,1,17/07/2021,50.934275,6.923713,Hinatea Ariey,0,0,2,0,0,14,,
 Cologne_256_2_09-07-21,Cologne,256,2,09/07/2021,50.934612,6.917454,Hinatea Ariey,0,0,0,0,0,4,,
 Cologne_256_2_10-06-21,Cologne,256,2,10/06/2021,50.939949,6.919710,Hinatea Ariey,2,0,3,0,0,4,3 syrphidae + 1 A. morio,
-Cologne_256_2_13-06-21,Cologne,256,2,13/06/2021,50.933365,6.911888,Hinatea Ariey,0,0,0,0,0,2,"Hi Hinatea, your fly was not target, I changed it to bycatch",
+"Cologne_256_2_13-06-21,Cologne,256,2,13/06/2021,50.933365,6.911888,Hinatea Ariey,0,0,0,0,0,2,""Hi Hinatea, your fly was not target, I changed it to bycatch"","
 Cologne_256_3_09-07-21,Cologne,256,3,09/07/2021,50.935097,6.924081,Hinatea Ariey,0,0,0,0,0,7,,
 Cologne_257_1_08-06-21,Cologne,257,1,08/06/2021,50.938242,6.927145,Hinatea Ariey,0,0,0,0,0,4,,
 Cologne_257_1_10-06-21,Cologne,257,1,10/06/2021,50.933538,6.926743,Hinatea Ariey,0,0,0,0,0,3,,
@@ -757,7 +757,7 @@ Cologne_345_1_30-07-21,Cologne,345,1,30/07/2021,50.901613,6.889406,Hinatea Ariey
 Cologne_346_1_12-07-21,Cologne,346,1,12/07/2021,50.898926,6.904635,Julian Wittische,0,0,0,0,0,30,Syyrphidae + S. ferrugineus + Volucella sp.,
 Cologne_346_1_26-08-21,Cologne,346,1,26/08/2021,50.904903,6.902060,Hinatea Ariey,1,0,1,0,0,4,,
 Cologne_346_1_30-07-21,Cologne,346,1,30/07/2021,50.897964,6.905487,Hinatea Ariey,0,0,3,0,0,4,,
-Cologne_347_1_11-06-21,Cologne,347,1,11/06/2021,50.897582,6.924674,Hinatea Ariey,0,0,1,0,0,0,"Hi Hinatea, your fly was not target, I changed it to bycatch",
+"Cologne_347_1_11-06-21,Cologne,347,1,11/06/2021,50.897582,6.924674,Hinatea Ariey,0,0,1,0,0,0,""Hi Hinatea, your fly was not target, I changed it to bycatch"","
 Cologne_347_1_16-06-21,Cologne,347,1,16/06/2021,50.897797,6.914818,Hinatea Ariey,0,0,0,0,0,2,,
 Cologne_347_1_25-06-21,Cologne,347,1,25/06/2021,50.904063,6.914999,Hinatea Ariey,0,0,0,0,0,8,,
 Cologne_347_1_30-07-21,Cologne,347,1,30/07/2021,50.901727,6.911752,Hinatea Ariey,2,0,1,0,0,4,,
@@ -1043,7 +1043,7 @@ Luxembourg City_103_1_05-09-21,Luxembourg City,103,1,05/09/2021,49.62084,6.11876
 Luxembourg City_103_2_03-09-21,Luxembourg City,103,2,03/09/2021,49.59019,6.11165,Antonio,0,0,20,0,0,0,,
 Luxembourg City_104_1_25-08-21,Luxembourg City,104,1,25/08/2021,49.6161066,6.1287675,Balint,2,0,0,0,0,0,,
 Luxembourg City_104_1_29-04-21,Luxembourg City,104,1,29/04/2021,49.617458,6.138634,Lorenzo Castelen,0,0,0,0,0,2,,
-Luxembourg City_104_1_30-04-21,Luxembourg City,104,1,30/04/2021,"49,616991",6.138824,Lorenzo Castelen,0,0,0,0,2,0,,
+"Luxembourg City_104_1_30-04-21,Luxembourg City,104,1,30/04/2021,""49,616991"",6.138824,Lorenzo Castelen,0,0,0,0,2,0,,"
 Luxembourg City_104_2_25-08-21,Luxembourg City,104,2,25/08/2021,49.6176832,6.1289603,Balint,1,0,0,0,0,0,,
 Luxembourg City_104_3_25-08-21,Luxembourg City,104,3,25/08/2021,49.6183312,6.1363558,Balint,0,0,1,0,0,0,,
 Luxembourg City_105_1_20-05-21,Luxembourg City,105,1,20/05/2021,49.6166670,6.1525600,Dylan Thissen,0,0,0,0,0,1,,
@@ -1051,11 +1051,11 @@ Luxembourg City_105_1_23-04-21,Luxembourg City,105,1,23/04/2021,49.627670,6.1552
 Luxembourg City_105_1_24-04-21,Luxembourg City,105,1,24/04/2021,49.620724,6.145583,Lorenzo Castelen,0,0,0,0,1,2,,
 Luxembourg City_105_1_25-04-21,Luxembourg City,105,1,25/04/2021,49.622029,6.153685,Lorenzo Castelen,0,0,0,0,2,0,,
 Luxembourg City_105_1_25-08-21,Luxembourg City,105,1,25/08/2021,49.6196410,6.1474903,Balint,2,0,1,0,0,0,,
-Luxembourg City_105_1_26-04-21,Luxembourg City,105,1,26/04/2021,49.623060,6.158658,Lorenzo Castelen,0,0,0,0,0,18,"Hi Lorenzo, your bees were not Andrena I changed your entry accordingly",
+"Luxembourg City_105_1_26-04-21,Luxembourg City,105,1,26/04/2021,49.623060,6.158658,Lorenzo Castelen,0,0,0,0,0,18,""Hi Lorenzo, your bees were not Andrena I changed your entry accordingly"","
 Luxembourg City_105_1_29-04-21,Luxembourg City,105,1,29/04/2021,49.620671,6.149552,Lorenzo Castelen,0,0,0,0,0,1,,
-Luxembourg City_105_1_30-04-21,Luxembourg City,105,1,30/04/2021,49.620735,6.152846,Lorenzo Castelen,0,0,0,0,2,0,"one of the ""A.cineraria"" is actually a bumblebee",
+"Luxembourg City_105_1_30-04-21,Luxembourg City,105,1,30/04/2021,49.620735,6.152846,Lorenzo Castelen,0,0,0,0,2,0,""one of the """"A.cineraria"""" is actually a bumblebee"","
 Luxembourg City_105_2_25-08-21,Luxembourg City,105,2,25/08/2021,49.6215222,6.1562588,Balint,1,0,1,0,0,0,,
-Luxembourg City_105_2_26-04-21,Luxembourg City,105,2,26/04/2021,49.621074,6.153096,Lorenzo Castelen,0,0,0,0,0,3,"Hi Lorenzo, your bees were not Andrena I changed your entry accordingly",
+"Luxembourg City_105_2_26-04-21,Luxembourg City,105,2,26/04/2021,49.621074,6.153096,Lorenzo Castelen,0,0,0,0,0,3,""Hi Lorenzo, your bees were not Andrena I changed your entry accordingly"","
 Luxembourg City_106_1_22-04-21,Luxembourg City,106,1,22/04/2021,49.621050,6.159799,Lorenzo Castelen,0,0,0,0,1,3,,
 Luxembourg City_106_1_25-08-21,Luxembourg City,106,1,25/08/2021,49.6228806,6.1584672,Balint,1,0,4,0,0,0,,
 Luxembourg City_106_1_26-04-21,Luxembourg City,106,1,26/04/2021,49.622531,6.160472,Lorenzo Castelen,0,0,0,0,1,2,,
@@ -1063,7 +1063,7 @@ Luxembourg City_106_2_16-05-21,Luxembourg City,106,2,16/05/2021,49.623273,6.1604
 Luxembourg City_106_3_01-09-21,Luxembourg City,106,3,01/09/2021, 49.56301 ,6.19476,Stephanie,0,0,1,0,0,0,,
 Luxembourg City_106_3_20-09-21,Luxembourg City,106,3,20/09/2021,49.6213697,6.1679948,Balint and Dylan,0,0,1,0,0,0,,
 Luxembourg City_107_1_20-05-21,Luxembourg City,107,1,20/05/2021,49.621941,6.177791,Lorenzo Castelen,0,0,0,0,0,2,,
-Luxembourg City_107_1_26-05-21,Luxembourg City,107,1,26/05/2021,49.621710,6.177268,Lorenzo Castelen,0,0,0,0,0,4,"only 3 in tube, we found an other tube with 1 individual",
+"Luxembourg City_107_1_26-05-21,Luxembourg City,107,1,26/05/2021,49.621710,6.177268,Lorenzo Castelen,0,0,0,0,0,4,""only 3 in tube, we found an other tube with 1 individual"","
 Luxembourg City_107_2_01-09-21,Luxembourg City,107,2,01/09/2021,49.56813,6.20856,Stephanie,1,0,0,0,0,0,,
 Luxembourg City_107_2_20-09-21,Luxembourg City,107,2,20/09/2021,49.6201643,6.1781317,Balint and Dylan,0,0,3,0,0,0,,
 Luxembourg City_109_1_06-09-21,Luxembourg City,109,1,06/09/2021,49.6172081,6.2107016,Balint,0,0,2,0,0,0,,
@@ -1099,16 +1099,16 @@ Luxembourg City_12_1_26-08-21,Luxembourg City,12,1,26/08/2021,49.67762,6.12670,A
 Luxembourg City_120_1_21-04-21,Luxembourg City,120,1,21/04/2021,49.615162,6.126134,Lorenzo Castelen,0,0,0,0,5,0,,
 Luxembourg City_120_1_30-08-21,Luxembourg City,120,1,30/08/2021,49.6091370,6.1285831,Balint,3,0,1,0,0,0,,
 Luxembourg City_120_2_30-08-21,Luxembourg City,120,2,30/08/2021,49.6087770,6.1257386,Balint,2,0,3,0,0,0,,
-Luxembourg City_121_1_02-08-21,Luxembourg City,121,1,02/08/2021,49.614819,6.137674 ,Lorenzo Castelen,2,0,0,1,0,1,"Hey Lorenzo,one of your florea was bycatch. I changed it accordingly",
+"Luxembourg City_121_1_02-08-21,Luxembourg City,121,1,02/08/2021,49.614819,6.137674 ,Lorenzo Castelen,2,0,0,1,0,1,""Hey Lorenzo,one of your florea was bycatch. I changed it accordingly"","
 Luxembourg City_121_1_23-04-21,Luxembourg City,121,1,23/04/2021,49.615368,6.136626,Lorenzo Castelen,0,0,0,0,1,0,,
 Luxembourg City_121_1_24-08-21,Luxembourg City,121,1,24/08/2021,49.6086504,6.1405447,Balint,2,0,0,0,0,0,,
-Luxembourg City_121_1_27-04-21,Luxembourg City,121,1,27/04/2021,49.615311,6.136632,Lorenzo Castelen,0,0,0,0,3,2,"All the ""A.cineraria"" are male bees.",
+"Luxembourg City_121_1_27-04-21,Luxembourg City,121,1,27/04/2021,49.615311,6.136632,Lorenzo Castelen,0,0,0,0,3,2,""All the """"A.cineraria"""" are male bees."","
 Luxembourg City_121_1_28-04-21,Luxembourg City,121,1,28/04/2021,49.614244,6.136913,Lorenzo Castelen,0,0,0,0,1,5,,
 Luxembourg City_121_1_29-04-21,Luxembourg City,121,1,29/04/2021,49.614776,6.136836,Lorenzo Castelen,0,0,0,0,1,0,,
 Luxembourg City_121_1_29-04-21,Luxembourg City,121,1,29/04/2021,49.615126,6.136272,Lorenzo Castelen,0,0,0,0,1,0,,
 Luxembourg City_121_2_24-08-21,Luxembourg City,121,2,24/08/2021,49.6083405,6.1401102,Balint,0,0,1,0,0,0,,
 Luxembourg City_121_2_29-04-21,Luxembourg City,121,2,29/04/2021,49.614744,6.137032,Lorenzo Castelen,0,0,0,0,0,7,,
-Luxembourg City_121_3_29-04-21,Luxembourg City,121,3,29/04/2021,49.615357,6.136679,Lorenzo Castelen,0,0,0,0,0,5,"Hi Lorenzo, the campestris and andrena were bycatch. I changed your entry accordingly",
+"Luxembourg City_121_3_29-04-21,Luxembourg City,121,3,29/04/2021,49.615357,6.136679,Lorenzo Castelen,0,0,0,0,0,5,""Hi Lorenzo, the campestris and andrena were bycatch. I changed your entry accordingly"","
 Luxembourg City_122_1_24-08-21,Luxembourg City,122,1,24/08/2021,49.6077135,6.1583348,Balint,2,0,3,0,0,0,,
 Luxembourg City_122_2_24-08-21,Luxembourg City,122,2,24/08/2021,49.6093082,6.1472536,Balint,0,0,1,0,0,0,,
 Luxembourg City_123_1_24-08-21,Luxembourg City,123,1,24/08/2021,49.6114062,6.1616202,Balint,2,0,0,0,0,0,,
@@ -1166,7 +1166,7 @@ Luxembourg City_140_3_23-08-21,Luxembourg City,140,3,23/08/2021,49.6062867,6.162
 Luxembourg City_141_1_23-08-21,Luxembourg City,141,1,23/08/2021,49.6034749,6.1789647,Balint,0,0,3,0,0,0,,
 Luxembourg City_141_2_23-08-21,Luxembourg City,141,2,23/08/2021,49.6015456,6.1798890,Balint,0,0,1,0,0,0,,
 Luxembourg City_141_3_23-08-21,Luxembourg City,141,3,23/08/2021,49.6071010,6.1784148,Balint,1,0,0,0,0,0,,
-Luxembourg City_142_1_09-06-21,Luxembourg City,142,1,09/06/2021,49.6012634,6.1893556,Monique,0,0,0,0,1,1,"Hi Monique, your fly was not target, I changed it to bycatch ",
+"Luxembourg City_142_1_09-06-21,Luxembourg City,142,1,09/06/2021,49.6012634,6.1893556,Monique,0,0,0,0,1,1,""Hi Monique, your fly was not target, I changed it to bycatch "","
 Luxembourg City_142_1_16-09-21,Luxembourg City,142,1,16/09/2021,49.60231,6.18942,Antonio,0,0,26,0,0,0,,
 Luxembourg City_143_1_16-09-21,Luxembourg City,143,1,16/09/2021,49.60510,6.20134,Antonio,0,0,5,0,0,0,,
 Luxembourg City_144_1_14-06-21,Luxembourg City,144,1,14/06/2021,49.6060099,6.2232064,Monique,0,0,1,0,0,0,,
@@ -1202,10 +1202,10 @@ Luxembourg City_154_1_09-06-21,Luxembourg City,154,1,09/06/2021,49.594812,6.1215
 Luxembourg City_154_1_11-06-21,Luxembourg City,154,1,11/06/2021,49.594598,6.123200,Lorenzo Castelen,0,1,0,0,0,2,,
 Luxembourg City_154_1_11-07-21,Luxembourg City,154,1,11/07/2021,49.595157,6.120295,Lorenzo Castelen,1,0,0,0,0,3,,
 Luxembourg City_154_1_20-07-21,Luxembourg City,154,1,20/07/2021,49.59109,6.12948,Antonio,1,0,1,0,0,0,,
-Luxembourg City_155_1_03-08-21,Luxembourg City,155,1,03/08/2021,49.593974,6.141046,Lorenzo Castelen,2,0,0,0,0,0,"Lorenzo, I added these results to the other sheet. ",
+"Luxembourg City_155_1_03-08-21,Luxembourg City,155,1,03/08/2021,49.593974,6.141046,Lorenzo Castelen,2,0,0,0,0,0,""Lorenzo, I added these results to the other sheet. "","
 Luxembourg City_155_1_03-09-21,Luxembourg City,155,1,03/09/2021,49.5918382,6.1440594,Balint,3,0,0,1,0,0,,
 Luxembourg City_155_1_03-09-21,Luxembourg City,155,1,03/09/2021,49.58932,6.13245,Antonio,0,0,2,0,0,0,,
-Luxembourg City_156_1_03-08-21,Luxembourg City,156,1,03/08/2021,49.593428,6.152044,Lorenzo Castelen,2,0,0,0,0,0,"Lorenzo, I added these results to the other sheet. ",
+"Luxembourg City_156_1_03-08-21,Luxembourg City,156,1,03/08/2021,49.593428,6.152044,Lorenzo Castelen,2,0,0,0,0,0,""Lorenzo, I added these results to the other sheet. "","
 Luxembourg City_156_1_03-09-21,Luxembourg City,156,1,03/09/2021,49.5918865,6.1459195,Balint,2,0,0,0,0,0,,
 Luxembourg City_156_2_03-09-21,Luxembourg City,156,2,03/09/2021,49.5905014,6.1487841,Balint,2,0,1,0,0,0,,
 Luxembourg City_156_3_03-09-21,Luxembourg City,156,3,03/09/2021,49.5924939,6.1503569,Balint,0,0,2,0,0,0,,
@@ -1218,7 +1218,7 @@ Luxembourg City_158_2_03-09-21,Luxembourg City,158,2,03/09/2021,49.5897558,6.175
 Luxembourg City_160_1_17-09-21,Luxembourg City,160,1,17/09/2021,49.59521,6.21031,Antonio,0,1,3,0,0,0,,
 Luxembourg City_161_1_09-06-21,Luxembourg City,161,1,09/06/2021,49.5960306,6.2225805,Monique,0,0,1,0,0,0,,
 Luxembourg City_161_1_17-09-21,Luxembourg City,161,1,17/09/2021,49.592338,6.22275,Antonio,0,0,2,0,0,0,,
-Luxembourg City_161_1_30-05-21,Luxembourg City,161,1,30/05/2021,49.5939902,6.2258665,Monique,0,0,0,0,0,4,"Hi Monique, your fly was not target, I changed it to bycatch",
+"Luxembourg City_161_1_30-05-21,Luxembourg City,161,1,30/05/2021,49.5939902,6.2258665,Monique,0,0,0,0,0,4,""Hi Monique, your fly was not target, I changed it to bycatch"","
 Luxembourg City_162_1_30-08-21,Luxembourg City,162,1,30/08/2021,49.5927960,6.2394660,Paula and Lorenzo,1,0,1,0,0,0,,
 Luxembourg City_162_2_30-08-21,Luxembourg City,162,2,30/08/2021,49.5926190,6.2402330,Paula and Lorenzo,1,0,1,0,0,0,,
 Luxembourg City_162_3_30-08-21,Luxembourg City,162,3,30/08/2021,49.5978617,6.2241311,Paula and Lorenzo,0,0,4,0,0,0,,
@@ -1257,7 +1257,7 @@ Luxembourg City_172_1_04-06-21,Luxembourg City,172,1,04/06/2021,49.58467,6.13375
 Luxembourg City_172_1_19-08-21,Luxembourg City,172,1,19/08/2021,49.5813989,6.1402379,Dylan and Tabea,0,0,0,1,0,0,,
 Luxembourg City_172_1_22-07-21,Luxembourg City,172,1,22/07/2021,49.58181,6.13631,Antonio,0,0,1,0,0,0,,
 Luxembourg City_173_1_02-09-21,Luxembourg City,173,1,02/09/2021,49.5848943,6.1553344,Balint,1,0,1,1,0,0,,
-Luxembourg City_173_1_03-08-21,Luxembourg City,173,1,03/08/2021,49.579207,6.144511,Lorenzo Castelen,1,0,1,0,0,1,"Hey Lorenzo,one of your florea was bycatch. I changed it accordingly",
+"Luxembourg City_173_1_03-08-21,Luxembourg City,173,1,03/08/2021,49.579207,6.144511,Lorenzo Castelen,1,0,1,0,0,1,""Hey Lorenzo,one of your florea was bycatch. I changed it accordingly"","
 Luxembourg City_173_1_19-06-21,Luxembourg City,173,1,19/06/2021,49.5877,6.14811,Antonio,0,0,1,0,0,8,,
 Luxembourg City_173_1_19-06-21,Luxembourg City,173,1,19/06/2021,49.5877,6.14811,Antonio,0,0,0,0,0,1,,
 Luxembourg City_174_1_02-09-21,Luxembourg City,174,1,02/09/2021,49.5845794,6.1593915,Balint,2,0,0,0,0,0,,
@@ -1267,7 +1267,7 @@ Luxembourg City_175_1_02-09-21,Luxembourg City,175,1,02/09/2021,49.5853262,6.177
 Luxembourg City_175_1_31-05-21,Luxembourg City,175,1,31/05/2021,49.5876622,6.1868748,Monique,1,0,0,0,0,0,,
 Luxembourg City_176_1_31-08-21,Luxembourg City,176,1,31/08/2021,49.58208 ,6.19333,Stephanie,0,0,1,0,0,0,,
 Luxembourg City_177_1_17-09-21,Luxembourg City,177,1,17/09/2021,49.58377,6.21049,Antonio,0,0,19,0,0,0,,
-Luxembourg City_177_1_29-05-21,Luxembourg City,177,1,29/05/2021,49.5844022,6.2019973,Monique,1,0,0,0,0,1,"Hi Monique, your fly was not target, I changed it to bycatch","2 tubes : 1 florea, 1 bycatch"
+"Luxembourg City_177_1_29-05-21,Luxembourg City,177,1,29/05/2021,49.5844022,6.2019973,Monique,1,0,0,0,0,1,""Hi Monique, your fly was not target, I changed it to bycatch"",""2 tubes : 1 florea, 1 bycatch"""
 Luxembourg City_178_1_17-09-21,Luxembourg City,178,1,17/09/2021,49.58375,6.21796,Antonio,0,0,8,0,0,0,,
 Luxembourg City_179_1_14-05-21,Luxembourg City,179,1,14/05/2021,49.5838733,6.2366473,Caroline,1,0,1,0,0,0,,
 Luxembourg City_179_1_18-09-21,Luxembourg City,179,1,18/09/2021,49.58395,6.23063,Antonio,1,0,24,0,0,0,,
@@ -1310,9 +1310,9 @@ Luxembourg City_189_2_18-08-21,Luxembourg City,189,2,18/08/2021,49.5766448,6.162
 Luxembourg City_19_1_31-05-21,Luxembourg City,19,1,31/05/2021,49.667229,6.053175,Ana Paula,0,0,0,0,0,1,,
 Luxembourg City_190_1_31-08-21,Luxembourg City,190,1,31/08/2021,49.57177 ,6.18535,Stephanie,1,0,1,0,0,0,,
 Luxembourg City_191_1_31-08-21,Luxembourg City,191,1,31/08/2021,49.57916 ,6.18796,Stephanie,1,0,2,0,0,0,,
-Luxembourg City_192_1_01-06-21,Luxembourg City,192,1,01/06/2021,49.5759347,6.2116927,Monique,0,0,0,0,0,1,"Hi Monique, your fly was not target, I changed it to bycatch",
+"Luxembourg City_192_1_01-06-21,Luxembourg City,192,1,01/06/2021,49.5759347,6.2116927,Monique,0,0,0,0,0,1,""Hi Monique, your fly was not target, I changed it to bycatch"","
 Luxembourg City_192_1_14-09-21,Luxembourg City,192,1,14/09/2021,49.5795566,6.2036631,Balint and Dylan,0,0,4,0,0,0,,
-Luxembourg City_193_1_09-05-21,Luxembourg City,193,1,09/05/2021,49.5741626,6.215420,Monique,0,0,0,0,0,1,"Hi Monique, I changed your 1 florea to a bycatch. It was not target species Ok thank you :-) who wrote me?",
+"Luxembourg City_193_1_09-05-21,Luxembourg City,193,1,09/05/2021,49.5741626,6.215420,Monique,0,0,0,0,0,1,""Hi Monique, I changed your 1 florea to a bycatch. It was not target species Ok thank you :-) who wrote me?"","
 Luxembourg City_193_1_14-09-21,Luxembourg City,193,1,14/09/2021,49.5745820,6.2157525,Balint and Dylan,0,0,6,0,0,0,,
 Luxembourg City_193_1_18-09-21,Luxembourg City,193,1,18/09/2021,49.57833,6.22308,Antonio,0,0,21,0,0,0,,
 Luxembourg City_193_2_02-09-21,Luxembourg City,193,2,02/09/2021,49.57692 ,6.22542,Stephanie,1,0,0,0,0,0,,
@@ -1320,8 +1320,8 @@ Luxembourg City_194_1_02-09-21,Luxembourg City,194,1,02/09/2021, 49.57701 ,6.229
 Luxembourg City_194_1_14-09-21,Luxembourg City,194,1,14/09/2021,49.5790848,6.2298475,Dylan and Balint,0,2,0,0,0,0,,
 Luxembourg City_194_2_14-09-21,Luxembourg City,194,2,14/09/2021,49.5798229,6.2317700,Dylan and Balint,0,0,4,0,0,0,,
 Luxembourg City_195_1_02-06-21,Luxembourg City,195,1,02/06/2021,49.5654987,6.0472825,balint Andrasi,1,0,1,0,0,0,,
-Luxembourg City_195_2_02-06-21,Luxembourg City,195,2,02/06/2021,49.5655351,6.0436194,Balint Andrasi,0,0,0,0,0,2,"Not florea, I changed it to bycatch",
-Luxembourg City_196_1_02-06-21,Luxembourg City,196,1,02/06/2021,49.5661557,6.0530024,Balint Andrasi,0,0,0,0,0,3,"Not florea, I changed it to bycatch",
+"Luxembourg City_195_2_02-06-21,Luxembourg City,195,2,02/06/2021,49.5655351,6.0436194,Balint Andrasi,0,0,0,0,0,2,""Not florea, I changed it to bycatch"","
+"Luxembourg City_196_1_02-06-21,Luxembourg City,196,1,02/06/2021,49.5661557,6.0530024,Balint Andrasi,0,0,0,0,0,3,""Not florea, I changed it to bycatch"","
 Luxembourg City_196_1_17-06-21,Luxembourg City,196,1,17/06/2021,49.568450,6.057553 ,Lorenzo Castelen,0,0,0,0,0,4,,
 Luxembourg City_196_1_29-07-21,Luxembourg City,196,1,29/07/2021,49.5662585,6.0515919,Balint and Ben,2,0,0,0,0,0,,
 Luxembourg City_196_2_29-07-21,Luxembourg City,196,2,29/07/2021,49.5668458,6.0537115,Balint and Ben,2,0,2,0,0,0,,
@@ -1336,12 +1336,12 @@ Luxembourg City_20_1_16-09-21,Luxembourg City,20,1,16/09/2021,49.6649012,6.07110
 Luxembourg City_20_1_31-05-21,Luxembourg City,20,1,31/05/2021,49.670803,6.076595,Ana Paula,0,0,0,0,1,0,,
 Luxembourg City_200_1_03-06-21,Luxembourg City,200,1,03/06/2021,49.5706336,6.1062242,Balint Andrasi,2,0,0,0,0,0,,
 Luxembourg City_200_1_19-08-21,Luxembourg City,200,1,19/08/2021,49.562767,6.107264,Paula and Lorenzo,2,0,4,0,0,0,,
-Luxembourg City_200_2_03-06-21,Luxembourg City,200,2,03/06/2021,49.5667417,6.1068213,Balint Andrasi,0,0,0,0,0,1,"Balint, this fly was not target, I changed it to bycatch ",
+"Luxembourg City_200_2_03-06-21,Luxembourg City,200,2,03/06/2021,49.5667417,6.1068213,Balint Andrasi,0,0,0,0,0,1,""Balint, this fly was not target, I changed it to bycatch "","
 Luxembourg City_200_2_19-08-21,Luxembourg City,200,2,19/08/2021,49.563253,6.106172,Paula and Lorenzo,1,0,6,0,0,0,,
 Luxembourg City_201_1_20-06-21,Luxembourg City,201,1,20/06/2021,49.57001,6.12943,Antonio,0,0,0,0,0,12,,
 Luxembourg City_201_1_25-08-21,Luxembourg City,201,1,25/08/2021,49.5666001,6.1294125,Paula and Lorenzo,0,0,4,0,0,0,,
 Luxembourg City_201_2_25-08-21,Luxembourg City,201,2,25/08/2021,49.566256,6.128569,Paula and Lorenzo,0,0,6,0,0,0,,
-Luxembourg City_202_1_10-06-21,Luxembourg City,202,1,10/06/2021,49.5663635,6.1305645,Dylan Thissen,0,0,0,0,0,1,"Hey, I found only 1 fly in the tube (3 was indicated). that was not target species so I changed it to bycatch ",
+"Luxembourg City_202_1_10-06-21,Luxembourg City,202,1,10/06/2021,49.5663635,6.1305645,Dylan Thissen,0,0,0,0,0,1,""Hey, I found only 1 fly in the tube (3 was indicated). that was not target species so I changed it to bycatch "","
 Luxembourg City_202_1_18-06-21,Luxembourg City,202,1,18/06/2021,49.56968,6.13527,Antonio,1,0,0,0,0,4,,
 Luxembourg City_202_1_25-08-21,Luxembourg City,202,1,25/08/2021,49.563274,6.140920,Paula and Lorenzo,0,0,1,0,0,0,,
 Luxembourg City_202_2_25-08-21,Luxembourg City,202,2,25/08/2021,49.5642614,6.1392573,Paula and Lorenzo,2,0,0,0,0,0,,
@@ -1493,13 +1493,13 @@ Luxembourg City_7_2_27-08-21,Luxembourg City,7,2,27/08/2021,49.6866630,6.1756022
 Luxembourg City_7_3_27-08-21,Luxembourg City,7,3,27/08/2021,49.6851093,6.1755140,Balint Andrasi,0,0,1,0,0,0,,
 Luxembourg City_70_1_13-05-21,Luxembourg City,70,1,13/05/2021,49.635699,6.140231,Lorenzo Castelen,0,0,0,0,0,2,,
 Luxembourg City_71_1_12-05-21,Luxembourg City,71,1,12/05/2021,49.637853,6.145929,Lorenzo Castelen,0,0,0,0,0,2,,
-Luxembourg City_71_1_20-08-21,Luxembourg City,71,1,20/08/2021,49.6401008,6.1572032,"Dylan, Tabea and Frida",8,0,4,0,0,0,,
+"Luxembourg City_71_1_20-08-21,Luxembourg City,71,1,20/08/2021,49.6401008,6.1572032,""Dylan, Tabea and Frida"",8,0,4,0,0,0,,"
 Luxembourg City_72_1_16-05-21,Luxembourg City,72,1,16/05/2021,49.636427,6.166229,Lorenzo Castelen,0,0,0,0,0,2,,
-Luxembourg City_72_1_23-08-21,Luxembourg City,72,1,23/08/2021,49.6362605,6.1574513,"Dylan, Tabea and Frida",2,0,3,0,0,0,,
+"Luxembourg City_72_1_23-08-21,Luxembourg City,72,1,23/08/2021,49.6362605,6.1574513,""Dylan, Tabea and Frida"",2,0,3,0,0,0,,"
 Luxembourg City_73_1_14-05-21,Luxembourg City,73,1,14/05/2021,49.634374,6.180630,Lorenzo Castelen,0,1,0,0,0,3,,
-Luxembourg City_73_1_20-08-21,Luxembourg City,73,1,20/08/2021,49.6372993,6.1749974,"Dylan, Tabea and Frida",4,0,0,1,0,0,,
-Luxembourg City_73_2_20-08-21,Luxembourg City,73,2,20/08/2021,49.6377027,6.1797734,"Dylan, Tabea and Frida",5,0,2,2,0,0,,
-Luxembourg City_73_3_20-08-21,Luxembourg City,73,3,20/08/2021,49.6405987,6.1800805,"Dylan, Tabea and Frida",1,0,0,0,0,0,,
+"Luxembourg City_73_1_20-08-21,Luxembourg City,73,1,20/08/2021,49.6372993,6.1749974,""Dylan, Tabea and Frida"",4,0,0,1,0,0,,"
+"Luxembourg City_73_2_20-08-21,Luxembourg City,73,2,20/08/2021,49.6377027,6.1797734,""Dylan, Tabea and Frida"",5,0,2,2,0,0,,"
+"Luxembourg City_73_3_20-08-21,Luxembourg City,73,3,20/08/2021,49.6405987,6.1800805,""Dylan, Tabea and Frida"",1,0,0,0,0,0,,"
 Luxembourg City_75_1_28-05-21,Luxembourg City,75,1,28/05/2021,49.638533,6.202928,Lorenzo Castelen,1,0,0,0,0,0,,
 Luxembourg City_75_1_30-12-99,Luxembourg City,75,1,,49.637533,6.203487,Lorenzo Castelen,1,0,0,0,0,0,,
 Luxembourg City_76_1_02-06-21,Luxembourg City,76,1,02/06/2021,49.636928,6.220407,Lorenzo Castelen,0,0,0,0,1,2,,
@@ -1552,11 +1552,11 @@ Luxembourg City_86_4_21-07-21,Luxembourg City,86,4,21/07/2021,49.6262690,6.11938
 Luxembourg City_87_1_09-05-21,Luxembourg City,87,1,09/05/2021,49.626639,6.131433,Lorenzo Castelen,0,0,0,0,0,3,,
 Luxembourg City_87_1_15-07-21,Luxembourg City,87,1,15/07/2021,49.630010,6.144979,Lorenzo Castelen,1,0,0,0,0,2,,
 Luxembourg City_88_1_16-07-21,Luxembourg City,88,1,16/07/2021,49.628658,6.159203,Lorenzo Castelen,1,0,0,0,0,1,,
-Luxembourg City_88_1_23-08-21,Luxembourg City,88,1,23/08/2021,49.6306994,6.1555497,"Dylan, Tabea and Frida",0,0,3,0,0,0,,
+"Luxembourg City_88_1_23-08-21,Luxembourg City,88,1,23/08/2021,49.6306994,6.1555497,""Dylan, Tabea and Frida"",0,0,3,0,0,0,,"
 Luxembourg City_88_1_29-04-21,Luxembourg City,88,1,29/04/2021,49.626024,6.156782,Lorenzo Castelen,0,0,0,0,1,0,,
 Luxembourg City_88_1_29-04-21,Luxembourg City,88,1,29/04/2021,49.628328,6.158317,Lorenzo Castelen,0,0,0,0,0,1,,
 Luxembourg City_89_1_23-04-21,Luxembourg City,89,1,23/04/2021,49.626778,6.159650,Lorenzo Castelen,1,0,0,0,0,1,,
-Luxembourg City_89_2_23-04-21,Luxembourg City,89,2,23/04/2021,49.630212,6.161945,Lorenzo Castelen,0,0,0,0,2,1,"One of the ""A.cineraria"" is actually a honeybee",
+"Luxembourg City_89_2_23-04-21,Luxembourg City,89,2,23/04/2021,49.630212,6.161945,Lorenzo Castelen,0,0,0,0,2,1,""One of the """"A.cineraria"""" is actually a honeybee"","
 Luxembourg City_89_3_29-04-21,Luxembourg City,89,3,29/04/2021,49.630016,6.161521,Lorenzo Castelen,0,0,0,0,0,1,,
 Luxembourg City_89_4_20-09-21,Luxembourg City,89,4,20/09/2021,49.6310758,6.1644439,Balint and Dylan,0,0,1,0,0,0,,
 Luxembourg City_9_1_10-06-21,Luxembourg City,9,1,10/06/2021,49.681302,6.087150,Ana Paula,0,0,0,0,0,1,,
@@ -1574,8 +1574,8 @@ Luxembourg City_92_1_02-06-21,Luxembourg City,92,1,02/06/2021,49.634020,6.205581
 Luxembourg City_92_1_03-06-21,Luxembourg City,92,1,03/06/2021,49.632339,6.207558,Lorenzo Castelen,0,0,0,0,0,2,,
 Luxembourg City_92_1_04-06-21,Luxembourg City,92,1,04/06/2021,49.631545,6.206569,Lorenzo Castelen,0,0,0,0,0,2,,
 Luxembourg City_92_1_29-05-21,Luxembourg City,92,1,29/05/2021,49.632339,6.207558,Lorenzo Castelen,0,0,0,0,0,1,,
-Luxembourg City_92_1_30-05-21,Luxembourg City,92,1,30/05/2021,49.634020,6.205581,Lorenzo Castelen,0,0,0,0,1,1,"The ""A.cineraria"" is actually a honeybee",
-Luxembourg City_92_1_31-05-21,Luxembourg City,92,1,31/05/2021,49.631275,6.206724,Lorenzo Castelen,1,0,0,0,0,1,"We found a tube in the bycatch recipient, it wasn't noted so we added it",
+"Luxembourg City_92_1_30-05-21,Luxembourg City,92,1,30/05/2021,49.634020,6.205581,Lorenzo Castelen,0,0,0,0,1,1,""The """"A.cineraria"""" is actually a honeybee"","
+"Luxembourg City_92_1_31-05-21,Luxembourg City,92,1,31/05/2021,49.631275,6.206724,Lorenzo Castelen,1,0,0,0,0,1,""We found a tube in the bycatch recipient, it wasn't noted so we added it"","
 Luxembourg City_92_2_04-06-21,Luxembourg City,92,2,04/06/2021,49.631941,6.207987,Lorenzo Castelen,0,0,0,0,1,5,,
 Luxembourg City_94_1_06-09-21,Luxembourg City,94,1,06/09/2021,49.6287750,6.2413240,Paula and Lorenzo,0,1,0,0,0,0,,
 Luxembourg City_94_2_06-09-21,Luxembourg City,94,2,06/09/2021,49.6236688,6.2433628,Paula and Lorenzo,0,0,1,0,0,0,,
@@ -1583,9 +1583,9 @@ Luxembourg City_95_1_06-09-21,Luxembourg City,95,1,06/09/2021,49.6324222,6.24987
 Luxembourg City_95_2_06-09-21,Luxembourg City,95,2,06/09/2021,49.6316196,6.2474747,Paula and Lorenzo,1,0,0,0,0,0,,
 Luxembourg City_96_1_20-05-21,Luxembourg City,96,1,20/05/2021,49.6198158,6.0333274,Balint Andrasi,0,0,5,0,0,0,,
 Luxembourg City_96_1_22-07-21,Luxembourg City,96,1,22/07/2021,49.6194244,6.0327497,Balint and Ben,0,0,2,0,0,0,,
-Luxembourg City_96_2_20-05-21,Luxembourg City,96,2,20/05/2021,49.6184294,6.0319987,Balint Andrasi,0,0,0,0,0,5,"Not a pipiens, Anasimyia interpuncta
-according to barcoding. It has thick hind legs, but it is generally bigger and has another pattern.",
-Luxembourg City_97_1_20-05-21,Luxembourg City,97,1,20/05/2021,49.620414,6.034676,Balint Andrasi,0,0,0,0,0,1,"Not a pipiens,Anasimyia interpuncta, barcoding",
+"Luxembourg City_96_2_20-05-21,Luxembourg City,96,2,20/05/2021,49.6184294,6.0319987,Balint Andrasi,0,0,0,0,0,5,""Not a pipiens, Anasimyia interpuncta"
+"according to barcoding. It has thick hind legs, but it is generally bigger and has another pattern."","
+"Luxembourg City_97_1_20-05-21,Luxembourg City,97,1,20/05/2021,49.620414,6.034676,Balint Andrasi,0,0,0,0,0,1,""Not a pipiens,Anasimyia interpuncta, barcoding"","
 Luxembourg City_97_1_22-07-21,Luxembourg City,97,1,22/07/2021,49.6228843,6.0464042,Balint and Ben,2,0,2,0,0,0,,
 Luxembourg City_97_2_22-07-21,Luxembourg City,97,2,22/07/2021,49.6233156,6.0432895,Balint and Ben,2,0,0,0,0,0,,
 Luxembourg City_97_3_22-07-21,Luxembourg City,97,3,22/07/2021,49.6205821,6.0358226,Balint and Ben,0,0,1,0,0,0,,
@@ -1601,14 +1601,14 @@ Manternach Hill_x_x_26-08-21,Manternach Hill,x,x,26/08/2021,49.7109221,6.4359498
 Rosport-Mompach_x_x_26-08-21,Rosport-Mompach,x,x,26/08/2021,49.78317983556239,6.480581774647296,Fernanda + Frida,0,1,0,1,0,0,,
 SW_1_1_28-07-21,SW,1,1,28/07/2021,49.57683,5.89644,Antonio,0,0,6,0,0,0,,
 SW_10_2_30-07-21,SW,10,2,30/07/2021,49.57227,5.90002,Antonio,0,0,13,0,0,0,,
-SW_100_1_16-06-21,SW,100,1,16/06/2021,49.527850,5.968973,Amanda,0,0,2,0,0,1,"Hi Amanda, the fly was not florea, I changed it to bycatch",
+"SW_100_1_16-06-21,SW,100,1,16/06/2021,49.527850,5.968973,Amanda,0,0,2,0,0,1,""Hi Amanda, the fly was not florea, I changed it to bycatch"","
 SW_100_2_17-06-21,SW,100,2,17/06/2021,49.524019,5.968951,Amanda,0,0,1,0,0,0,,
 SW_101_1_14-06-21,SW,101,1,14/06/2021,49.525692,5.989341,Amanda,0,0,2,0,0,0,,
 SW_101_2_14-06-21,SW,101,2,14/06/2021,49.528192,5.982349,Amanda,0,0,2,0,0,0,,
 SW_102_1_14-06-21,SW,102,1,14/06/2021,49.528504,5.998346,Amanda,0,0,3,0,1,0,,
 SW_103_1_10-08-21,SW,103,1,10/08/2021,49.523633,6.016138,Amanda,0,0,8,0,0,0,,
 SW_104_1_10-08-21,SW,104,1,10/08/2021,49.529185,6.034160,Amanda,0,0,2,0,0,0,,
-SW_105_1_08-06-21,SW,105,1,08/06/2021,"49,5298","6,0423",Stephanie,0,0,1,0,0,0,,
+"SW_105_1_08-06-21,SW,105,1,08/06/2021,""49,5298"",""6,0423"",Stephanie,0,0,1,0,0,0,,"
 SW_106_1_04-08-21,SW,106,1,04/08/2021,49.52408,6.06217,Stephanie,0,0,5,0,0,0,,
 SW_106_2_04-08-21,SW,106,2,04/08/2021,49.52761,6.06193,Stephanie,0,0,1,0,0,0,,
 SW_107_1_02-08-21,SW,107,1,02/08/2021,49.52327,6.07672,Stephanie,0,0,1,0,0,0,,
@@ -1650,7 +1650,7 @@ SW_123_5_05-08-21,SW,123,5,05/08/2021,49.514199,6.012225,Paula and Lorenzo,0,0,3
 SW_123_6_05-08-21,SW,123,6,05/08/2021,49.5176217,6.01410042,Paula and Lorenzo,0,0,2,0,0,0,,
 SW_124_1_04-08-21,SW,124,1,04/08/2021,49.520683,6.035839,Paula and Lorenzo,0,0,9,0,0,0,,
 SW_125_1_04-08-21,SW,125,1,04/08/2021,49.516220,6.055598,Paula and Lorenzo,0,0,43,0,0,0,,
-SW_126_1_04-06-21,SW,126,1,04/06/2021,"49,5173571","6,0610454",Stephanie,0,0,1,0,0,0,,
+"SW_126_1_04-06-21,SW,126,1,04/06/2021,""49,5173571"",""6,0610454"",Stephanie,0,0,1,0,0,0,,"
 SW_127_1_23-07-21,SW,127,1,23/07/2021,49.512625,6.06579,Stephanie,0,0,1,0,0,0,,
 SW_128_1_26-07-21,SW,128,1,26/07/2021,49.52063,6.09145,Stephanie,1,0,0,0,0,0,,
 SW_128_2_27-07-21,SW,128,2,27/07/2021,49.51537,6.09187,Stephanie,0,0,1,0,0,0,,
@@ -1695,7 +1695,7 @@ SW_144_2_13-08-21,SW,144,2,13/08/2021,49.5111181,6.0181800,Dylan + T + F,0,0,1,0
 SW_145_1_13-08-21,SW,145,1,13/08/2021,49.5115803,6.0273558,Dylan + T + F,0,0,4,0,0,0,,
 SW_146_1_18-08-21,SW,146,1,18/08/2021,49.51018 ,6.04948,Stephanie and Amanda,0,0,3,0,0,0,,
 SW_147_1_23-07-21,SW,147,1,23/07/2021,49.509145,6.06009,Stephanie,0,0,1,0,0,0,,
-SW_148_1_04-06-21,SW,148,1,04/06/2021,"49,5099682","6,0704281",Stephanie,0,0,0,0,0,2,,
+"SW_148_1_04-06-21,SW,148,1,04/06/2021,""49,5099682"",""6,0704281"",Stephanie,0,0,0,0,0,2,,"
 SW_148_2_29-07-21,SW,148,2,29/07/2021,49.51208,6.07760,Stephanie,0,0,1,0,0,0,,
 SW_148_3_29-07-21,SW,148,3,29/07/2021,49.0735,6.51097,Stephanie,0,0,1,0,0,0,,
 SW_149_1_29-07-21,SW,149,1,29/07/2021,49.51041,6.08038,Stephanie,0,0,1,0,0,0,,
@@ -1728,7 +1728,7 @@ SW_162_1_05-08-21,SW,162,1,05/08/2021,49.5009659,6.0041044,Dylan,1,0,0,0,0,0,,
 SW_162_1_11-08-21,SW,162,1,11/08/2021,49.5000181,6.0029605,Dylan,0,0,4,0,0,0,,
 SW_162_1_13-08-21,SW,162,1,13/08/2021,49.5000181,6.0029605,Dylan + T + F,0,0,2,0,0,0,,
 SW_162_1_19-07-21,SW,162,1,19/07/2021,49.4988079,5.9962365,Paula and Lorenzo,1,0,0,1,0,0,,
-SW_162_2_13-08-21,SW,163,2,13/08/2021,"49,4951158","6,0011185",Dylan + T + F,,,4,,,,,SW Plaque 5
+"SW_162_2_13-08-21,SW,163,2,13/08/2021,""49,4951158"",""6,0011185"",Dylan + T + F,,,4,,,,,SW Plaque 5"
 SW_162_3_13-08-21,SW,162,3,13/08/2021,49.4989268,5.9969865,Dylan + T + F,0,0,0,2,0,0,,
 SW_163_1_04-08-21,SW,163,1,04/08/2021,49.5006485,6.0193471,Dylan and Tabea,9,0,1,4,0,1,,
 SW_164_1_03-08-21,SW,164,1,03/08/2021,49.494802,6.036611,Amanda,0,0,6,0,0,0,,
@@ -1751,13 +1751,13 @@ SW_17_3_28-05-21,SW,17,3,28/05/2021,49.571096,6.001656,Amanda,0,0,0,0,1,0,,
 SW_17_3_30-07-21,SW,17,3,30/07/2021,49.575582,6.006323,Amanda,1,0,8,0,0,0,,
 SW_17_4_30-07-21,SW,17,4,30/07/2021,49.573433,6.004910,Amanda,13,0,2,0,0,0,,
 SW_170_1_19-08-21,SW,170,1,19/08/2021,49.49523 ,6.11259,Stephanie and Amanda,0,0,1,0,0,0,,
-SW_171_1_26-04-21,SW,171,1,26/04/2021,"49,490664","6,130836",Julian Wittische,0,0,0,0,0,1,,
-SW_171_1_27-04-21,SW,171,1,27/04/2021,"49,503684","6,135257",Julian Wittische,0,0,0,0,0,4,,
-SW_171_2_26-04-21,SW,171,2,26/04/2021,"49,503473","6,121715",Julian Wittische,0,0,0,0,0,1,,
+"SW_171_1_26-04-21,SW,171,1,26/04/2021,""49,490664"",""6,130836"",Julian Wittische,0,0,0,0,0,1,,"
+"SW_171_1_27-04-21,SW,171,1,27/04/2021,""49,503684"",""6,135257"",Julian Wittische,0,0,0,0,0,4,,"
+"SW_171_2_26-04-21,SW,171,2,26/04/2021,""49,503473"",""6,121715"",Julian Wittische,0,0,0,0,0,1,,"
 SW_171_4_14-08-21,SW,171,4,14/08/2021,49.50466 ,6.12540,Stephanie,0,0,0,1,0,0,,
 SW_171_5_14-08-21,SW,171,5,14/08/2021,49.50273,6.13182,Stephanie,0,0,2,0,0,0,,
-SW_172_1_26-04-21,SW,172,1,26/04/2021,"49,501404","6,147402",Julian Wittische,0,0,0,0,3,0,,
-SW_172_2_26-04-21,SW,172,2,26/04/2021,"49,501404","6,121715",Julian Wittische,0,0,0,0,0,1,,
+"SW_172_1_26-04-21,SW,172,1,26/04/2021,""49,501404"",""6,147402"",Julian Wittische,0,0,0,0,3,0,,"
+"SW_172_2_26-04-21,SW,172,2,26/04/2021,""49,501404"",""6,121715"",Julian Wittische,0,0,0,0,0,1,,"
 SW_172_3_14-03-21,SW,172,3,14/03/2021,49.50217,6.13923,Stephanie,0,0,1,0,0,0,,
 SW_173_1_07-09-21,SW,173,1,07/09/2021,49.4933320,5.9424304,Paula and Lorenzo,0,0,2,0,0,0,,
 SW_174_1_07-09-21,SW,174,1,07/09/2021,49.4863954,5.9589903,Paula and Lorenzo,1,0,2,0,0,0,,
@@ -1784,15 +1784,15 @@ SW_182_1_13-08-21,SW,182,1,13/08/2021,49.48806,6.07591,Stephanie,0,0,2,0,0,0,,
 SW_183_1_09-08-21,SW,183,1,09/08/2021,49.49290,6.08062 ,Stephanie,0,0,4,0,0,0,,
 SW_184_1_10-08-21,SW,184,1,10/08/2021,49.49294,6.09594  ,Stephanie,0,0,3,0,0,0,,
 SW_185_1_14-08-21,SW,185,1,14/08/2021,49.4923033,6.1075556,Caroline,0,0,1,0,0,0,,
-SW_185_1_28-04-21,SW,185,1,28/04/2021,"49,489439","6,133996",Julian Wittische,0,0,0,0,1,5,,
-SW_186_1_26-04-21,SW,186,1,26/04/2021,"49,488458","6,121748",Julian Wittische,0,0,0,0,0,1,,
-SW_186_1_27-04-21,SW,186,1,27/04/2021,"49,493013","6,128202",Julian Wittische,0,0,0,0,0,2,,
-SW_186_1_28-04-21,SW,186,1,28/04/2021,"49,48788","6,1276761",Julian Wittische,0,0,0,0,0,5,,
-SW_186_2_26-04-21,SW,186,2,26/04/2021,"49,490003","6,125113",Julian Wittische,0,0,0,0,0,1,,
-SW_186_2_27-04-21,SW,186,2,27/04/2021,"49,4915846","6,1317709",Julian Wittische,0,0,0,0,1,1,,
-SW_186_2_28-04-21,SW,186,2,28/04/2021,"49,489366","6,127288",Julian Wittische,0,0,0,0,0,4,,
-SW_186_3_26-04-21,SW,186,3,26/04/2021,"49,488458","6,121748",Julian Wittische,0,0,0,0,0,1,,
-SW_187_1_27-04-21,SW,187,1,27/04/2021,"49,492722","6,145537",Julian Wittische,0,0,0,0,0,5,,
+"SW_185_1_28-04-21,SW,185,1,28/04/2021,""49,489439"",""6,133996"",Julian Wittische,0,0,0,0,1,5,,"
+"SW_186_1_26-04-21,SW,186,1,26/04/2021,""49,488458"",""6,121748"",Julian Wittische,0,0,0,0,0,1,,"
+"SW_186_1_27-04-21,SW,186,1,27/04/2021,""49,493013"",""6,128202"",Julian Wittische,0,0,0,0,0,2,,"
+"SW_186_1_28-04-21,SW,186,1,28/04/2021,""49,48788"",""6,1276761"",Julian Wittische,0,0,0,0,0,5,,"
+"SW_186_2_26-04-21,SW,186,2,26/04/2021,""49,490003"",""6,125113"",Julian Wittische,0,0,0,0,0,1,,"
+"SW_186_2_27-04-21,SW,186,2,27/04/2021,""49,4915846"",""6,1317709"",Julian Wittische,0,0,0,0,1,1,,"
+"SW_186_2_28-04-21,SW,186,2,28/04/2021,""49,489366"",""6,127288"",Julian Wittische,0,0,0,0,0,4,,"
+"SW_186_3_26-04-21,SW,186,3,26/04/2021,""49,488458"",""6,121748"",Julian Wittische,0,0,0,0,0,1,,"
+"SW_187_1_27-04-21,SW,187,1,27/04/2021,""49,492722"",""6,145537"",Julian Wittische,0,0,0,0,0,5,,"
 SW_188_2_18-08-21,SW,188,2,18/08/2021,49.48365,5.97819,Antonio,13,0,34,1,0,0,,
 SW_189_1_21-07-21,SW,189,1,21/07/2021,49.479443,5.986042,Amanda,0,0,0,1,0,0,,
 SW_189_2_21-07-21,SW,189,2,21/07/2021,49.479989,5.992728,Amanda,0,0,1,0,0,0,,
@@ -1814,12 +1814,12 @@ SW_195_2_13-08-21,SW,195,2,13/08/2021,49.48487,6.07758,Stephanie,0,0,1,0,0,0,,
 SW_196_1_09-08-21,SW,196,1,09/08/2021,49.48502,6.08184,Stephanie,0,0,2,0,0,0,,
 SW_197_1_09-08-21,SW,197,1,09/08/2021, 49.48262 ,6.10217,Stephanie,0,0,2,0,0,0,,
 SW_198_1_14-08-21,SW,198,1,14/08/2021,49.4837991,6.1089882,Caroline,0,0,1,0,0,0,,
-SW_198_1_16-06-21,SW,198,1,16/06/2021,"49,47731","6,11175",Stephanie,0,0,0,1,0,0,,
+"SW_198_1_16-06-21,SW,198,1,16/06/2021,""49,47731"",""6,11175"",Stephanie,0,0,0,1,0,0,,"
 SW_198_2_14-08-21,SW,198,2,14/08/2021,49.4817344,6.1093396,Caroline,0,0,1,0,0,0,,
 SW_199_1_14-08-21,SW,199,1,14/08/2021,49.4815264,6.1220194,Caroline,0,0,1,0,0,0,,
-SW_199_1_26-04-21,SW,199,1,26/04/2021,"49,48412","6,122561",Julian Wittische,0,0,0,0,0,2,,
-SW_199_1_27-04-21,SW,199,1,27/04/2021,"49,4771429","6,1313229",Julian Wittische,0,0,0,0,0,4,,
-SW_199_1_28-04-21,SW,199,1,28/04/2021,"49,483642","6,121874",Julian Wittische,0,0,0,0,0,4,,
+"SW_199_1_26-04-21,SW,199,1,26/04/2021,""49,48412"",""6,122561"",Julian Wittische,0,0,0,0,0,2,,"
+"SW_199_1_27-04-21,SW,199,1,27/04/2021,""49,4771429"",""6,1313229"",Julian Wittische,0,0,0,0,0,4,,"
+"SW_199_1_28-04-21,SW,199,1,28/04/2021,""49,483642"",""6,121874"",Julian Wittische,0,0,0,0,0,4,,"
 SW_2_2_28-07-21,SW,2,2,28/07/2021,49.57691,5.90112,Antonio,0,0,8,0,0,0,,
 SW_20_2_01-08-21,SW,20,2,01/08/2021,49.56097,5.87328,Antonio,0,0,15,0,0,0,,
 SW_200_1_09-08-21,SW,200,1,09/08/2021,49.469627,5.975998,Paula and Lorenzo,0,0,1,0,0,0,,
@@ -1844,20 +1844,20 @@ SW_207_3_13-08-21,SW,207,3,13/08/2021,49.469218,6.067633,Paula and Lorenzo,0,0,0
 SW_208_1_18-06-21,SW,208,1,18/06/2021, 49.47191 ,6.08786,Stephanie,1,0,0,0,0,0,,
 SW_208_2_18-06-21,SW,208,2,18/06/2021, 49.47183 ,6.08837,Stephanie,1,0,0,0,0,0,,
 SW_208_3_11-08-21,SW,208,3,11/08/2021,49.47213,6.08736,Stephanie,0,0,1,0,0,0,,
-SW_209_1_16-06-21,SW,209,1,16/06/2021,"49,170934","6,0991",Stephanie,0,0,0,0,0,1,not a florea:(,
+"SW_209_1_16-06-21,SW,209,1,16/06/2021,""49,170934"",""6,0991"",Stephanie,0,0,0,0,0,1,not a florea:(,"
 SW_209_2_11-08-21,SW,209,2,11/08/2021,49.47180,6.09426,Stephanie,1,0,3,0,0,0,,
 SW_21_2_01-08-21,SW,21,2,01/08/2021,49.56183,5.88716,Antonio,0,0,2,0,0,0,,
 SW_212_1_13-08-21,SW,212,1,13/08/2021,49.465849,5.993422,Amanda,0,0,2,0,0,0,,
 SW_213_1_13-08-21,SW,213,1,13/08/2021,49.460400,6.005381,Amanda,0,0,0,1,0,0,,
 SW_213_2_13-08-21,SW,213,2,13/08/2021,49.458887,6.006456,Amanda,3,0,0,0,0,0,,
 SW_214_1_13-08-21,SW,214,1,13/08/2021,49.461738,6.010496,Amanda,0,0,1,0,0,0,,
-SW_219_1_16-06-21,SW,219,1,16/06/2021,"49,463413","6,091931",Stephanie,0,0,0,1,0,0,,
+"SW_219_1_16-06-21,SW,219,1,16/06/2021,""49,463413"",""6,091931"",Stephanie,0,0,0,1,0,0,,"
 SW_219_1_20-08-21,SW,219,1,20/08/2021,49.463956,6.088974,Stephanie and Amanda,0,0,1,0,0,0,,
 SW_219_1_26-07-21,SW,219,1,26/07/2021,49.555306,6.198677,Paula and Lorenzo,0,0,0,1,0,0,,
-SW_219_2_16-06-21,SW,219,2,16/06/2021,"49,462664","6,061291",Stephanie,0,0,0,0,0,1,Goldschwebefliege?,
+"SW_219_2_16-06-21,SW,219,2,16/06/2021,""49,462664"",""6,061291"",Stephanie,0,0,0,0,0,1,Goldschwebefliege?,"
 SW_219_3_18-06-21,SW,219,3,18/06/2021,49.46717 ,6.08520,Stephanie,0,0,0,0,0,1,,
 SW_22_1_31-07-21,SW,22,1,31/07/2021,49.55949,5.89910,Antonio,0,0,2,0,0,0,,
-SW_220_1_16-06-21,SW,220,1,16/06/2021,"49,462951","6,094445",Stephanie,0,0,0,1,0,0,,
+"SW_220_1_16-06-21,SW,220,1,16/06/2021,""49,462951"",""6,094445"",Stephanie,0,0,0,1,0,0,,"
 SW_220_1_26-07-21,SW,220,1,26/07/2021,49.563239,6.214101,Paula and Lorenzo,1,0,0,0,0,0,,
 SW_23_1_17-06-21,SW,23,1,17/06/2021,49.5585043,5.9234997,Balint Andrasi,0,0,1,0,0,0,,
 SW_23_2_31-07-21,SW,23,2,31/07/2021,49.56273,5.94274,Antonio,0,0,8,0,0,0,,
@@ -1899,14 +1899,14 @@ SW_4_1_14-06-21,SW,4,1,14/06/2021,49.5828677,5.9376688,Balint Andrasi,2,0,0,0,0,
 SW_4_1_28-07-21,SW,4,1,28/07/2021,49.57747,5.90112,Antonio,0,0,3,0,0,0,,
 SW_40_1_28-06-21,SW,40,1,28/06/2021,49.5551067,5.9371790,Balint Andrasi,0,0,1,0,0,0,,
 SW_41_1_09-08-21,SW,41,1,09/08/2021,49.551461,5.941851,Amanda,0,0,6,0,0,0,,
-SW_42_1_08-06-21,SW,42,1,08/06/2021,49.550531,5.961070,Amanda,0,0,1,0,0,0,"checked, it is a pipiens, barcoding",
+"SW_42_1_08-06-21,SW,42,1,08/06/2021,49.550531,5.961070,Amanda,0,0,1,0,0,0,""checked, it is a pipiens, barcoding"","
 SW_43_1_05-08-21,SW,43,1,05/08/2021,49.549265,5.969245,Amanda,1,0,7,0,0,0,,
 SW_44_1_29-07-21,SW,44,1,29/07/2021,49.553308,5.993322,Amanda,0,0,3,0,0,0,,
 SW_44_2_29-07-21,SW,44,2,29/07/2021,49.555617,5.987053,Amanda,0,0,7,0,0,0,,
 SW_45_1_29-07-21,SW,45,1,29/07/2021,49.549821,6.004205,Amanda,1,0,4,0,0,0,,
 SW_45_2_29-07-21,SW,45,2,29/07/2021,49.554841,6.000339,Amanda,0,0,3,0,0,0,,
 SW_45_3_29-07-21,SW,45,3,29/07/2021,49.550478,5.999162,Amanda,10,0,3,0,0,2,,
-SW_45_4_29-07-21,SW,45,4,29/07/2021,49.555178,5.996062,Amanda,0,0,30,0,0,0,Gift plz (｡◕‿‿◕｡),
+SW_45_4_29-07-21,SW,45,4,29/07/2021,49.555178,5.996062,Amanda,0,0,30,0,0,0,Gift plz (�������
 SW_46_1_01-06-21,SW,46,1,01/06/2021,49.549816,6.021743,Amanda,0,0,0,0,1,0,,
 SW_46_1_27-07-21,SW,46,1,27/07/2021,49.555631,6.011253,Amanda,1,0,0,1,0,0,,
 SW_46_2_27-07-21,SW,46,2,27/07/2021,49.548982,6.012932,Amanda,0,0,2,0,0,0,,
@@ -1945,7 +1945,7 @@ SW_6_2_01-08-21,SW,6,2,01/08/2021,49.56810,5.85516,Antonio,0,0,2,0,0,0,,
 SW_6_2_16-06-21,SW,6,2,16/06/2021,49.5674512,5.8460794,Balint Andrasi,1,0,0,1,0,0,,
 SW_6_3_16-06-21,SW,6,3,16/06/2021,49.5729951,5.8504320,Balint Andrasi,0,0,1,0,0,0,,
 SW_6_4_16-06-21,SW,6,4,16/06/2021,49.5696958,5.8552338,Balint Andrasi,0,0,1,0,0,0,,
-SW_60_1_08-06-21,SW,60,1,08/06/2021,49.545876,5.961078,Amanda,0,0,3,0,0,0,"all pipiens:) barcoding, might be put in one tube again",
+"SW_60_1_08-06-21,SW,60,1,08/06/2021,49.545876,5.961078,Amanda,0,0,3,0,0,0,""all pipiens:) barcoding, might be put in one tube again"","
 SW_61_1_05-08-21,SW,61,1,05/08/2021,49.541677,5.971374,Amanda,0,0,11,0,0,0,,
 SW_61_2_05-08-21,SW,61,2,05/08/2021,49.543382,5.979255,Amanda,0,0,7,0,0,0,,
 SW_62_1_11-06-21,SW,62,1,11/06/2021,49.542824,5.986186,Amanda,0,0,2,0,0,0,,
@@ -1962,10 +1962,10 @@ SW_66_1_05-08-21,SW,66,1,05/08/2021,49.53985,6.04348,Stephanie,0,0,1,0,0,0,,
 SW_66_2_05-08-21,SW,66,2,05/08/2021,49.54234,6.04809,Stephanie,0,0,0,1,0,0,,
 SW_66_3_05-08-21,SW,66,3,05/08/2021,49.54520,6.05010,Stephanie,1,0,0,0,0,0,,
 SW_67_1_05-08-21,SW,67,1,05/08/2021,49.54545,6.05149,Stephanie,0,0,1,0,0,,,
-SW_68_1_07-06-21,SW,68,1,07/06/2021,"49,5468873","6,0738114",Stephanie,2,0,0,0,0,0,,
-SW_68_2_07-06-21,SW,68,2,07/06/2021,"49,5432121","6,0731086",Stephanie,1,0,0,0,0,0,,
-SW_68_3_07-06-21,SW,68,3,07/06/2021,"49,5439492","6,077377",Stephanie,0,0,0,1,0,0,,
-SW_68_4_07-06-21,SW,68,4,07/06/2021,"49,5461742","6,0756299",Stephanie,0,0,0,1,0,0,,
+"SW_68_1_07-06-21,SW,68,1,07/06/2021,""49,5468873"",""6,0738114"",Stephanie,2,0,0,0,0,0,,"
+"SW_68_2_07-06-21,SW,68,2,07/06/2021,""49,5432121"",""6,0731086"",Stephanie,1,0,0,0,0,0,,"
+"SW_68_3_07-06-21,SW,68,3,07/06/2021,""49,5439492"",""6,077377"",Stephanie,0,0,0,1,0,0,,"
+"SW_68_4_07-06-21,SW,68,4,07/06/2021,""49,5461742"",""6,0756299"",Stephanie,0,0,0,1,0,0,,"
 SW_68_5_04-08-21,SW,68,5,04/08/2021,49.54714,6.07408,Stephanie,0,0,1,0,0,0,,
 SW_69_1_04-08-21,SW,69,1,04/08/2021,49.54291,6.08222,Stephanie,0,0,1,0,0,0,,
 SW_7_1_29-07-21,SW,7,1,29/07/2021,49.56910,5.86763,Antonio,1,0,8,0,0,0,,
@@ -1983,7 +1983,7 @@ SW_74_1_30-07-21,SW,74,1,30/07/2021,49.538248,5.885592,Paula and Lorenzo,0,0,0,1
 SW_75_2_06-08-21,SW,75,2,06/08/2021,49.53837,5.90454,Antonio,3,0,3,0,0,0,,
 SW_76_1_11-08-21,SW,76,1,11/08/2021,49.538063,5.913823,Amanda,0,0,1,0,0,0,,
 SW_77_1_09-08-21,SW,77,1,09/08/2021,49.538337,5.934864,Amanda,0,0,2,0,0,0,,
-SW_77_1_15-06-21,SW,77,1,15/06/2021,49.533554,5.930607,Amanda,0,0,0,0,0,1,"Hi Amanda your fly was not target, I changed it to bycatch",
+"SW_77_1_15-06-21,SW,77,1,15/06/2021,49.533554,5.930607,Amanda,0,0,0,0,0,1,""Hi Amanda your fly was not target, I changed it to bycatch"","
 SW_77_2_09-08-21,SW,77,2,09/08/2021,49.535220,5.928365,Amanda,0,0,2,0,0,0,,
 SW_78_1_15-06-21,SW,78,1,15/06/2021,49.537631,5.948368,Amanda,0,0,3,0,0,0,,
 SW_78_2_15-06-21,SW,78,2,15/06/2021,49.532020,5.951569,Amanda,0,0,2,0,0,0,,
@@ -1998,8 +1998,8 @@ SW_82_1_05-08-21,SW,82,1,05/08/2021,49.534966,6.001662,Amanda,0,0,10,0,0,0,,
 SW_83_1_05-08-21,SW,83,1,05/08/2021,49.534762,6.015339,Amanda,0,0,6,0,0,0,,
 SW_84_1_10-08-21,SW,84,1,10/08/2021,49.538176,6.032023,Amanda,4,0,1,0,0,0,,
 SW_84_2_10-08-21,SW,84,2,10/08/2021,49.531734,6.031503,Amanda,0,0,5,0,0,0,,
-SW_85_1_08-06-21,SW,85,1,08/06/2021,"49,537841","6,043971",Stephanie,1,0,0,0,0,0,,
-SW_85_2_08-06-21,SW,85,2,08/06/2021,"49,536325","6,04212",Stephanie,0,0,0,1,0,1,,
+"SW_85_1_08-06-21,SW,85,1,08/06/2021,""49,537841"",""6,043971"",Stephanie,1,0,0,0,0,0,,"
+"SW_85_2_08-06-21,SW,85,2,08/06/2021,""49,536325"",""6,04212"",Stephanie,0,0,0,1,0,1,,"
 SW_85_3_05-08-21,SW,85,3,05/08/2021,49.53155,6.04199,Stephanie,0,0,1,0,0,0,,
 SW_86_1_04-08-21,SW,86,1,04/08/2021,49.53269,6.06227,Stephanie,1,0,2,0,0,0,,
 SW_87_1_02-06-21,SW,87,1,02/06/2021,49.5328573,6.0714104,Stephanie,1,0,0,0,0,0,M.florea female? yes,
@@ -2007,7 +2007,7 @@ SW_87_2_04-08-21,SW,87,2,04/08/2021,49.53579,6.06841,Stephanie,0,0,2,0,0,0,,
 SW_88_1_03-08-21,SW,88,1,03/08/2021,49.53417 ,6.08254,Stephanie,1,0,0,0,0,0,,
 SW_88_2_04-08-21,SW,88,2,04/08/2021,49.53388,6.08188,Stephanie,0,0,1,0,0,0,,
 SW_88_3_04-08-21,SW,88,3,04/08/2021,49.53678,6.08892,Stephanie,0,0,3,0,0,0,,
-SW_89_1_02-06-21,SW,89,1,02/06/2021,49.5314557,"6,1018847",Stephanie ,0,0,0,0,0,1,,
+"SW_89_1_02-06-21,SW,89,1,02/06/2021,49.5314557,""6,1018847"",Stephanie ,0,0,0,0,0,1,,"
 SW_89_2_04-08-21,SW,89,2,04/08/2021,49.53680,9.09340,Stephanie,1,0,0,0,0,0,,
 SW_89_3_04-08-21,SW,89,3,04/08/2021,49.53629,6.09634,Stephanie,0,0,3,0,0,0,,
 SW_9_1_29-07-21,SW,9,1,29/07/2021,49.57411,5.89732,Antonio,0,0,11,0,0,0,,
@@ -2029,16 +2029,16 @@ SW_97_1_17-06-21,SW,97,1,17/06/2021,49.526060,5.937351,Amanda,0,0,0,1,0,0,,
 SW_97_2_17-06-21,SW,97,2,17/06/2021,49.528624,5.931928,Amanda,0,0,1,0,0,0,,
 SW_97_3_17-06-21,SW,97,3,17/06/2021,49.525082,5.934217,Amanda,0,0,0,1,0,0,,
 SW_98_1_09-08-21,SW,98,1,09/08/2021,49.523495,5.945190,Amanda,0,0,3,1,0,0,,
-SW_98_1_17-06-21,SW,98,1,17/06/2021,49.527965,5.945493,Amanda,0,0,0,0,0,1,"Hi Amanda, the fly was not florea, I changed it to bycatch",
-SW_99_1_17-06-21,SW,99,1,17/06/2021,49.527300,5.966465,Amanda,0,0,2,0,0,1,"Hi Amanda, the fly was not florea, I changed it to bycatch",
+"SW_98_1_17-06-21,SW,98,1,17/06/2021,49.527965,5.945493,Amanda,0,0,0,0,0,1,""Hi Amanda, the fly was not florea, I changed it to bycatch"","
+"SW_99_1_17-06-21,SW,99,1,17/06/2021,49.527300,5.966465,Amanda,0,0,2,0,0,1,""Hi Amanda, the fly was not florea, I changed it to bycatch"","
 SW_OUT 110_1_28-07-21,SW,OUT 110,1,28/07/2021,49.53035,6.12155,Stephanie,1,0,0,0,0,0,,
 SW_OUT-133/153_A_02-07-21,SW,OUT-133/153,A,02/07/2021,49.502344,5.863607,Amanda,0,0,0,3,0,2,Vollucella inflata,
 SW_OUT-214_1_13-08-21,SW,OUT-214,1,13/08/2021,49.457808,6.017365,Amanda,0,0,2,0,0,0,,
-SW_OUT1_1_27-04-21,SW,OUT1,1,27/04/2021,"49,480063","6,1459534",Julian Wittische,0,0,0,0,0,6,,
-wb_01,"
-Betzdorf",NA,NA,10/06/2021,49.6548729,6.2852870,Fernanda Herrera Mesías,0,0,1,0,0,0,,
-wb_02,Grevenmacher,NA,NA,10/06/2021,49.670630,6.425748,Fernanda Herrera Mesías,0,2,0,0,0,0,Specimens found in the traps of the wild bee atlas project,
-wb_03,Manternach,NA,NA,22/06/2021,49.71379633378286,6.447522187172062,Fernanda Herrera Mesías,0,0,0,1,0,0,,
+"SW_OUT1_1_27-04-21,SW,OUT1,1,27/04/2021,""49,480063"",""6,1459534"",Julian Wittische,0,0,0,0,0,6,,"
+"wb_01,"""
+"Betzdorf"",NA,NA,10/06/2021,49.6548729,6.2852870,Fernanda Herrera Mes��as,0,0,1,0,0"
+wb_02,Grevenmacher,NA,NA,10/06/2021,49.670630,6.425748,Fernanda Herrera Mes��as,0,2,0,0,0,0,Specimens found in the traps of the wild bee atlas proj
+wb_03,Manternach,NA,NA,22/06/2021,49.71379633378286,6.447522187172062,Fernanda Herrera Mes��as,0,0,0,1,0
 #REF!,Luxembourg City,167,1,03/07/2021,49.584772,6.064666,Lorenzo Castelen,1,0,0,0,0,3,,
 ,Mamer,,,19/08/2021,49.646512,6.011036,Fernanda and Frida,0,10,0,1,0,0,In your face Dylan! xD,
 ,,443,1,01/05/2021,50.85458,7.031103,Frank & Jorg,0,0,0,0,0,1,,
