@@ -37,3 +37,8 @@ MF[,2:3] <- as.data.frame(spTransform(SpatialPoints(MF[,3:2], CRS(SRS_string = "
 
 plot(cologne)
 points(SP[,2:3])
+
+sum(as.numeric(mdcol$M..florea), na.rm=TRUE)
+sum(as.numeric(mdcol$R..campestris), na.rm=TRUE)
+sum(as.numeric(mdcol$S..pipiens), na.rm=TRUE)
+sum(as.numeric(mdcol$V..pellucens), na.rm=TRUE)
