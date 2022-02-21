@@ -42,3 +42,8 @@ sum(as.numeric(mdcol$M..florea), na.rm=TRUE)
 sum(as.numeric(mdcol$R..campestris), na.rm=TRUE)
 sum(as.numeric(mdcol$S..pipiens), na.rm=TRUE)
 sum(as.numeric(mdcol$V..pellucens), na.rm=TRUE)
+
+sum(as.numeric(mdcol$M..florea), na.rm=TRUE) +
+sum(as.numeric(mdcol$R..campestris), na.rm=TRUE) +
+sum(as.numeric(mdcol$S..pipiens), na.rm=TRUE) +
+sum(as.numeric(mdcol$V..pellucens), na.rm=TRUE)
