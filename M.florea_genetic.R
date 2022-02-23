@@ -86,7 +86,7 @@ colMeans(Fperlocus)
 Fst <- genet.dist(MF_genind, method = "Nei87")
 is.euclid(Fst) #FALSE because of missing values
 
-## Multivariate analyses
+### Multivariate analyses
 
 sum(is.na(MF_genind$tab))
 
@@ -98,8 +98,24 @@ class(PCAdf)
 dim(PCAdf)
 PCAdf[1:5,1:5]
 
+
 PCA <- dudi.pca(PCAdf, scale = FALSE, scannf = FALSE, nf = 3)
+# Eigenvalues
 barplot(PCA$eig[1:50], main = "PCA eigenvalues", col = heat.colors(50))
+
+# Viz 1 - General PCA plot
 s.label(PCA$li)
 title("PCA - M.florea \naxes 1-2")
-add.scatter.eig(PCA$eig[1:20], 3,1,2)
+add.scatter.eig(PCA$eig[1:20], 3, 1, 2)
+# Three groups as originally shown by Alain
+
+# Viz 2 - Study area focused
+s.class(PCA$li, pop(MF_genind))
+title("PCA - M.florea \naxes 1-2")
+add.scatter.eig(PCA$eig[1:20], 3, 1, 2)
+# The three groups are obviously not geographical
+
+# Viz 3 - Third axis (it does not seem very important)
+s.class(PCA$li,pop(MF_genind),xax=1,yax=3,sub="PCA 1-3",csub=2)
+title("PCA - M.florea \naxes 1-3")
+add.scatter.eig(PCA$eig[1:20], nf=3, xax=1, yax=3)
