@@ -9,10 +9,12 @@ library(pegas)
 library(hierfstat)
 
 # Read
-MF_df_raw <- as.data.frame(readxl::read_excel("dataminus22.xlsx", sheet=1))
+MF_df_raw <- as.data.frame(readxl::read_excel("Mflorea_raw.xlsx", sheet=1, .name_repair="minimal"))
 
 # Set first column as row names and remove
-MF_df <- MF_df_raw[,-1]
+MF_df <- MF_df_raw[,c(-1, -5)]
+
+# Set 
 
 # Fill fragment lengths with 0 to have three characters
 MF_df <- apply(MF_df, 2, FUN=function(x){sprintf("%03d", x)})
