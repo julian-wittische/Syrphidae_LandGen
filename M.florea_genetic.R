@@ -2,6 +2,7 @@
 ########################### Julian Wittische - MNHNL ###########################
 ################################################################################
 
+################################################################################
 ############### Loading the INCOMPLETE M. florea microsatellite dataset
 
 library(adegenet)
@@ -9,9 +10,11 @@ library(pegas)
 library(hierfstat)
 library(sp)
 library(EcoGenetics)
+library(MASS)
 
 # Read
-MF_df_raw <- as.data.frame(readxl::read_excel("Mflorea_raw.xlsx", sheet=1, .name_repair="minimal"))
+MF_df_raw <- as.data.frame(readxl::read_excel("Mflorea_raw.xlsx",
+                                              sheet=1, .name_repair="minimal"))
 
 # Set first column as row names and remove
 MF_df <- MF_df_raw[,c(-1, -2, -3, -4, -5)]
@@ -34,7 +37,8 @@ row.names(MF_df) <- as.vector(MF_df_raw[,2])
 row.names(MF_df)[which(duplicated(row.names(MF_df)))] <- "LUX_98_2_08-09-21_A_bis"
 
 # Transform into genind object
-MF_genind <- df2genind(MF_df, ncode=3, ploidy=2, sep="/", type="codom", NA.char=" NA/ NA")
+MF_genind <- df2genind(MF_df, ncode=3, ploidy=2, sep="/",
+                       type="codom", NA.char=" NA/ NA")
 
 # Add pop information (study area)
 MF_genind@pop <- as.factor(substr(row.names(MF_df), 1, 2))
@@ -44,7 +48,9 @@ MF_geo_sp <- SpatialPoints(MF_geo, CRS(SRS_string = "EPSG:4326"))
 MF_geo_sp <-spTransform(MF_geo_sp, CRS(SRS_string = "EPSG:3035"))
 MF_genind@other$xy <- MF_geo_sp
 
+################################################################################
 ############### Basic exploration
+adegenetTutorial( which = c("basics"))
   
 MF_genind_summary <- summary(MF_genind)
 
@@ -74,6 +80,209 @@ HW_SW <- hw.test(MF_genind[MF_genind@pop=="SW"], B=1000)
 which(HW_LU[,4] < 0.05 & HW_CO[,4] < 0.05 & HW_SW[,4] < 0.05)
 # MF239, MF303, MF103, MF28, MF70 are somewhat in disequilibrium but let us keep them
 # Alain has subsampled 30 individuals 10 times and they pass
+
+################################################################################
+############### Nonspatial population structure
+
+## Weir and Cockerham F statistics
+
+wc(MF_genind) # global Fst is pretty low high but Fis is high (weird because no HW des)
+
+# Let's build confidence intervals for that
+MF_g2h <- genind2hierfstat(MF_genind)
+boot.vc(MF_g2h[1], MF_g2h[-1])$ci
+
+# Let's check per locus
+Fperlocus <- Fst(as.loci(MF_genind))
+Fperlocus # super high Fis values (0.96!) and very low Fst values
+colMeans(Fperlocus)
+
+# Pairwise Fst
+Fst <- genet.dist(MF_genind, method = "Nei87")
+is.euclid(Fst) #FALSE because of missing values
+
+### PCA
+# Let us replace those NA values
+sum(is.na(MF_genind$tab))
+PCAdf <- tab(MF_genind, freq = TRUE, NA.method = "mean")
+
+# Check
+class(PCAdf)
+dim(PCAdf)
+PCAdf[1:5,1:5]
+
+
+PCA <- dudi.pca(PCAdf, scale = FALSE, scannf = FALSE, nf = 3)
+# Eigenvalues
+barplot(PCA$eig[1:50], main = "PCA eigenvalues", col = heat.colors(50))
+
+# Viz 1 - General PCA plot
+s.label(PCA$li)
+title("PCA - M. florea \naxes 1-2")
+add.scatter.eig(PCA$eig[1:20], 3, 1, 2)
+# Three groups as originally shown by Alain
+
+# Viz 2 - Study area focused
+s.class(PCA$li, pop(MF_genind))
+title("PCA - M. florea \naxes 1-2")
+add.scatter.eig(PCA$eig[1:20], 3, 1, 2)
+# The three groups are obviously not geographical
+
+# Viz 3 - Third axis (it does not seem very important)
+s.class(PCA$li,pop(MF_genind),xax=1,yax=3,sub="PCA 1-3",csub=2)
+title("PCA - M. florea \naxes 1-3")
+add.scatter.eig(PCA$eig[1:20], nf=3, xax=1, yax=3)
+
+col <- funky(5)
+s.class(PCA$li, pop(MF_genind), xax=1, yax=3, col=transp(col,.6), axesell=FALSE, 
+        cstar=0, cpoint=3, grid=FALSE)
+
+colorplot(PCA$li, PCA$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
+title("PCA - M. florea\naxes 1-2")
+abline(v=0,h=0,col="grey", lty=2)
+
+colorplot(PCA$li[c(1,3)], PCA$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 3")
+title("PCA - M. florea\naxes 1-3")
+abline(v=0,h=0,col="grey", lty=2)
+
+### CA
+obj <- genind2genpop(MF_genind)
+ca1 <- dudi.coa(tab(obj),scannf=FALSE,nf=3)
+barplot(ca1$eig,main="Correspondance Analysis eigenvalues",col=heat.colors(length(ca1$eig)))
+s.label(ca1$li, sub="CA 1-2",csub=2)
+add.scatter.eig(ca1$eig,nf=3,xax=1,yax=2,posi="bottomright")
+# s.label(ca1$li,xax=2,yax=3,lab=popNames(obj),sub="CA 1-3",csub=2)
+# add.scatter.eig(ca1$eig,nf=3,xax=2,yax=3,posi="topleft"
+
+### DAPC
+# NOTE: we should do this temporally too
+grp <- find.clusters(MF_genind, max.n.clust=40)
+1000
+6
+
+dapc1 <- dapc(MF_genind, grp$grp)
+60
+5
+
+plot(MF_genind@other$xy, col=dapc1$grp)
+
+scatter(dapc1)
+
+myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
+scatter(dapc1, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
+        solid=.4, cex=3, clab=0,mstree=TRUE, scree.da=FALSE,
+        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:6))
+par(xpd=TRUE)
+points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=8, col="black")
+points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=2, col=myCol)
+myInset <- function(){
+  temp <- dapc1$pca.eig
+  temp <- 100* cumsum(temp)/sum(temp)
+  plot(temp, col=rep(c("black","lightgrey"), c(dapc1$n.pca,1000)),
+       ylim=c(0,100), xlab="PCA axis", ylab="Cumulated variance (%)",cex=1,
+       pch=20, type="h", lwd=2)
+  }
+add.scatter(myInset(), posi="bottomright",inset=c(-0.03,-0.01), ratio=.28,
+            bg=transp("white"))
+
+scatter(dapc1,1,1, col=myCol, bg="white",scree.da=FALSE, legend=TRUE, solid=.4)
+
+set.seed(4)
+contrib <- loadingplot(dapc1$var.contr, axis=2, thres=.07, lab.jitter=1)
+# MF323 was not among the loci deviating a bit from HWE
+
+round(head(dapc1$posterior),3)
+summary(dapc1)
+assignplot(dapc1, subset=1:50)
+compoplot(dapc1, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
+
+# a-score analysis
+dapc2 <- dapc(MF_genind, n.da=100, n.pca=10)
+
+## DAPC by study area
+# SWLU
+grp_SWLU <- find.clusters(MF_genind[MF_genind@pop=="SW"|MF_genind@pop=="LU"], max.n.clust=40)
+1000
+2
+
+dapc_SWLU <- dapc(MF_genind[MF_genind@pop=="SW"|MF_genind@pop=="LU"], grp_SWLU$grp)
+60
+2
+
+plot(as.data.frame(MF_genind[MF_genind@pop=="SW"|MF_genind@pop=="LU"]@other$xy), col=dapc_SWLU$grp)
+
+scatter(dapc_SWLU)
+
+myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
+scatter(dapc_SWLU, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
+        solid=.4, cex=3, clab=0,mstree=TRUE, scree.da=FALSE,
+        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:6))
+par(xpd=TRUE)
+points(dapc_SWLU$grp_SWLU.coord[,1], dapc_SWLU$grp_SWLU.coord[,2], pch=4,cex=3, lwd=8, col="black")
+points(dapc_SWLU$grp_SWLU.coord[,1], dapc_SWLU$grp_SWLU.coord[,2], pch=4,cex=3, lwd=2, col=myCol)
+myInset <- function(){
+  temp <- dapc_SWLU$pca.eig
+  temp <- 100* cumsum(temp)/sum(temp)
+  plot(temp, col=rep(c("black","lightgrey"), c(dapc_SWLU$n.pca,1000)),
+       ylim=c(0,100), xlab="PCA axis", ylab="Cumulated variance (%)",cex=1,
+       pch=20, type="h", lwd=2)
+}
+add.scatter(myInset(), posi="bottomright",inset=c(-0.03,-0.01), ratio=.28,
+            bg=transp("white"))
+
+scatter(dapc_SWLU,1,1, col=myCol, bg="white",scree.da=FALSE, legend=TRUE, solid=.4)
+
+set.seed(4)
+contrib <- loadingplot(dapc_SWLU$var.contr, axis=2, thres=.07, lab.jitter=1)
+
+round(head(dapc1$posterior),3)
+summary(dapc1)
+assignplot(dapc1, subset=1:50)
+compoplot(dapc1, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
+
+# CO
+grp_CO <- find.clusters(MF_genind[MF_genind@pop=="CO"], max.n.clust=40)
+1000
+2
+
+dapc_CO <- dapc(MF_genind[MF_genind@pop=="CO"], grp_CO$grp)
+60
+1
+
+plot(as.data.frame(MF_genind[MF_genind@pop=="CO"]@other$xy), col=dapc_CO$grp)
+
+scatter(dapc_CO)
+
+myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
+scatter(dapc_CO, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
+        solid=.4, cex=3, clab=0,mstree=TRUE, scree.da=FALSE,
+        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:6))
+par(xpd=TRUE)
+points(dapc_CO$grp_CO.coord[,1], dapc_CO$grp_CO.coord[,2], pch=4,cex=3, lwd=8, col="black")
+points(dapc_CO$grp_CO.coord[,1], dapc_CO$grp_CO.coord[,2], pch=4,cex=3, lwd=2, col=myCol)
+myInset <- function(){
+  temp <- dapc_CO$pca.eig
+  temp <- 100* cumsum(temp)/sum(temp)
+  plot(temp, col=rep(c("black","lightgrey"), c(dapc_CO$n.pca,1000)),
+       ylim=c(0,100), xlab="PCA axis", ylab="Cumulated variance (%)",cex=1,
+       pch=20, type="h", lwd=2)
+}
+add.scatter(myInset(), posi="bottomright",inset=c(-0.03,-0.01), ratio=.28,
+            bg=transp("white"))
+
+scatter(dapc_CO,1,1, col=myCol, bg="white",scree.da=FALSE, legend=TRUE, solid=.4)
+
+set.seed(4)
+contrib <- loadingplot(dapc1$var.contr, axis=2, thres=.07, lab.jitter=1)
+# MF323 was not among the loci deviating a bit from HWE
+
+round(head(dapc1$posterior),3)
+summary(dapc1)
+assignplot(dapc1, subset=1:50)
+compoplot(dapc1, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
+
+################################################################################
+############### Spatial analyses
 
 ### Classic IBD
 
@@ -123,6 +332,9 @@ mantel.randtest(as.dist(empir_geo_dist_MF_LU), as.dist(1-empirLoiselle_EcoGeneti
 mantel.randtest(as.dist(empir_geo_dist_MF_CO), as.dist(1-empirLoiselle_EcoGenetics_MF_CO), nrepet = 9999)
 mantel.randtest(as.dist(empir_geo_dist_MF_SWLU), as.dist(1-empirLoiselle_EcoGenetics_MF_SWLU), nrepet = 9999)
 
+plot(mantel.randtest(as.dist(empir_geo_dist_MF_CO), as.dist(1-empirLoiselle_EcoGenetics_MF_CO), nrepet = 9999))
+plot(mantel.randtest(as.dist(empir_geo_dist_MF_SWLU), as.dist(1-empirLoiselle_EcoGenetics_MF_SWLU), nrepet = 9999))
+
 plot(log(empir_geo_dist_MF2), empirLoiselle_EcoGenetics_MF)
 abline(IBD_MF, col="red")
 plot(log(empir_geo_dist_MF_SW2), empirLoiselle_EcoGenetics_MF_SW)
@@ -134,55 +346,112 @@ abline(IBD_MF_CO, col="red")
 plot(log(empir_geo_dist_MF_SWLU2), empirLoiselle_EcoGenetics_MF_SWLU)
 abline(IBD_MF_SWLU, col="red")
 
-### Population structure
+E_MF_SWLU <- as.vector(empirLoiselle_EcoGenetics_MF_SWLU)
+E_MF_SWLU[is.na(E_MF_SWLU)] <- 0
 
-## Weir and Cockerham F statistics
+dens <- kde2d(as.vector(empir_geo_dist_MF_SWLU), E_MF_SWLU, n=300)
+myPal <- colorRampPalette(c("white", "blue", "gold", "orange", "red"))
+plot(empir_geo_dist_MF_SWLU, empirLoiselle_EcoGenetics_MF_SWLU, pch=20,cex=.5)
+image(dens, col=transp(myPal(300),.7), add=TRUE)
+dist_lm <- lm(as.vector(empirLoiselle_EcoGenetics_MF_SWLU) ~ as.vector(empir_geo_dist_MF_SWLU))
+abline(dist_lm)
+title("Isolation by distance plot")
 
-wc(MF_genind) # global Fst is pretty low high but Fis is high (weird because no HW des)
+# ### Monmonnier # DOES NOT WORK FOR M. FLOREA (EITHER STRUCTURE TOO WEAK OR WORKS ONLY WELL WITH POPULATIONS NOT INDIVIDUALS)
+# # We need to jitter coords a bit
+# geo_jittered <- apply(as.data.frame(MF_genind[MF_genind@pop=="CO"]@other$xy), 2, FUN= function(x) jitter(x,amount = 1000))
+# 
+# gab_MF_CO <- adegenet::chooseCN(geo_jittered, ask=FALSE, type=2, check.duplicates = FALSE)
+# 
+# mon1 <- monmonier(geo_jittered, as.dist(1-empirLoiselle_EcoGenetics_MF_CO), gab_MF_CO)
+# 
+# D_MF_CO <- tab(MF_genind[MF_genind@pop=="CO"], freq = TRUE, NA.method = "mean")
+# D_MF_CO <- dist(D_MF_CO)
+# pco1 <- dudi.pco(D_MF_CO, scannf=FALSE, nf=2)
+# barplot(pco1$eig, main="Eigenvalues")
+# D_MF_CO <- dist(pco1$li)
+# mon1 <- monmonier(geo_jittered, D_MF_CO, gab_MF_CO)
 
-# Let's build confidence intervals for that
-MF_g2h <- genind2hierfstat(MF_genind)
-boot.vc(MF_g2h[1], MF_g2h[-1])$ci
+MF_genind_CO <- MF_genind[MF_genind@pop=="CO"]
+geo_jittered <- apply(as.data.frame(MF_genind[MF_genind@pop=="CO"]@other$xy), 2, FUN= function(x) jitter(x,amount = 1000))
+MF_genind_CO@other$xy <- geo_jittered
+MF_genind_CO@tab <- tab(MF_genind_CO, freq = TRUE, NA.method = "mean")
 
-# Let's check per locus
-Fperlocus <- Fst(as.loci(MF_genind))
-Fperlocus # super high Fis values (0.96!) and very low Fst values
-colMeans(Fperlocus)
+mySpca <- spca(MF_genind_CO, type=2,ask=FALSE,scannf=FALSE)
+barplot(mySpca$eig,main="Eigenvalues of sPCA", col=rep(c("red","grey"),c(1,100)))
+barplot(mySpca$eig, main="A variant of the plot\n of sPCA eigenvalues",col=spectral(length(mySpca$eig)))
+legend("topright", fill=spectral(2),leg=c("Global structures", "Local structures"))
+abline(h=0,col="grey")
+screeplot(mySpca)
+MF_genind_CO@tab <- tab(MF_genind_CO, freq = TRUE, NA.method = "mean")
+myGtest <- global.rtest(MF_genind_CO$tab, mySpca$lw, nperm=999)
+myGtest
+myLtest <- local.rtest(MF_genind_CO$tab,mySpca$lw, nperm=999)
+myLtest
 
-# Pairwise Fst
-Fst <- genet.dist(MF_genind, method = "Nei87")
-is.euclid(Fst) #FALSE because of missing values
+plot(mySpca)
+colorplot(mySpca,cex=3,main="colorplot of mySpca, first global score")
 
-### Multivariate analyses
+library(akima)
+x <- other(MF_genind_CO)$xy[,1]
+y <- other(MF_genind_CO)$xy[,2]
+temp <- interp(x, y, mySpca$li[,1])
+image(temp, col=azur(100))
+points(x,y)
+interpX <- seq(min(x),max(x),le=200)
+interpY <- seq(min(y),max(y),le=200)
+temp <- interp(x, y, mySpca$ls[,1], xo=interpX, yo=interpY)
+image(temp, col=azur(100))
+points(x,y)
 
-sum(is.na(MF_genind$tab))
 
-# Let us replace those NA values
-PCAdf <- tab(MF_genind, freq = TRUE, NA.method = "mean")
+myPal <- colorRampPalette(c("firebrick2", "white", "lightslateblue"))
+annot <- function(){
+  title("sPCA - interpolated map of individual scores")
+  points(x,y)
+  }
 
-# Check
-class(PCAdf)
-dim(PCAdf)
-PCAdf[1:5,1:5]
+filled.contour(temp, color.pal=myPal, nlev=50,key.title=title("lagged\nscore 1"), plot.title=annot())
 
 
-PCA <- dudi.pca(PCAdf, scale = FALSE, scannf = FALSE, nf = 3)
-# Eigenvalues
-barplot(PCA$eig[1:50], main = "PCA eigenvalues", col = heat.colors(50))
+### SWLU
+MF_genind_SWLU <- MF_genind[MF_genind@pop=="SW"|MF_genind@pop=="LU"]
+geo_jittered <- apply(as.data.frame(MF_genind_SWLU@other$xy), 2, FUN= function(x) jitter(x,amount = 500))
+MF_genind_SWLU@other$xy <- geo_jittered
+MF_genind_SWLU@tab <- tab(MF_genind_SWLU, freq = TRUE, NA.method = "mean")
 
-# Viz 1 - General PCA plot
-s.label(PCA$li)
-title("PCA - M.florea \naxes 1-2")
-add.scatter.eig(PCA$eig[1:20], 3, 1, 2)
-# Three groups as originally shown by Alain
+mySpca <- spca(MF_genind_SWLU, type=2,ask=FALSE,scannf=FALSE)
+barplot(mySpca$eig,main="Eigenvalues of sPCA", col=rep(c("red","grey"),c(1,100)))
+barplot(mySpca$eig, main="A variant of the plot\n of sPCA eigenvalues",col=spectral(length(mySpca$eig)))
+legend("topright", fill=spectral(2),leg=c("Global structures", "Local structures"))
+abline(h=0,col="grey")
+screeplot(mySpca)
+MF_genind_CO@tab <- tab(MF_genind_SWLU, freq = TRUE, NA.method = "mean")
+myGtest <- global.rtest(MF_genind_SWLU$tab, mySpca$lw, nperm=999)
+myGtest
+myLtest <- local.rtest(MF_genind_SWLU$tab, mySpca$lw, nperm=999)
+myLtest
 
-# Viz 2 - Study area focused
-s.class(PCA$li, pop(MF_genind))
-title("PCA - M.florea \naxes 1-2")
-add.scatter.eig(PCA$eig[1:20], 3, 1, 2)
-# The three groups are obviously not geographical
+plot(mySpca)
+colorplot(mySpca,cex=3,main="colorplot of mySpca, first global score")
 
-# Viz 3 - Third axis (it does not seem very important)
-s.class(PCA$li,pop(MF_genind),xax=1,yax=3,sub="PCA 1-3",csub=2)
-title("PCA - M.florea \naxes 1-3")
-add.scatter.eig(PCA$eig[1:20], nf=3, xax=1, yax=3)
+library(akima)
+x <- other(MF_genind_SWLU)$xy[,1]
+y <- other(MF_genind_SWLU)$xy[,2]
+temp <- interp(x, y, mySpca$li[,1])
+image(temp, col=azur(100))
+points(x,y)
+interpX <- seq(min(x),max(x),le=200)
+interpY <- seq(min(y),max(y),le=200)
+temp <- interp(x, y, mySpca$ls[,1], xo=interpX, yo=interpY)
+image(temp, col=azur(100))
+points(x,y)
+
+
+myPal <- colorRampPalette(c("firebrick2", "white", "lightslateblue"))
+annot <- function(){
+  title("sPCA - interpolated map of individual scores")
+  points(x,y)
+}
+
+filled.contour(temp, color.pal=myPal, nlev=50,key.title=title("lagged\nscore 1"), plot.title=annot())
