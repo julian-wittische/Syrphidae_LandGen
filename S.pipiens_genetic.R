@@ -233,7 +233,7 @@ PCAdf_noSpp141_360_080 <- tab(SP_genind_noSpp141_360_080, freq = TRUE, NA.method
 
 PCA_noSpp141_360_080  <- dudi.pca(PCAdf_noSpp141_360_080 , scale = FALSE, scannf = FALSE, nf = 20)
 
-colorplot(PCA_noSpp141$li, PCA_noSpp141$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
+colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
 title("PCA based on microsatellite genotypes (without Spp141) \naxes 1-2")
 abline(v=0,h=0,col="grey", lty=2)
 
@@ -295,11 +295,11 @@ add.scatter.eig(ca1$eig,nf=3,xax=1,yax=2,posi="bottomright")
 
 ### DAPC
 # NOTE: we should do this temporally too
-grp <- find.clusters(SP_genind_noSpp141, max.n.clust=40)
+grp <- find.clusters(SP_genind_noSpp141_360_080, max.n.clust=40)
 1000
 3
 
-dapc1 <- dapc(SP_genind_noSpp141, grp$grp)
+dapc1 <- dapc(SP_genind_noSpp141_360_080, grp$grp)
 50
 2
 
