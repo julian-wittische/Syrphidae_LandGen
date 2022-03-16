@@ -178,7 +178,7 @@ abline(v=0,h=0,col="grey", lty=2)
 
 poppr::ia(SP_genind, sample=199)
 # There is statistically significant association among the markers but the correlation is very low.
-LD.pair <- poppr::pair.ia(SP_genind)
+LD.pair <- poppr::pair.ia(SP_genind_noSpp141)
 LD.pair
 # /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
 
@@ -190,7 +190,7 @@ SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
 
 PCAdf_noSpp141 <- tab(SP_genind_noSpp141, freq = TRUE, NA.method = "mean")
 
-PCA_noSpp141  <- dudi.pca(PCAdf_noSpp141 , scale = FALSE, scannf = FALSE, nf = 3)
+PCA_noSpp141  <- dudi.pca(PCAdf_noSpp141 , scale = FALSE, scannf = FALSE, nf = 20)
 
 colorplot(PCA_noSpp141$li, PCA_noSpp141$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
 title("PCA based on microsatellite genotypes (without Spp141) \naxes 1-2")
@@ -199,6 +199,45 @@ abline(v=0,h=0,col="grey", lty=2)
 colorplot(PCA_noSpp141$li[c(1,3)], PCA_noSpp141$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 3")
 title("PCA based on microsatellite genotypes (without Spp141) \naxes 1-3")
 abline(v=0,h=0,col="grey", lty=2)
+
+# Further LD check (advised by Florian Privé and James Schnable)
+loadingscor <- cor(t(as.matrix(PCA_noSpp141$c1)))
+sapply(loadingscor, function(x) which(x > 0.9 & x != 1, arr.ind = TRUE))
+
+which(matrix(loadingscor > 0.9 & loadingscor != 1,
+             dim(loadingscor)), arr.ind = T)
+loadingscor[which(matrix(loadingscor > 0.9 & loadingscor != 1,
+                         dim(loadingscor)), arr.ind = T)]
+
+loadingscor[which(matrix(loadingscor  < -0.9 & loadingscor != -1,
+               dim(loadingscor)), arr.ind = T)]
+
+library(factoextra)
+fviz_eig(PCA_noSpp141)
+fviz_pca_ind(PCA_noSpp141,
+             col.ind = "cos2", # Color by the quality of representation
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     # Avoid text overlapping
+)
+fviz_pca_biplot(PCA_noSpp141, repel = TRUE,
+                col.var = "#2E9FDF", # Variables color
+                col.ind = "#696969"  # Individuals color
+)
+
+SP_genind_noSpp141_360_080 <- SP_genind[loc=c("Spp010", "Spp053", "Spp142",
+                                      "Spp231", "Spp273", "Spp476", "Spp051",
+                                      "Spp108", "Spp313", "Spp391",
+                                      "Spp416"), drop=TRUE]
+
+PCAdf_noSpp141_360_080 <- tab(SP_genind_noSpp141_360_080, freq = TRUE, NA.method = "mean")
+
+PCA_noSpp141_360_080  <- dudi.pca(PCAdf_noSpp141_360_080 , scale = FALSE, scannf = FALSE, nf = 20)
+
+colorplot(PCA_noSpp141$li, PCA_noSpp141$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
+title("PCA based on microsatellite genotypes (without Spp141) \naxes 1-2")
+abline(v=0,h=0,col="grey", lty=2)
+
+
 
 ###### Check null alleles
 
