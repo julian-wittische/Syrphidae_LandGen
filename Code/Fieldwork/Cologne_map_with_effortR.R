@@ -48,7 +48,7 @@ drive_auth(token = sheets_token())
 
 ##### Load the ascii file from Alain, define CRS, resample
 # to simplify it for you I put this interactive line, pick the .asc file
-cologne <- raster("ascii/cologne_in.asc")
+cologne <- raster("Data/ascii/cologne_in.asc")
 
 crs(cologne) <- CRS('+init=EPSG:2169') # this is according to Alain
 ### Checking steps
