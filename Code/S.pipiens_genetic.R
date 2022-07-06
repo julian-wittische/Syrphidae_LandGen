@@ -13,7 +13,7 @@ library(EcoGenetics)
 library(MASS)
 
 # Read
-SP_df_raw <- as.data.frame(readxl::read_excel("SPipiens_raw.xlsx",
+SP_df_raw <- as.data.frame(readxl::read_excel("Data/SPipiens_raw.xlsx",
                                               sheet=1, .name_repair="minimal"))
 
 # Set first column as row names and remove
@@ -84,7 +84,7 @@ which(HW_LU[,4] < 0.05 & HW_CO[,4] < 0.05 & HW_SW[,4] < 0.05)
 
 ## Weir and Cockerham F statistics
 
-wc(SP_genind) # global Fst is pretty low high but Fis is high
+wc(SP_genind) # global Fst is very low; Fis is rather high
 
 # Let's build confidence intervals for that
 SP_g2h <- genind2hierfstat(SP_genind)
@@ -92,11 +92,12 @@ boot.vc(SP_g2h[1], SP_g2h[-1])$ci
 
 # Let's check per locus
 Fperlocus <- Fst(as.loci(SP_genind))
-Fperlocus # super high Fis values (0.96!) and very low Fst values
-colMeans(Fperlocus)
+Fperlocus # Spp141 has a high Fis value 0.24
+colMeans(Fperlocus) # Check: similar to calculations above
 
 # Pairwise Fst
 Fst <- genet.dist(SP_genind, method = "Nei87")
+# SW and LU are closer to each other than they are from CO
 is.euclid(Fst) #FALSE because of missing values
 
 ### PCA
@@ -176,13 +177,14 @@ abline(v=0,h=0,col="grey", lty=2)
 
 ###### Check linkage disequilibrium
 
-poppr::ia(SP_genind, sample=199)
-# There is statistically significant association among the markers but the correlation is very low.
-LD.pair <- poppr::pair.ia(SP_genind_noSpp141)
-LD.pair
+SP_LD_CHECK <- poppr::ia(SP_genind, sample=199)
+SP_LD_CHECK
+# There is statistically significant association among the markers but the overall correlation is very low.
+SP_LD_pair <- poppr::pair.ia(SP_genind)
+SP_LD_pair
 # /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
 
-# What if we get rid of Spp141 (LD and high Fis)
+# What if we get rid of Spp141 (LD, HWE, high Fis)
 SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
                                 "Spp231", "Spp273", "Spp476", "Spp051",
                                 "Spp108", "Spp313", "Spp360", "Spp391",
@@ -206,13 +208,32 @@ sapply(loadingscor, function(x) which(x > 0.9 & x != 1, arr.ind = TRUE))
 
 which(matrix(loadingscor > 0.9 & loadingscor != 1,
              dim(loadingscor)), arr.ind = T)
+
 loadingscor[which(matrix(loadingscor > 0.9 & loadingscor != 1,
                          dim(loadingscor)), arr.ind = T)]
+
+# There is a strong positive correlation between the alleles 190 and 186 of Spp.108
+# There is a strong positive correlation between the alleles 240 and 236 of Spp.313
+
+which(matrix(loadingscor  < -0.9 & loadingscor != -1,
+             dim(loadingscor)), arr.ind = T)
 
 loadingscor[which(matrix(loadingscor  < -0.9 & loadingscor != -1,
                dim(loadingscor)), arr.ind = T)]
 
+# There is a strong negative correlation between the alleles 161 and 153 of Spp.010
+# WARNING : looking at the loading plot for CO, Spp010 could be an issue
+# There is a strong negative correlation between the alleles 160 and 156 of Spp.053
+# WARNING : looking at the loading plot for the SWLUCO overall, Spp053 could be an issue
+# There is a strong negative correlation between the alleles 135 and 133 of Spp.231
+# There is a strong negative correlation between the alleles 236 and 238 of Spp.313
+# There is a strong negative correlation between the alleles 240 and 238 of Spp.313
+
+# High correlations between some alleles (same locus) but I am not sure what to do
+
 library(factoextra)
+
+
 fviz_eig(PCA_noSpp141)
 fviz_pca_ind(PCA_noSpp141,
              col.ind = "cos2", # Color by the quality of representation
@@ -224,19 +245,31 @@ fviz_pca_biplot(PCA_noSpp141, repel = TRUE,
                 col.ind = "#696969"  # Individuals color
 )
 
-SP_genind_noSpp141_360_080 <- SP_genind[loc=c("Spp010", "Spp053", "Spp142",
+SP_genind_noSpp141_360 <- SP_genind[loc=c("Spp010", "Spp053", "Spp142",
                                       "Spp231", "Spp273", "Spp476", "Spp051",
                                       "Spp108", "Spp313", "Spp391",
-                                      "Spp416"), drop=TRUE]
+                                      "Spp416", "Spp080"), drop=TRUE]
+
+PCAdf_noSpp141_360 <- tab(SP_genind_noSpp141_360, freq = TRUE, NA.method = "mean")
+
+PCA_noSpp141_360  <- dudi.pca(PCAdf_noSpp141_360 , scale = FALSE, scannf = FALSE, nf = 20)
+
+colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
+title("PCA based on microsatellite genotypes (without Spp141 and Spp360) \naxes 1-2")
+abline(v=0,h=0,col="grey", lty=2)
+
+SP_genind_noSpp141_360_080 <- SP_genind[loc=c("Spp010", "Spp053", "Spp142",
+                                          "Spp231", "Spp273", "Spp476", "Spp051",
+                                          "Spp108", "Spp313", "Spp391",
+                                          "Spp416"), drop=TRUE]
 
 PCAdf_noSpp141_360_080 <- tab(SP_genind_noSpp141_360_080, freq = TRUE, NA.method = "mean")
 
 PCA_noSpp141_360_080  <- dudi.pca(PCAdf_noSpp141_360_080 , scale = FALSE, scannf = FALSE, nf = 20)
 
 colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
-title("PCA based on microsatellite genotypes (without Spp141) \naxes 1-2")
+title("PCA based on microsatellite genotypes (without Spp141 and Spp360) \naxes 1-2")
 abline(v=0,h=0,col="grey", lty=2)
-
 
 
 ###### Check null alleles
@@ -303,14 +336,14 @@ dapc1 <- dapc(SP_genind_noSpp141_360_080, grp$grp)
 50
 2
 
-plot(SP_genind_noSpp141@other$xy, col=dapc1$grp)
+plot(SP_genind_noSpp141_360_080@other$xy, col=dapc1$grp)
 
 scatter(dapc1)
 
 myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
 scatter(dapc1, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
         solid=.4, cex=3, clab=0,mstree=TRUE, scree.da=FALSE,
-        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:6))
+        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:3))
 par(xpd=TRUE)
 points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=8, col="black")
 points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=2, col=myCol)
@@ -333,22 +366,22 @@ contrib <- loadingplot(dapc1$var.contr, axis=2, thres=.07, lab.jitter=1)
 round(head(dapc1$posterior),3)
 summary(dapc1)
 assignplot(dapc1, subset=1:50)
-compoplot(dapc1, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
+compoplot(dapc1, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:3), lab="",ncol=2, xlab="individuals")
 
 # a-score analysis
 dapc2 <- dapc(SP_genind, n.da=100, n.pca=10)
 
 ## DAPC by study area
 # SWLU
-grp_SWLU <- find.clusters(SP_genind[SP_genind@pop=="SW"|SP_genind@pop=="LU"], max.n.clust=40)
+grp_SWLU <- find.clusters(SP_genind_noSpp141_360_080[SP_genind@pop=="SW"|SP_genind@pop=="LU"], max.n.clust=40)
 1000
-2
+6
 
-dapc_SWLU <- dapc(SP_genind[SP_genind@pop=="SW"|SP_genind@pop=="LU"], grp_SWLU$grp)
-60
-2
+dapc_SWLU <- dapc(SP_genind_noSpp141_360_080[SP_genind@pop=="SW"|SP_genind@pop=="LU"], grp_SWLU$grp)
+50
+5
 
-plot(as.data.frame(SP_genind[SP_genind@pop=="SW"|SP_genind@pop=="LU"]@other$xy), col=dapc_SWLU$grp)
+plot(as.data.frame(SP_genind_noSpp141_360_080[SP_genind@pop=="SW"|SP_genind@pop=="LU"]@other$xy), col=dapc_SWLU$grp)
 
 scatter(dapc_SWLU)
 
@@ -374,21 +407,21 @@ scatter(dapc_SWLU,1,1, col=myCol, bg="white",scree.da=FALSE, legend=TRUE, solid=
 set.seed(4)
 contrib <- loadingplot(dapc_SWLU$var.contr, axis=2, thres=.07, lab.jitter=1)
 
-round(head(dapc1$posterior),3)
-summary(dapc1)
-assignplot(dapc1, subset=1:50)
-compoplot(dapc1, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
+round(head(dapc_SWLU$posterior),3)
+summary(dapc_SWLU)
+assignplot(dapc_SWLU, subset=1:50)
+compoplot(dapc_SWLU, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
 
 # CO
-grp_CO <- find.clusters(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"], max.n.clust=40)
+grp_CO <- find.clusters(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"], max.n.clust=40)
 1000
-7
-
-dapc_CO <- dapc(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"], grp_CO$grp)
-40
 6
 
-plot(as.data.frame(SP_genind[SP_genind@pop=="CO"]@other$xy), col=dapc_CO$grp)
+dapc_CO <- dapc(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_0801@pop=="CO"], grp_CO$grp)
+40
+5
+
+plot(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy), col=dapc_CO$grp)
 
 scatter(dapc_CO)
 
@@ -412,30 +445,30 @@ add.scatter(myInset(), posi="bottomright",inset=c(-0.03,-0.01), ratio=.28,
 scatter(dapc_CO,1,1, col=myCol, bg="white",scree.da=FALSE, legend=TRUE, solid=.4)
 
 set.seed(4)
-contrib <- loadingplot(dapc1$var.contr, axis=2, thres=.07, lab.jitter=1)
+contrib <- loadingplot(dapc_CO$var.contr, axis=2, thres=.07, lab.jitter=1)
 # SP323 was not among the loci deviating a bit from HWE
 
-round(head(dapc1$posterior),3)
-summary(dapc1)
-assignplot(dapc1, subset=1:50)
-compoplot(dapc1, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
+round(head(dapc_CO$posterior),3)
+summary(dapc_CO)
+assignplot(dapc_CO, subset=1:50)
+compoplot(dapc_CO, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
 
-plot(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"]@other$xy),
+plot(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy),
           col=dapc_CO$grp, cex=1, asp=1, pch=19)
-geo <- as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"]@other$xy)
+geo <- as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy)
 
-poppr::amova(SP_genind_noSpp141, method="pegas")
+#poppr::poppr.amova(SP_genind_noSpp141_360_080, method="pegas")
 
 ################################################################################
 ############### Spatial analyses
 
 ### Classic IBD
 
-empir_geo_dist_SP <- as.matrix(dist(as.data.frame(SP_genind@other$xy)))
-empir_geo_dist_SP_SW <- as.matrix(dist(as.data.frame(SP_genind[SP_genind@pop=="SW"]@other$xy)))
-empir_geo_dist_SP_LU <- as.matrix(dist(as.data.frame(SP_genind[SP_genind@pop=="LU"]@other$xy)))
-empir_geo_dist_SP_CO <- as.matrix(dist(as.data.frame(SP_genind[SP_genind@pop=="CO"]@other$xy)))
-empir_geo_dist_SP_SWLU <- as.matrix(dist(as.data.frame(SP_genind[SP_genind@pop=="SW"|SP_genind@pop=="LU"]@other$xy)))
+empir_geo_dist_SP <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080@other$xy)))
+empir_geo_dist_SP_SW <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="SW"]@other$xy)))
+empir_geo_dist_SP_LU <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="LU"]@other$xy)))
+empir_geo_dist_SP_CO <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy)))
+empir_geo_dist_SP_SWLU <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="SW"|SP_genind_noSpp141_360_080@pop=="LU"]@other$xy)))
 
 empir_geo_dist_SP2 <-empir_geo_dist_SP
 empir_geo_dist_SP_SW2 <-empir_geo_dist_SP_SW
@@ -449,15 +482,15 @@ empir_geo_dist_SP_LU2[empir_geo_dist_SP_LU2==0] <- NA
 empir_geo_dist_SP_CO2[empir_geo_dist_SP_CO2==0] <- NA
 empir_geo_dist_SP_SWLU2[empir_geo_dist_SP_SWLU2==0] <- NA
 
-SP_genind_nogeo <- SP_genind
-SP_genind_nogeo@other <- NULL
-SP_genind_nogeo@pop <- NULL
+SP_genind_noSpp141_360_080_nogeo <- SP_genind_noSpp141_360_080
+SP_genind_noSpp141_360_080_nogeo@other <- NULL
+SP_genind_noSpp141_360_080_nogeo@pop <- NULL
 
-empirLoiselle_EcoGenetics_SP <- eco.kin.loiselle(genind2ecogen(SP_genind_nogeo))
-empirLoiselle_EcoGenetics_SP_SW <- eco.kin.loiselle(genind2ecogen(SP_genind_nogeo[SP_genind@pop=="SW"]))
-empirLoiselle_EcoGenetics_SP_LU <- eco.kin.loiselle(genind2ecogen(SP_genind_nogeo[SP_genind@pop=="LU"]))
-empirLoiselle_EcoGenetics_SP_CO <- eco.kin.loiselle(genind2ecogen(SP_genind_nogeo[SP_genind@pop=="CO"]))
-empirLoiselle_EcoGenetics_SP_SWLU <- eco.kin.loiselle(genind2ecogen(SP_genind_nogeo[SP_genind@pop=="SW"|SP_genind@pop=="LU"]))
+empirLoiselle_EcoGenetics_SP <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo))
+empirLoiselle_EcoGenetics_SP_SW <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo[SP_genind_noSpp141_360_080@pop=="SW"]))
+empirLoiselle_EcoGenetics_SP_LU <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo[SP_genind_noSpp141_360_080@pop=="LU"]))
+empirLoiselle_EcoGenetics_SP_CO <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo[SP_genind_noSpp141_360_080@pop=="CO"]))
+empirLoiselle_EcoGenetics_SP_SWLU <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo[SP_genind_noSpp141_360_080@pop=="SW"|SP_genind_noSpp141_360_080@pop=="LU"]))
 
 IBD_SP <- lm(c(as.dist(empirLoiselle_EcoGenetics_SP))~log(c(as.dist(empir_geo_dist_SP2))))
 IBD_SP_SW <- lm(c(as.dist(empirLoiselle_EcoGenetics_SP_SW))~log(c(as.dist(empir_geo_dist_SP_SW2))))
@@ -501,21 +534,6 @@ image(dens, col=transp(myPal(300),.7), add=TRUE)
 dist_lm <- lm(as.vector(empirLoiselle_EcoGenetics_SP_SWLU) ~ as.vector(empir_geo_dist_SP_SWLU))
 abline(dist_lm)
 title("Isolation by distance plot")
-
-# ### Monmonnier # DOES NOT WORK FOR M. FLOREA (EITHER STRUCTURE TOO WEAK OR WORKS ONLY WELL WITH POPULATIONS NOT INDIVIDUALS)
-# # We need to jitter coords a bit
-# geo_jittered <- apply(as.data.frame(SP_genind[SP_genind@pop=="CO"]@other$xy), 2, FUN= function(x) jitter(x,amount = 1000))
-# 
-# gab_SP_CO <- adegenet::chooseCN(geo_jittered, ask=FALSE, type=2, check.duplicates = FALSE)
-# 
-# mon1 <- monmonier(geo_jittered, as.dist(1-empirLoiselle_EcoGenetics_SP_CO), gab_SP_CO)
-# 
-# D_SP_CO <- tab(SP_genind[SP_genind@pop=="CO"], freq = TRUE, NA.method = "mean")
-# D_SP_CO <- dist(D_SP_CO)
-# pco1 <- dudi.pco(D_SP_CO, scannf=FALSE, nf=2)
-# barplot(pco1$eig, main="Eigenvalues")
-# D_SP_CO <- dist(pco1$li)
-# mon1 <- monmonier(geo_jittered, D_SP_CO, gab_SP_CO)
 
 SP_genind_CO <- SP_genind[SP_genind@pop=="CO"]
 geo_jittered <- apply(as.data.frame(SP_genind[SP_genind@pop=="CO"]@other$xy), 2, FUN= function(x) jitter(x,amount = 1000))
