@@ -1,7 +1,42 @@
 ################################################################################
 ########## Julian Wittische - July 2022 - Hoverfly landscape genetics ##########
 ################################################################################
-_______________________________________________________________________________
+#
+# SCRIPT OBJECTIVE:
+#
+# - creating GIS rasters for relevant environmental variables
+#   which are readily usable in ResitanceGA or other softwares
+#_______________________________________________________________________________
+# TO DO:
+#
+# - check that no M. florea is out of the area defined by the extent of the SP
+#   dataset + 2km
+#
+# - check that there are no other discrepancies between online metadata file and
+#   the files used here
+
+# ISSUES:
+#
+#  - there was an outlier for LUX, it should be 49.52180 not 49.4218 for sample 
+#    SW_109_2_27-07-21_A; I corrected it based on original metada 
+#_______________________________________________________________________________
+###### LIBRARIES AND DATA
+
+library(raster)
+library(sp)
+library(sf)
+library(gdalUtils)
+
+# We can derive the extent from the genind files - let's load the SP object
+SP <- readRDS("Data/SP_genind_noSpp141_360_080.RDS")
+SP_LUX <- SP[SP@pop=="SW"|SP@pop=="LU"]
+SP_COL <- SP[SP@pop=="CO"]
+
+# Study are extent + 2km for cropping/masking
+e_LUX <- extend(extent(SP_LUX@other$xy), c(2000, 2000))
+e_COL <- extend(extent(SP_COL@other$xy), c(2000, 2000))
+
+#_______________________________________________________________________________
 ###### ELEVATION
 
 ## Using data downloaded from Copernicus
@@ -12,55 +47,62 @@ LUX_DEM_raster_path <- "../ENV_DATA_EUROPE/EU-DEM_v1.1/eu_dem_v11_E40N20/eu_dem_
 LUX_DEM <- raster(LUX_DEM_raster_path)
 COL_DEM_raster_path <- "../ENV_DATA_EUROPE/EU-DEM_v1.1/eu_dem_v11_E40N30/eu_dem_v11_E40N30.TIF"
 COL_DEM <- raster(COL_DEM_raster_path)
-#DEMp <- projectRaster(DEM, crs=crs_good) #should already be the right crs so unnecessary here
-DEMp1 <- DEM1
-DEMp2 <- DEM2
-# Crop to raccoon study area
-e <- extend(extent(sample.localesMicro_p), c(20000, 20000))
-DEMpc1 <- crop(DEMp1, e)
-DEMpc2 <- crop(DEMp2, e)
-DEM <- merge(DEMpc1, DEMpc2, tolerance=0)
-# Checking step #
-plot(DEM, col=terrain.colors(100))
-points(sample.localesMicro_p)
-plot(ger, add=TRUE)
-plot(lux, add=TRUE)
+
+# We keep the crs from the various rasters from Copernicus (3035)
+crs_good <- CRS(SRS_string = "EPSG:3035")
+
+# # It should already be the right crs but let's make sure
+# LUX_DEMp <- projectRaster(LUX_DEM, crs=crs_good)
+# COL_DEMp <- projectRaster(COL_DEM, crs=crs_good)
+# 
+# # Checkpoint
+# st_crs(LUX_DEM)
+# st_crs(LUX_DEMp)
+# st_crs(COL_DEM)
+# st_crs(COL_DEMp)
+
+# Crop to study area
+LUX_DEMpc <- crop(LUX_DEM, e_LUX)
+COL_DEMpc <- crop(COL_DEM, e_COL)
+
+# # Checkpoint
+# plot(LUX_DEMpc, col=terrain.colors(100))
+# points(SP_LUX@other$xy)
+# plot(COL_DEMpc, col=terrain.colors(100))
+# points(SP_COL@other$xy)
+
+# # Clean-up and savie the final products
+# writeRaster(LUX_DEMpc, file="Data/LUX_DEM.grd", overwrite=TRUE)
+# writeRaster(COL_DEMpc, file="Data/COL_DEM.grd", overwrite=TRUE)
+# remove(LUX_DEM); remove(COL_DEM); remove(LUX_DEMpc); remove(COL_DEMpc)
 
 #_______________________________________________________________________________
-##### IMPERVIOUSNESS
-# 
-# ## Using data downloaded from Copernicus
-# # Imperviousness Density (built-up & sealed soil); 2018; 10m; ; ESPG: 3035 (ETRS89, LAEA); Luxembourg & Germany; NA =255
-# # Based on %
-# 
-# IMP_raster_file_folder_lux <- "C:/Users/Utilisateur/Desktop/Projects/ENV_DATA_EUROPE/ImperviousnessDensity_2018_10m/IMD_2018_010m_lu_03035_v020/DATA"
-# IMP_raster_file_folder_ger <- "C:/Users/Utilisateur/Desktop/Projects/ENV_DATA_EUROPE/ImperviousnessDensity_2018_10m/IMD_2018_010m_de_03035_v020/DATA"
-# l_lux <- list.files(IMP_raster_file_folder_lux, pattern = "\\.tif$", full.names = TRUE)
-# l_ger <- list.files(IMP_raster_file_folder_ger, pattern = "\\.tif$", full.names = TRUE)
-# 
-# # We need to combine all tiles FOR EACH country, and for that we need a function
-# 
-# # 1) Let's try with raster::merge()
-# # merge_rasters_folder <- function(folder_path){
-# #   do.call(merge, lapply(folder_path, raster))
-# # }
-# #IMP_lux <- merge_rasters_folder(l_lux)
-# #IMP_ger <- merge_rasters_folder(l_ger)
-# # /!\ raster::merge is too slow for germany here so let's build another function /!\ #
-# 
-# # 2) Let's try with gdalsUtils::mosaic_rasters()
-# template <- raster(extent(DEM_))
-# projection(template) <- crs_good
-# writeRaster(template, file="temp_IMP_lux.tif", format="GTiff", overwrite=TRUE)
-# writeRaster(template, file="temp_IMP_ger.tif", format="GTiff", overwrite=TRUE)
-# mosaic_rasters(gdalfile=l_lux, dst_dataset="temp_IMP_lux.tif", of="GTiff")
-# mosaic_rasters(gdalfile=l_ger, dst_dataset="temp_IMP_ger.tif", of="GTiff")
-# IMP <- merge(raster("temp_IMP_lux.tif"), raster("temp_IMP_ger.tif"), tolerance=0) #slow but works
-# NAvalue(IMP) <- 255
-# plot(IMP, col=RColorBrewer::brewer.pal(9, "Reds"))
-# points(sample.localesMicro_p)
-# plot(ger, add=TRUE)
-# plot(lux, add=TRUE)
+#### IMPERVIOUSNESS
+
+## Using data downloaded from Copernicus
+# Imperviousness Density (built-up & sealed soil); 2018; 10m; ; ESPG: 3035 (ETRS89, LAEA); Luxembourg & Germany; NA =255
+# Based on %
+
+LUX_IMP_raster_file_folder <- "../ENV_DATA_EUROPE/IMD2018/IMD_2018_010m_lu_03035_v020/DATA"
+COL_IMP_raster_file_folder <- "../ENV_DATA_EUROPE/IMD2018/IMD_2018_010m_de_03035_v020/DATA"
+l_LUX <- list.files(LUX_IMP_raster_file_folder, pattern = "\\.tif$", full.names = TRUE)
+l_COL <- list.files(COL_IMP_raster_file_folder, pattern = "\\.tif$", full.names = TRUE)
+
+template_LUX <- raster(extent(LUX_DEMpc))
+projection(template_LUX) <- crs_good
+template_COL <- raster(extent(COL_DEMpc))
+projection(template_COL) <- crs_good
+writeRaster(template_LUX, file="temp_IMP_LUX.tif", format="GTiff", overwrite=TRUE)
+writeRaster(template_COL, file="temp_IMP_COL.tif", format="GTiff", overwrite=TRUE)
+mosaic_rasters(gdalfile=l_LUX, dst_dataset="temp_IMP_LUX.tif", of="GTiff")
+mosaic_rasters(gdalfile=l_COL, dst_dataset="temp_IMP_COL.tif", of="GTiff")
+LUX_IMP <- raster("temp_IMP_lux.tif") #slow but works
+LUX_IMPpc <- 
+NAvalue(LUX_IMP) <- 255
+plot(LUX_IMP, col=RColorBrewer::brewer.pal(9, "Reds"))
+points(SP_LUX@other$xy)
+plot(ger, add=TRUE)
+plot(lux, add=TRUE)
 
 #_______________________________________________________________________________
 # ##### TREE COVER
