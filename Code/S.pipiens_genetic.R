@@ -1,6 +1,13 @@
 ################################################################################
-########################### Julian Wittische - MNHNL ###########################
+########## Julian Wittische - July 2022 - Hoverfly landscape genetics ##########
 ################################################################################
+#
+# SCRIPT OBJECTIVE:
+#
+# - load genetic data and change it to a readable format
+#
+# - perform basic popgen analyses, IBD, PCA, and DAPC
+#_______________________________________________________________________________
 
 ################################################################################
 ############### Loading the INCOMPLETE S. pipiens microsatellite dataset
@@ -254,22 +261,22 @@ PCAdf_noSpp141_360 <- tab(SP_genind_noSpp141_360, freq = TRUE, NA.method = "mean
 
 PCA_noSpp141_360  <- dudi.pca(PCAdf_noSpp141_360 , scale = FALSE, scannf = FALSE, nf = 20)
 
-colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
-title("PCA based on microsatellite genotypes (without Spp141 and Spp360) \naxes 1-2")
-abline(v=0,h=0,col="grey", lty=2)
-
-SP_genind_noSpp141_360_080 <- SP_genind[loc=c("Spp010", "Spp053", "Spp142",
-                                          "Spp231", "Spp273", "Spp476", "Spp051",
-                                          "Spp108", "Spp313", "Spp391",
-                                          "Spp416"), drop=TRUE]
-
-PCAdf_noSpp141_360_080 <- tab(SP_genind_noSpp141_360_080, freq = TRUE, NA.method = "mean")
-
-PCA_noSpp141_360_080  <- dudi.pca(PCAdf_noSpp141_360_080 , scale = FALSE, scannf = FALSE, nf = 20)
-
-colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
-title("PCA based on microsatellite genotypes (without Spp141 and Spp360) \naxes 1-2")
-abline(v=0,h=0,col="grey", lty=2)
+# colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
+# title("PCA based on microsatellite genotypes (without Spp141 and Spp360) \naxes 1-2")
+# abline(v=0,h=0,col="grey", lty=2)
+# 
+# SP_genind_noSpp141_360_080 <- SP_genind[loc=c("Spp010", "Spp053", "Spp142",
+#                                           "Spp231", "Spp273", "Spp476", "Spp051",
+#                                           "Spp108", "Spp313", "Spp391",
+#                                           "Spp416"), drop=TRUE]
+# 
+# PCAdf_noSpp141_360_080 <- tab(SP_genind_noSpp141_360_080, freq = TRUE, NA.method = "mean")
+# 
+# PCA_noSpp141_360_080  <- dudi.pca(PCAdf_noSpp141_360_080 , scale = FALSE, scannf = FALSE, nf = 20)
+# 
+# colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
+# title("PCA based on microsatellite genotypes (without Spp141 and Spp360) \naxes 1-2")
+# abline(v=0,h=0,col="grey", lty=2)
 
 
 ###### Check null alleles
