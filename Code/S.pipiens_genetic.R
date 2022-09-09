@@ -74,7 +74,7 @@ barplot(allelicrichness(as.loci(SP_genind)), beside = TRUE)
 par(mfrow = c(1,1))
 bartlett.test(list(SP_genind_summary$Hexp,SP_genind_summary$Hobs))
 t.test(SP_genind_summary$Hexp,SP_genind_summary$Hobs,pair=T,var.equal=TRUE,alter="greater")
-# Yes! (same mean difference as in other data sets I have seen)
+# RESULT: Yes! (mean difference is reasonable - similar ton other data sets I have seen)
 
 ### Hardy-Weinberg equilibrium
 hw.test(SP_genind, B=1000)
@@ -83,19 +83,21 @@ HW_CO <- hw.test(SP_genind[SP_genind@pop=="CO"], B=1000)
 HW_SW <- hw.test(SP_genind[SP_genind@pop=="SW"], B=1000)
 
 which(HW_LU[,4] < 0.05 & HW_CO[,4] < 0.05 & HW_SW[,4] < 0.05)
-# Spp142, Spp051, Spp108, Spp141, Spp360  are somewhat in disequilibrium but let us keep them
-# Alain has subsampled 30 individuals 10 times and they pass
+# RESULT: Spp142, Spp051, Spp108, Spp141, Spp360  are somewhat in disequilibrium
+# but let us keep them because Alain has subsampled 30 individuals 10 times and they pass
 
 ################################################################################
 ############### Nonspatial population structure
 
 ## Weir and Cockerham F statistics
 
-wc(SP_genind) # global Fst is very low; Fis is rather high
+wc(SP_genind)
+# RESULT: global Fst is very low; Fis is rather high
 
 # Let's build confidence intervals for that
 SP_g2h <- genind2hierfstat(SP_genind)
 boot.vc(SP_g2h[1], SP_g2h[-1])$ci
+# RESULT: Fst is very low and 0 is within the CI
 
 # Let's check per locus
 Fperlocus <- Fst(as.loci(SP_genind))
@@ -104,21 +106,22 @@ colMeans(Fperlocus) # Check: similar to calculations above
 
 # Pairwise Fst
 Fst <- genet.dist(SP_genind, method = "Nei87")
-# SW and LU are closer to each other than they are from CO
+Fst
+# RESULT: SW and LU are closer to each other than they are from CO
 is.euclid(Fst) #FALSE because of missing values
 
 ### PCA
 # Let us replace those NA values
 sum(is.na(SP_genind$tab))
-PCAdf <- tab(SP_genind, freq = TRUE, NA.method = "mean")
+PCAdf_SP <- tab(SP_genind, freq = TRUE, NA.method = "mean")
 
 # Check
-class(PCAdf)
-dim(PCAdf)
-PCAdf[1:5,1:5]
+class(PCAdf_SP)
+dim(PCAdf_SP)
+PCAdf_SP[1:5,1:5]
 
 
-PCA <- dudi.pca(PCAdf, scale = FALSE, scannf = FALSE, nf = 3)
+PCA <- dudi.pca(PCAdf_SP, scale = FALSE, scannf = FALSE, nf = 3)
 # Eigenvalues
 barplot(PCA$eig[1:50], main = "PCA eigenvalues", col = heat.colors(50))
 
@@ -189,7 +192,7 @@ SP_LD_CHECK
 # There is statistically significant association among the markers but the overall correlation is very low.
 SP_LD_pair <- poppr::pair.ia(SP_genind)
 SP_LD_pair
-# /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
+# RESULT: /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
 
 # What if we get rid of Spp141 (LD, HWE, high Fis)
 SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
@@ -197,9 +200,9 @@ SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
                                 "Spp108", "Spp313", "Spp360", "Spp391",
                                 "Spp416"), drop=TRUE]
 
-PCAdf_noSpp141 <- tab(SP_genind_noSpp141, freq = TRUE, NA.method = "mean")
+PCAdf_SP_noSpp141 <- tab(SP_genind_noSpp141, freq = TRUE, NA.method = "mean")
 
-PCA_noSpp141  <- dudi.pca(PCAdf_noSpp141 , scale = FALSE, scannf = FALSE, nf = 20)
+PCA_noSpp141  <- dudi.pca(PCAdf_SP_noSpp141 , scale = FALSE, scannf = FALSE, nf = 20)
 
 colorplot(PCA_noSpp141$li, PCA_noSpp141$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
 title("PCA based on microsatellite genotypes (without Spp141) \naxes 1-2")
@@ -257,9 +260,9 @@ SP_genind_noSpp141_360 <- SP_genind[loc=c("Spp010", "Spp053", "Spp142",
                                       "Spp108", "Spp313", "Spp391",
                                       "Spp416", "Spp080"), drop=TRUE]
 
-PCAdf_noSpp141_360 <- tab(SP_genind_noSpp141_360, freq = TRUE, NA.method = "mean")
+PCAdf_SP_noSpp141_360 <- tab(SP_genind_noSpp141_360, freq = TRUE, NA.method = "mean")
 
-PCA_noSpp141_360  <- dudi.pca(PCAdf_noSpp141_360 , scale = FALSE, scannf = FALSE, nf = 20)
+PCA_noSpp141_360  <- dudi.pca(PCAdf_SP_noSpp141_360 , scale = FALSE, scannf = FALSE, nf = 20)
 
 # colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
 # title("PCA based on microsatellite genotypes (without Spp141 and Spp360) \naxes 1-2")
@@ -270,9 +273,9 @@ PCA_noSpp141_360  <- dudi.pca(PCAdf_noSpp141_360 , scale = FALSE, scannf = FALSE
 #                                           "Spp108", "Spp313", "Spp391",
 #                                           "Spp416"), drop=TRUE]
 # 
-# PCAdf_noSpp141_360_080 <- tab(SP_genind_noSpp141_360_080, freq = TRUE, NA.method = "mean")
+# PCAdf_SP_noSpp141_360_080 <- tab(SP_genind_noSpp141_360_080, freq = TRUE, NA.method = "mean")
 # 
-# PCA_noSpp141_360_080  <- dudi.pca(PCAdf_noSpp141_360_080 , scale = FALSE, scannf = FALSE, nf = 20)
+# PCA_noSpp141_360_080  <- dudi.pca(PCAdf_SP_noSpp141_360_080 , scale = FALSE, scannf = FALSE, nf = 20)
 # 
 # colorplot(PCA_noSpp141_360_080$li, PCA_noSpp141_360_080$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
 # title("PCA based on microsatellite genotypes (without Spp141 and Spp360) \naxes 1-2")
@@ -303,8 +306,8 @@ Null.alleles <- PopGenReport::null.all(SP_genind)
 ##### PCA per study area (without Spp141)
 
 # CO
-PCAdf_CO <- tab(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"], freq = TRUE, NA.method = "mean")
-PCA_noSpp141_CO  <- dudi.pca(PCAdf_CO , scale = FALSE, scannf = FALSE, nf = 3)
+PCAdf_SP_CO <- tab(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"], freq = TRUE, NA.method = "mean")
+PCA_noSpp141_CO  <- dudi.pca(PCAdf_SP_CO , scale = FALSE, scannf = FALSE, nf = 3)
 
 colorplot(PCA_noSpp141_CO$li, PCA_noSpp141_CO$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
 title("PCA based on microsatellite genotypes (without Spp141) \naxes 1-2")
@@ -314,8 +317,8 @@ colorplot(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"]@other$x
           PCA_noSpp141_CO$li, transp=TRUE, cex=3)
 
 #SWLU
-PCAdf_SWLU <- tab(SP_genind_noSpp141[SP_genind_noSpp141@pop=="SW"|SP_genind_noSpp141@pop=="LU"], freq = TRUE, NA.method = "mean")
-PCA_noSpp141_SWLU  <- dudi.pca(PCAdf_SWLU , scale = FALSE, scannf = FALSE, nf = 3)
+PCAdf_SP_SWLU <- tab(SP_genind_noSpp141[SP_genind_noSpp141@pop=="SW"|SP_genind_noSpp141@pop=="LU"], freq = TRUE, NA.method = "mean")
+PCA_noSpp141_SWLU  <- dudi.pca(PCAdf_SP_SWLU , scale = FALSE, scannf = FALSE, nf = 3)
 
 colorplot(PCA_noSpp141_SWLU$li, PCA_noSpp141_SWLU$li, transp=TRUE, cex=3, xlab="PC 1", ylab="PC 2")
 title("PCA based on microsatellite genotypes (without Spp141) \naxes 1-2")

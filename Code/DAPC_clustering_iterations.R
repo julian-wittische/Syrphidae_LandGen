@@ -10,13 +10,13 @@
 library(adegenet)
 library(poppr)
 
-dapc_SP_prior <- dapc(SP, SP@pop)
+dapc_SP_prior <- dapc(SP_genind_noSpp141, SP_genind_noSpp141@pop)
 50
 2
-optim.a.score(dapc_SWLU, n=100, smart=TRUE)
+optim.a.score(dapc_SP_prior, n=100, smart=TRUE)
 
 set.seed(1)
-SP_DAPC_xval_first <- xvalDapc(tab(SP, NA.method = "mean"), pop(SP))
+SP_DAPC_xval_first <- xvalDapc(tab(SP_genind_noSpp141, NA.method = "mean"), pop(SP_genind_noSpp141))
 
 set.seed(1)
 SP_DAPC_xval_reps <- xvalDapc(tab(SP, NA.method = "mean"), pop(SP),

@@ -27,9 +27,14 @@ JuliaCall::julia_setup(JULIA_HOME)
 
 ##### Syritta pipiens genind (adegenet)
 
-SP <- readRDS("Data/SP_genind_noSpp141_360_080.RDS")
+SP <- readRDS("Data/SP_genind_noSpp141.RDS")
 SP_LUX <- SP[SP@pop=="SW"|SP@pop=="LU"]
 SP_COL <- SP[SP@pop=="CO"]
+
+SP@pop <- replace(SP@pop, which(SP@pop=="SW"), "LU")
+SP@pop  <-droplevels(SP@pop)
+table(SP@pop)
+genind2structure(SP,  file="Data/SP_STRU.txt", pops=TRUE)
 
 #-------------------------------------------------------------------------------
 ################### Collecting and loading environmental data ##################
