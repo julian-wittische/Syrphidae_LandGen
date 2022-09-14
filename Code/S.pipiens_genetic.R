@@ -476,11 +476,11 @@ geo <- as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop==
 
 ### Classic IBD
 
-empir_geo_dist_SP <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080@other$xy)))
-empir_geo_dist_SP_SW <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="SW"]@other$xy)))
-empir_geo_dist_SP_LU <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="LU"]@other$xy)))
-empir_geo_dist_SP_CO <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy)))
-empir_geo_dist_SP_SWLU <- as.matrix(dist(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="SW"|SP_genind_noSpp141_360_080@pop=="LU"]@other$xy)))
+empir_geo_dist_SP <- as.matrix(dist(as.data.frame(SP_genind_noSpp141@other$xy)))
+empir_geo_dist_SP_SW <- as.matrix(dist(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="SW"]@other$xy)))
+empir_geo_dist_SP_LU <- as.matrix(dist(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="LU"]@other$xy)))
+empir_geo_dist_SP_CO <- as.matrix(dist(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"]@other$xy)))
+empir_geo_dist_SP_SWLU <- as.matrix(dist(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="SW"|SP_genind_noSpp141@pop=="LU"]@other$xy)))
 
 empir_geo_dist_SP2 <-empir_geo_dist_SP
 empir_geo_dist_SP_SW2 <-empir_geo_dist_SP_SW
@@ -494,15 +494,15 @@ empir_geo_dist_SP_LU2[empir_geo_dist_SP_LU2==0] <- NA
 empir_geo_dist_SP_CO2[empir_geo_dist_SP_CO2==0] <- NA
 empir_geo_dist_SP_SWLU2[empir_geo_dist_SP_SWLU2==0] <- NA
 
-SP_genind_noSpp141_360_080_nogeo <- SP_genind_noSpp141_360_080
-SP_genind_noSpp141_360_080_nogeo@other <- NULL
-SP_genind_noSpp141_360_080_nogeo@pop <- NULL
+SP_genind_noSpp141_nogeo <- SP_genind_noSpp141
+SP_genind_noSpp141_nogeo@other <- NULL
+SP_genind_noSpp141_nogeo@pop <- NULL
 
-empirLoiselle_EcoGenetics_SP <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo))
-empirLoiselle_EcoGenetics_SP_SW <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo[SP_genind_noSpp141_360_080@pop=="SW"]))
-empirLoiselle_EcoGenetics_SP_LU <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo[SP_genind_noSpp141_360_080@pop=="LU"]))
-empirLoiselle_EcoGenetics_SP_CO <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo[SP_genind_noSpp141_360_080@pop=="CO"]))
-empirLoiselle_EcoGenetics_SP_SWLU <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_360_080_nogeo[SP_genind_noSpp141_360_080@pop=="SW"|SP_genind_noSpp141_360_080@pop=="LU"]))
+empirLoiselle_EcoGenetics_SP <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo))
+empirLoiselle_EcoGenetics_SP_SW <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo[SP_genind_noSpp141@pop=="SW"]))
+empirLoiselle_EcoGenetics_SP_LU <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo[SP_genind_noSpp141@pop=="LU"]))
+empirLoiselle_EcoGenetics_SP_CO <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo[SP_genind_noSpp141@pop=="CO"]))
+empirLoiselle_EcoGenetics_SP_SWLU <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo[SP_genind_noSpp141@pop=="SW"|SP_genind_noSpp141@pop=="LU"]))
 
 IBD_SP <- lm(c(as.dist(empirLoiselle_EcoGenetics_SP))~log(c(as.dist(empir_geo_dist_SP2))))
 IBD_SP_SW <- lm(c(as.dist(empirLoiselle_EcoGenetics_SP_SW))~log(c(as.dist(empir_geo_dist_SP_SW2))))
