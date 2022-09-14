@@ -194,6 +194,8 @@ SP_LD_pair <- poppr::pair.ia(SP_genind)
 SP_LD_pair
 # RESULT: /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
 
+
+
 # What if we get rid of Spp141 (LD, HWE, high Fis)
 SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
                                 "Spp231", "Spp273", "Spp476", "Spp051",

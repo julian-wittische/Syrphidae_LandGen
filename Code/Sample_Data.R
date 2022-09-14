@@ -36,6 +36,15 @@ SP@pop  <-droplevels(SP@pop)
 table(SP@pop)
 genind2structure(SP,  file="Data/SP_STRU.txt", pops=TRUE)
 
+##### Myathropa florea genind (adegenet)
+
+MF <- MF_genind
+
+MF@pop <- replace(MF@pop, which(MF@pop=="SW"), "LU")
+MF@pop  <-droplevels(MF@pop)
+table(MF@pop)
+genind2structure(MF,  file="Data/MF_STRU.txt", pops=TRUE)
+
 #-------------------------------------------------------------------------------
 ################### Collecting and loading environmental data ##################
 #-------------------------------------------------------------------------------

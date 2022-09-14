@@ -101,6 +101,38 @@ colMeans(Fperlocus)
 Fst <- genet.dist(MF_genind, method = "Nei87")
 is.euclid(Fst) #FALSE because of missing values
 
+###### Check linkage disequilibrium
+
+MF_LD_CHECK <- poppr::ia(MF_genind, sample=199)
+MF_LD_CHECK
+# There is statistically significant association among the markers but the overall correlation is very low.
+MF_LD_pair <- poppr::pair.ia(MF_genind)
+MF_LD_pair
+# RESULT: /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
+
+
+
+###### Check null alleles
+
+library(PopGenReport)
+Null.alleles <- PopGenReport::null.all(MF_genind)
+
+{cat(" summary1 (Chakraborty et al. 1994):", "\n")
+  round(Null.alleles$null.allele.freq$summary1, 2)}
+
+{cat("summary2 (Brookfield et al. 1996):", "\n")
+  round(Null.alleles$null.allele.freq$summary2, 2)}
+
+# We cannot exclude that Spp142, Spp051, Spp108, Spp141, Spp313, Spp360 and Spp416 bear null alleles
+# Spp141 is the highest here, again
+# https://doi.org/10.1093/molbev/msl191 suggests we could keep Spp108 and Spp360
+# https://dx.doi.org/10.7717%2Fpeerj.3188 warns about the relationship between
+# null alleles and genetic structure
+# NOTE: Spp142, Spp051, Spp108, Spp141, Spp360 were somewhat in HWE
+# False positive possible explanations: incomplete genotypes, genetic structure,
+# breeding patterns, differences in allele sizes, and unique alleles that are
+# fixed or nearly fixed locally
+
 ### PCA
 # Let us replace those NA values
 sum(is.na(MF_genind$tab))
