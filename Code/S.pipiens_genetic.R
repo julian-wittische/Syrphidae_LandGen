@@ -19,40 +19,7 @@ library(sp)
 library(EcoGenetics)
 library(MASS)
 
-# Read
-SP_df_raw <- as.data.frame(readxl::read_excel("Data/SPipiens_raw.xlsx",
-                                              sheet=1, .name_repair="minimal"))
 
-# Set first column as row names and remove
-SP_df <- SP_df_raw[,c(-1, -2, -3, -4, -5)]
-SP_geo <-  SP_df_raw[,3:4]
-
-# Fill fragment lengths with 0 to have three characters
-SP_df <- apply(SP_df, 2, FUN=function(x){sprintf("%03d", x)})
-
-# Create a column with the required format (combine columns by locus)
-for (i in seq(1,ncol(SP_df),2)){
-  SP_df[,i] <- as.character(paste(SP_df[,i], SP_df[,i+1], sep= "/"));
-}
-
-# Remove the now useless second column of each locus
-SP_df <- SP_df[,-seq(2, ncol(SP_df), 2)]
-
-# Restore locus names
-colnames(SP_df) <- gsub( "\\..*$", "", colnames(SP_df))
-row.names(SP_df) <- as.vector(SP_df_raw[,2])
-
-# Transform into genind object
-SP_genind <- df2genind(SP_df, ncode=3, ploidy=2, sep="/",
-                       type="codom", NA.char=" NA/ NA")
-
-# Add pop information (study area)
-SP_genind@pop <- as.factor(substr(row.names(SP_df), 1, 2))
-
-# Add coordinates and reproject them
-SP_geo_sp <- SpatialPoints(SP_geo, CRS(SRS_string = "EPSG:4326"))
-SP_geo_sp <-spTransform(SP_geo_sp, CRS(SRS_string = "EPSG:3035"))
-SP_genind@other$xy <- SP_geo_sp
 
 ################################################################################
 ############### Basic exploration
@@ -109,6 +76,21 @@ Fst <- genet.dist(SP_genind, method = "Nei87")
 Fst
 # RESULT: SW and LU are closer to each other than they are from CO
 is.euclid(Fst) #FALSE because of missing values
+
+###### Check linkage disequilibrium
+
+SP_LD_CHECK <- poppr::ia(SP_genind, sample=199)
+SP_LD_CHECK
+# There is statistically significant association among the markers but the overall correlation is very low.
+SP_LD_pair <- poppr::pair.ia(SP_genind)
+SP_LD_pair
+# RESULT: /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
+
+# What if we get rid of Spp141 (LD, HWE, high Fis)
+SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
+                                      "Spp231", "Spp273", "Spp476", "Spp051",
+                                      "Spp108", "Spp313", "Spp360", "Spp391",
+                                      "Spp416"), drop=TRUE]
 
 ### PCA
 # Let us replace those NA values
@@ -185,22 +167,7 @@ colorplot(PCA$li, data.frame(dates, dates, dates), transp=TRUE, cex=3, xlab="PC 
 title("PCA - S. pipiens \naxes 1-2")
 abline(v=0,h=0,col="grey", lty=2)
 
-###### Check linkage disequilibrium
 
-SP_LD_CHECK <- poppr::ia(SP_genind, sample=199)
-SP_LD_CHECK
-# There is statistically significant association among the markers but the overall correlation is very low.
-SP_LD_pair <- poppr::pair.ia(SP_genind)
-SP_LD_pair
-# RESULT: /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
-
-
-
-# What if we get rid of Spp141 (LD, HWE, high Fis)
-SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
-                                "Spp231", "Spp273", "Spp476", "Spp051",
-                                "Spp108", "Spp313", "Spp360", "Spp391",
-                                "Spp416"), drop=TRUE]
 
 PCAdf_SP_noSpp141 <- tab(SP_genind_noSpp141, freq = TRUE, NA.method = "mean")
 

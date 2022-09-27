@@ -18,6 +18,10 @@ library(ggplot2)
 table_swlux <- read_sheet("https://docs.google.com/spreadsheets/d/1hifgIF_Yw765mo0xqFZNHAfZ0U6C9fA46Bmeriz1Xe4/edit?usp=sharing", na="")
 1
 
+tab <- apply(as.matrix(table_swlux[,2:5]), 2, unlist)
+sum(as.numeric(tab$`A. cineraria`), na.rm=T)
+
+
 ###### Important as fgb is not recognised by pandoc
 mapviewOptions(fgb = FALSE)
 
