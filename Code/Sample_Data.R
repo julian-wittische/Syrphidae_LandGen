@@ -58,14 +58,46 @@ SP_geo_sp <- SpatialPoints(SP_geo, CRS(SRS_string = "EPSG:4326"))
 SP_geo_sp <-spTransform(SP_geo_sp, CRS(SRS_string = "EPSG:3035"))
 SP_genind@other$xy <- SP_geo_sp
 
+SP_genind@loc.n.all
+SP_genind@all.names
 stepcheck <- data.frame(apply(SP_genind@tab, 2, as.numeric))
-colSums(stepcheck, na.rm=TRUE)
-str(stepcheck)
-stepcheck
-unique(stepcheck$Spp010)
+(lol <- stepcheck[,grep("Spp391", colnames(stepcheck))])
+colSums(lol, na.rm=TRUE)
+colSums(lol, na.rm=TRUE)[sort(names(colSums(lol, na.rm=TRUE)))]
+
+which(stepcheck$Spp010.150>0) #489
+which(stepcheck$Spp010.151>0) #1497
+
+which(stepcheck$Spp053.137>0) #342 1523
+which(stepcheck$Spp053.147>0) #466
+which(stepcheck$Spp053.155>0) #
+which(stepcheck$Spp053.159>0) #
+
+which(stepcheck$Spp080.163>0) #
+which(stepcheck$Spp080.165>0) #
+which(stepcheck$Spp080.167>0) #
+
+which(stepcheck$Spp142.097>0) #
+which(stepcheck$Spp142.105>0) #
+
+which(stepcheck$Spp231.125>0) #
+
+which(stepcheck$Spp476.110>0) #
+
+which(stepcheck$Spp391.152>0) #
+
+
+SP_genind@tab[which(stepcheck$Spp391.166>0),]
+
+stepcheck 
+
+
 SP_genind@loc.n.all
 colSums(stepcheck, na.rm=TRUE)[11:27]
 
+################################################################################
+################################################################################
+################################################################################
 
 # Get rid of Spp141 (LD, HWE, high Fis)
 SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",

@@ -20,6 +20,7 @@ table_swlux <- read_sheet("https://docs.google.com/spreadsheets/d/1hifgIF_Yw765m
 
 tab <- apply(as.matrix(table_swlux[,2:5]), 2, unlist)
 sum(as.numeric(tab$`A. cineraria`), na.rm=T)
+sum(as.numeric(tab$`B. major`), na.rm=T)
 
 
 ###### Important as fgb is not recognised by pandoc
