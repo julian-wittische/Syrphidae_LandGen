@@ -1,5 +1,5 @@
 ################################################################################
-######### Julian Wittische - October 2021 - Raccoon landscape genetics #########
+######### Julian Wittische - Hoverfly landscape genetics #########
 ################################################################################
 
 #-------------------------------------------------------------------------------
@@ -22,10 +22,11 @@ source("Code/genind2structure.R")
 #-------------------------------------------------------------------------------
 
 ##### Syritta pipiens genind (adegenet)
+source("Code/Syritta_fix.R")
 
 # Read
-SP_df_raw <- as.data.frame(readxl::read_excel("Data/SPipiens_raw.xlsx",
-                                              sheet=1, .name_repair="minimal"))
+SP_df_raw <- SP_df_raw_fix
+SP_df_raw <- 
 
 # Set first column as row names and remove
 SP_df <- SP_df_raw[,c(-1, -2, -3, -4, -5)]
