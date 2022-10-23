@@ -34,7 +34,7 @@ MF_df <- MF_df[,-seq(2, ncol(MF_df), 2)]
 # Restore locus names
 colnames(MF_df) <- gsub( "\\..*$", "", colnames(MF_df))
 row.names(MF_df) <- as.vector(MF_df_raw[,2])
-row.names(MF_df)[which(duplicated(row.names(MF_df)))] <- "LUX_98_2_08-09-21_A_bis"
+# row.names(MF_df)[which(duplicated(row.names(MF_df)))] <- "LUX_98_2_08-09-21_A_bis" # CHANGED IN RAW DATA
 
 # Transform into genind object
 MF_genind <- df2genind(MF_df, ncode=3, ploidy=2, sep="/",

@@ -460,8 +460,8 @@ SP_df_raw_fix[,"Spp108"] <- replace(SP_df_raw_fix[,"Spp108"],
                                     which(SP_df_raw_fix[,"Spp108"]%in%c(191)),
                                     NA)
 
-SP_df_raw_fix[,"Spp108.1"] <- replace(SP_df_raw_fix[,"Spp0108.1"],
-                                      which(SP_df_raw_fix[,"Spp0108.1"]%in%c(191)),
+SP_df_raw_fix[,"Spp108.1"] <- replace(SP_df_raw_fix[,"Spp108.1"],
+                                      which(SP_df_raw_fix[,"Spp108.1"]%in%c(191)),
                                       NA)
 
 ######## Migraine NTO FINISHED BECAUSE WE GET RID OF IT ANYWAY

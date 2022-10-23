@@ -12,3 +12,19 @@
 # barplot(pco1$eig, main="Eigenvalues")
 # D_SP_CO <- dist(pco1$li)
 # mon1 <- monmonier(geo_jittered, D_SP_CO, gab_SP_CO)
+
+SP_genind@loc.n.all
+SP_genind@all.names
+stepcheck <- data.frame(apply(SP_genind@tab, 2, as.numeric))
+(lol <- stepcheck[,grep("Spp051", colnames(stepcheck))])
+colSums(lol, na.rm=TRUE)
+colSums(lol, na.rm=TRUE)[sort(names(colSums(lol, na.rm=TRUE)))]
+
+
+SP_df_raw[which(stepcheck$Spp273.279>0),2]
+
+stepcheck 
+
+
+SP_genind@loc.n.all
+colSums(stepcheck, na.rm=TRUE)[11:27]
