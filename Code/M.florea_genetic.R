@@ -13,8 +13,7 @@ library(EcoGenetics)
 library(MASS)
 
 # Read
-MF_df_raw <- as.data.frame(readxl::read_excel("Data/Mflorea_raw.xlsx",
-                                              sheet=1, .name_repair="minimal"))
+MF_df_raw <- MF_df_raw_fix
 
 # Set first column as row names and remove
 MF_df <- MF_df_raw[,c(-1, -2, -3, -4, -5)]
@@ -48,6 +47,10 @@ MF_geo_sp <- SpatialPoints(MF_geo, CRS(SRS_string = "EPSG:4326"))
 MF_geo_sp <-spTransform(MF_geo_sp, CRS(SRS_string = "EPSG:3035"))
 MF_genind@other$xy <- MF_geo_sp
 
+source("Code/Myathropa_fix.R")
+source("Code/Sample_Data.R")
+MF_genind <- MF
+
 ################################################################################
 ############### Basic exploration
 #adegenetTutorial( which = c("basics"))
@@ -61,6 +64,9 @@ text(MF_genind_summary$n.by.pop,MF_genind_summary$pop.n.all,lab=names(MF_genind_
 barplot(MF_genind_summary$loc.n.all, ylab="Number of alleles",main="Number of alleles per locus")
 barplot(MF_genind_summary$Hexp-MF_genind_summary$Hobs, main="Heterozygosity: expected-observed",ylab="Hexp - Hobs")
 barplot(MF_genind_summary$n.by.pop, main="Sample sizes per population",ylab="Number of genotypes",las=3)
+
+mean(MF_genind_summary$Hexp)
+mean(MF_genind_summary$Hobs)
 
 ### Allelic richness
 barplot(allelicrichness(as.loci(MF_genind)), beside = TRUE)
@@ -200,10 +206,10 @@ plot(MF_genind@other$xy, col=dapc1$grp)
 
 scatter(dapc1)
 
-myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
+myCol <- c("darkblue", "purple", "green", "orange", "red")
 scatter(dapc1, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
         solid=.4, cex=3, clab=0,mstree=TRUE, scree.da=FALSE,
-        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:6))
+        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:5))
 par(xpd=TRUE)
 points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=8, col="black")
 points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=2, col=myCol)

@@ -23,7 +23,9 @@ library(MASS)
 
 ################################################################################
 ############### Basic exploration
-
+source("Code/Syritta_fix.R")
+source("Code/Sample_Data.R")
+SP_genind <- SP
 SP_genind_summary <- summary(SP_genind)
 
 ### Alleles and sample sizes
@@ -33,6 +35,11 @@ text(SP_genind_summary$n.by.pop,SP_genind_summary$pop.n.all,lab=names(SP_genind_
 barplot(SP_genind_summary$loc.n.all, ylab="Number of alleles",main="Number of alleles per locus")
 barplot(SP_genind_summary$Hexp-SP_genind_summary$Hobs, main="Heterozygosity: expected-observed",ylab="Hexp - Hobs")
 barplot(SP_genind_summary$n.by.pop, main="Sample sizes per population",ylab="Number of genotypes",las=3)
+barplot(SP_genind_summary$Hexp, main="Heterozygosity: expected",ylab="Hexp")
+barplot(SP_genind_summary$Hobs, main="Heterozygosity: observed",ylab="Hobs")
+
+mean(SP_genind_summary$Hexp)
+mean(SP_genind_summary$Hobs)
 
 ### Allelic richness
 barplot(allelicrichness(as.loci(SP_genind)), beside = TRUE)
@@ -86,11 +93,6 @@ SP_LD_pair <- poppr::pair.ia(SP_genind)
 SP_LD_pair
 # RESULT: /!\ HIGH /!\ between Spp141 and Spp051 ! Those two are also somewhat in HWE.
 
-# What if we get rid of Spp141 (LD, HWE, high Fis)
-SP_genind_noSpp141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
-                                      "Spp231", "Spp273", "Spp476", "Spp051",
-                                      "Spp108", "Spp313", "Spp360", "Spp391",
-                                      "Spp416"), drop=TRUE]
 
 ### PCA
 # Let us replace those NA values
@@ -307,22 +309,30 @@ add.scatter.eig(ca1$eig,nf=3,xax=1,yax=2,posi="bottomright")
 
 ### DAPC
 # NOTE: we should do this temporally too
-grp <- find.clusters(SP_genind_noSpp141_360_080, max.n.clust=40)
+grp <- find.clusters(SP, max.n.clust=40)
 1000
-3
+5
 
-dapc1 <- dapc(SP_genind_noSpp141_360_080, grp$grp)
-50
-2
+dapc1 <- dapc(SP, grp$grp)
+73
+4
 
-plot(SP_genind_noSpp141_360_080@other$xy, col=dapc1$grp)
+pramx <- xvalDapc(tab(SP, NA.method = "mean"), pop(SP),
+                  n.pca = 70:80, n.rep = 10000,
+                  parallel = "snow", ncpus = 4L)
+
+scatter(pramx$DAPC, col = as.numeric(pop(SP)), cex = 2, legend = TRUE,
+        clabel = FALSE, posi.leg = "bottomleft", scree.pca = TRUE,
+        posi.pca = "topleft", cleg = 0.75, xax = 1, yax = 2, inset.solid = 1)
+
+plot(SP@other$xy, col=dapc1$grp)
 
 scatter(dapc1)
 
 myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
 scatter(dapc1, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
-        solid=.4, cex=3, clab=0,mstree=TRUE, scree.da=FALSE,
-        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:3))
+        solid=.4, cex=3, clab=0,mstree=FALSE, scree.da=FALSE,
+        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:5))
 par(xpd=TRUE)
 points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=8, col="black")
 points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=2, col=myCol)
@@ -443,11 +453,11 @@ geo <- as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop==
 
 ### Classic IBD
 
-empir_geo_dist_SP <- as.matrix(dist(as.data.frame(SP_genind_noSpp141@other$xy)))
-empir_geo_dist_SP_SW <- as.matrix(dist(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="SW"]@other$xy)))
-empir_geo_dist_SP_LU <- as.matrix(dist(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="LU"]@other$xy)))
-empir_geo_dist_SP_CO <- as.matrix(dist(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="CO"]@other$xy)))
-empir_geo_dist_SP_SWLU <- as.matrix(dist(as.data.frame(SP_genind_noSpp141[SP_genind_noSpp141@pop=="SW"|SP_genind_noSpp141@pop=="LU"]@other$xy)))
+empir_geo_dist_SP <- as.matrix(dist(as.data.frame(SP@other$xy)))
+empir_geo_dist_SP_SW <- as.matrix(dist(as.data.frame(SP[SP@pop=="SW"]@other$xy)))
+empir_geo_dist_SP_LU <- as.matrix(dist(as.data.frame(SP[SP@pop=="LU"]@other$xy)))
+empir_geo_dist_SP_CO <- as.matrix(dist(as.data.frame(SP[SP@pop=="CO"]@other$xy)))
+empir_geo_dist_SP_SWLU <- as.matrix(dist(as.data.frame(SP[SP@pop=="SW"|SP@pop=="LU"]@other$xy)))
 
 empir_geo_dist_SP2 <-empir_geo_dist_SP
 empir_geo_dist_SP_SW2 <-empir_geo_dist_SP_SW
@@ -461,15 +471,15 @@ empir_geo_dist_SP_LU2[empir_geo_dist_SP_LU2==0] <- NA
 empir_geo_dist_SP_CO2[empir_geo_dist_SP_CO2==0] <- NA
 empir_geo_dist_SP_SWLU2[empir_geo_dist_SP_SWLU2==0] <- NA
 
-SP_genind_noSpp141_nogeo <- SP_genind_noSpp141
-SP_genind_noSpp141_nogeo@other <- NULL
-SP_genind_noSpp141_nogeo@pop <- NULL
+SP_nogeo <- SP
+SP_nogeo@other <- NULL
+SP_nogeo@pop <- NULL
 
-empirLoiselle_EcoGenetics_SP <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo))
-empirLoiselle_EcoGenetics_SP_SW <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo[SP_genind_noSpp141@pop=="SW"]))
-empirLoiselle_EcoGenetics_SP_LU <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo[SP_genind_noSpp141@pop=="LU"]))
-empirLoiselle_EcoGenetics_SP_CO <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo[SP_genind_noSpp141@pop=="CO"]))
-empirLoiselle_EcoGenetics_SP_SWLU <- eco.kin.loiselle(genind2ecogen(SP_genind_noSpp141_nogeo[SP_genind_noSpp141@pop=="SW"|SP_genind_noSpp141@pop=="LU"]))
+empirLoiselle_EcoGenetics_SP <- eco.kin.loiselle(genind2ecogen(SP_nogeo))
+empirLoiselle_EcoGenetics_SP_SW <- eco.kin.loiselle(genind2ecogen(SP_nogeo[SP@pop=="SW"]))
+empirLoiselle_EcoGenetics_SP_LU <- eco.kin.loiselle(genind2ecogen(SP_nogeo[SP@pop=="LU"]))
+empirLoiselle_EcoGenetics_SP_CO <- eco.kin.loiselle(genind2ecogen(SP_nogeo[SP@pop=="CO"]))
+empirLoiselle_EcoGenetics_SP_SWLU <- eco.kin.loiselle(genind2ecogen(SP_nogeo[SP@pop=="SW"|SP@pop=="LU"]))
 
 IBD_SP <- lm(c(as.dist(empirLoiselle_EcoGenetics_SP))~log(c(as.dist(empir_geo_dist_SP2))))
 IBD_SP_SW <- lm(c(as.dist(empirLoiselle_EcoGenetics_SP_SW))~log(c(as.dist(empir_geo_dist_SP_SW2))))
