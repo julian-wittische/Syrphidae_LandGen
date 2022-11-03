@@ -128,174 +128,40 @@ SPxval2_priorpop <- xvalDapc(tab(SP, NA.method = "mean"), pop(SP),
 
 dapc_priorpop <- dapc(SP, pop(SP), n.pca=50, n.da=1)
 
-scatter(dapc_priorpop, col = rainbow(as.numeric(pop(SP))), cex = 2, legend = TRUE,
+scatter(dapc_priorpop, col = c("#FF7F00", "#8F00FF"), cex = 2, legend = TRUE,
         clabel = FALSE, posi.leg = "bottomleft", scree.pca = TRUE,
         posi.pca = "topleft", cleg = 0.75, xax = 1, yax = 2, inset.solid = 1)
 
-scatter(dapc_priorpop, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=rainbow(2),
-        solid=.4, cex=3, clab=0,mstree=FALSE, scree.da=FALSE,
-        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:2))
-
-
 ##### De novo populations
-grp <- find.clusters(SP, max.n.clust=40, n.iter=1000000, n.pca=1000)
-16
-
-grp <- find.clusters(SP, max.n.clust=40, n.iter=1000000, n.pca=1000,
-                     choose.n.clust=FALSE, criterion="diffNgroup")
-
 grpres <- numeric(100)
 
 for (i in 1:100){
-  grp <- find.clusters(SP, max.n.clust=40, n.iter=100000, n.pca=1000,
+  grp <- find.clusters(SP, max.n.clust=40, n.iter=10000, n.pca=1000,
                        choose.n.clust=FALSE, criterion="diffNgroup")
-  grpres[i] <- names(grp$stat) 
+  grpres[i] <- names(grp$stat)
+  print(paste(i, "%"))
 }
+#3 is best
 
+grp <- find.clusters(SP, max.n.clust=40, n.iter=1000000, n.pca=1000)
+3
 
 SPxval1_denovopop <- xvalDapc(tab(SP, NA.method = "mean"), grp$grp,
                              n.pca = 1:100, n.rep = 100,
                              parallel = "snow", ncpus = 4L)
 
-SPxval1_denovopop <- xvalDapc(tab(SP, NA.method = "mean"), grp$grp,
-                              n.pca = 1:100, n.rep = 1000,
+SPxval1_denovopop2 <- xvalDapc(tab(SP, NA.method = "mean"), grp$grp,
+                              n.pca = 1:25, n.rep = 1000,
                               parallel = "snow", ncpus = 4L)
 
+dapc_denovopop <- dapc(SP, grp$grp, n.pca=21, n.da=2)
 
+scatter(dapc_denovopop, col = c("#000000", "#FF0000", "#66FF66"), cex = 6, legend = TRUE,
+        clabel = TRUE, posi.leg = "bottomleft", scree.pca = FALSE,
+        posi.pca = "bottomright", cleg = 2, xax = 1, yax = 2, scree.da=FALSE,
+        solid=0.5, mstree=FALSE, cstar=1)
 
-
-dapc_denovopop <- dapc(SP, grp$grp)
-73
-4
-
-
-
-scatter(pramx$DAPC, col = as.numeric(pop(SP)), cex = 2, legend = TRUE,
-        clabel = FALSE, posi.leg = "bottomleft", scree.pca = TRUE,
-        posi.pca = "topleft", cleg = 0.75, xax = 1, yax = 2, inset.solid = 1)
-
-plot(SP@other$xy, col=dapc1$grp)
-
-scatter(dapc1)
-
-myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
-scatter(dapc1, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
-        solid=.4, cex=3, clab=0,mstree=FALSE, scree.da=FALSE,
-        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:5))
-par(xpd=TRUE)
-points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=8, col="black")
-points(dapc1$grp.coord[,1], dapc1$grp.coord[,2], pch=4,cex=3, lwd=2, col=myCol)
-myInset <- function(){
-  temp <- dapc1$pca.eig
-  temp <- 100* cumsum(temp)/sum(temp)
-  plot(temp, col=rep(c("black","lightgrey"), c(dapc1$n.pca,1000)),
-       ylim=c(0,100), xlab="PCA axis", ylab="Cumulated variance (%)",cex=1,
-       pch=20, type="h", lwd=2)
-}
-add.scatter(myInset(), posi="bottomright",inset=c(-0.03,-0.01), ratio=.28,
-            bg=transp("white"))
-
-scatter(dapc1,1,1, col=myCol, bg="white",scree.da=FALSE, legend=TRUE, solid=.4)
-
-set.seed(4)
-contrib <- loadingplot(dapc1$var.contr, axis=2, thres=.07, lab.jitter=1)
-# SP323 was not among the loci deviating a bit from HWE
-
-round(head(dapc1$posterior),3)
-summary(dapc1)
-assignplot(dapc1, subset=1:50)
-compoplot(dapc1, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:3), lab="",ncol=2, xlab="individuals")
-
-# a-score analysis
-dapc2 <- dapc(SP_genind, n.da=100, n.pca=10)
-
-## DAPC by study area
-# SWLU
-grp_SWLU <- find.clusters(SP_genind_noSpp141_360_080[SP_genind@pop=="SW"|SP_genind@pop=="LU"], max.n.clust=40)
-1000
-6
-
-dapc_SWLU <- dapc(SP_genind_noSpp141_360_080[SP_genind@pop=="SW"|SP_genind@pop=="LU"], grp_SWLU$grp)
-50
-5
-
-plot(as.data.frame(SP_genind_noSpp141_360_080[SP_genind@pop=="SW"|SP_genind@pop=="LU"]@other$xy), col=dapc_SWLU$grp)
-
-scatter(dapc_SWLU)
-
-myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
-scatter(dapc_SWLU, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
-        solid=.4, cex=3, clab=0,mstree=TRUE, scree.da=FALSE,
-        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:6))
-par(xpd=TRUE)
-points(dapc_SWLU$grp_SWLU.coord[,1], dapc_SWLU$grp_SWLU.coord[,2], pch=4,cex=3, lwd=8, col="black")
-points(dapc_SWLU$grp_SWLU.coord[,1], dapc_SWLU$grp_SWLU.coord[,2], pch=4,cex=3, lwd=2, col=myCol)
-myInset <- function(){
-  temp <- dapc_SWLU$pca.eig
-  temp <- 100* cumsum(temp)/sum(temp)
-  plot(temp, col=rep(c("black","lightgrey"), c(dapc_SWLU$n.pca,1000)),
-       ylim=c(0,100), xlab="PCA axis", ylab="Cumulated variance (%)",cex=1,
-       pch=20, type="h", lwd=2)
-}
-add.scatter(myInset(), posi="bottomright",inset=c(-0.03,-0.01), ratio=.28,
-            bg=transp("white"))
-
-scatter(dapc_SWLU,1,1, col=myCol, bg="white",scree.da=FALSE, legend=TRUE, solid=.4)
-
-set.seed(4)
-contrib <- loadingplot(dapc_SWLU$var.contr, axis=2, thres=.07, lab.jitter=1)
-
-round(head(dapc_SWLU$posterior),3)
-summary(dapc_SWLU)
-assignplot(dapc_SWLU, subset=1:50)
-compoplot(dapc_SWLU, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
-
-# CO
-grp_CO <- find.clusters(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"], max.n.clust=40)
-1000
-6
-
-dapc_CO <- dapc(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_0801@pop=="CO"], grp_CO$grp)
-40
-5
-
-plot(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy), col=dapc_CO$grp)
-
-scatter(dapc_CO)
-
-myCol <- c("darkblue", "purple", "green", "orange", "red", "blue")
-scatter(dapc_CO, ratio.pca=0.3, bg="white", pch=20, cell=0 ,cstar=0, col=myCol,
-        solid=.4, cex=3, clab=0,mstree=TRUE, scree.da=FALSE,
-        posi.pca="bottomright", leg=TRUE, txt.leg=paste("Cluster",1:6))
-par(xpd=TRUE)
-points(dapc_CO$grp_CO.coord[,1], dapc_CO$grp_CO.coord[,2], pch=4,cex=3, lwd=8, col="black")
-points(dapc_CO$grp_CO.coord[,1], dapc_CO$grp_CO.coord[,2], pch=4,cex=3, lwd=2, col=myCol)
-myInset <- function(){
-  temp <- dapc_CO$pca.eig
-  temp <- 100* cumsum(temp)/sum(temp)
-  plot(temp, col=rep(c("black","lightgrey"), c(dapc_CO$n.pca,1000)),
-       ylim=c(0,100), xlab="PCA axis", ylab="Cumulated variance (%)",cex=1,
-       pch=20, type="h", lwd=2)
-}
-add.scatter(myInset(), posi="bottomright",inset=c(-0.03,-0.01), ratio=.28,
-            bg=transp("white"))
-
-scatter(dapc_CO,1,1, col=myCol, bg="white",scree.da=FALSE, legend=TRUE, solid=.4)
-
-set.seed(4)
-contrib <- loadingplot(dapc_CO$var.contr, axis=2, thres=.07, lab.jitter=1)
-# SP323 was not among the loci deviating a bit from HWE
-
-round(head(dapc_CO$posterior),3)
-summary(dapc_CO)
-assignplot(dapc_CO, subset=1:50)
-compoplot(dapc_CO, subset=1:50, posi="bottomright",txt.leg=paste("Cluster", 1:6), lab="",ncol=2, xlab="individuals")
-
-plot(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy),
-          col=dapc_CO$grp, cex=1, asp=1, pch=19)
-geo <- as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy)
-
-#poppr::poppr.amova(SP_genind_noSpp141_360_080, method="pegas")
+plot(SP@other$xy, col=dapc_denovopop$grp)
 
 ################################################################################
 ############### Spatial analyses
