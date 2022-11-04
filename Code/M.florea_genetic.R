@@ -12,48 +12,10 @@ library(sp)
 library(EcoGenetics)
 library(MASS)
 
-# Read
-MF_df_raw <- MF_df_raw_fix
-
-# Set first column as row names and remove
-MF_df <- MF_df_raw[,c(-1, -2, -3, -4, -5)]
-MF_geo <-  MF_df_raw[,3:4]
-
-# Fill fragment lengths with 0 to have three characters
-MF_df <- apply(MF_df, 2, FUN=function(x){sprintf("%03d", x)})
-
-# Create a column with the required format (combine columns by locus)
-for (i in seq(1,ncol(MF_df),2)){
-  MF_df[,i] <- as.character(paste(MF_df[,i], MF_df[,i+1], sep= "/"));
-}
-
-# Remove the now useless second column of each locus
-MF_df <- MF_df[,-seq(2, ncol(MF_df), 2)]
-
-# Restore locus names
-colnames(MF_df) <- gsub( "\\..*$", "", colnames(MF_df))
-row.names(MF_df) <- as.vector(MF_df_raw[,2])
-# row.names(MF_df)[which(duplicated(row.names(MF_df)))] <- "LUX_98_2_08-09-21_A_bis" # CHANGED IN RAW DATA
-
-# Transform into genind object
-MF_genind <- df2genind(MF_df, ncode=3, ploidy=2, sep="/",
-                       type="codom", NA.char=" NA/ NA")
-
-# Add pop information (study area)
-MF_genind@pop <- as.factor(substr(row.names(MF_df), 1, 2))
-
-# Add coordinates and reproject them
-MF_geo_sp <- SpatialPoints(MF_geo, CRS(SRS_string = "EPSG:4326"))
-MF_geo_sp <-spTransform(MF_geo_sp, CRS(SRS_string = "EPSG:3035"))
-MF_genind@other$xy <- MF_geo_sp
-
-source("Code/Myathropa_fix.R")
-source("Code/Sample_Data.R")
-MF_genind <- MF
-
 ################################################################################
 ############### Basic exploration
 #adegenetTutorial( which = c("basics"))
+source("Code/GenDataPrep.R")
   
 MF_genind_summary <- summary(MF_genind)
 

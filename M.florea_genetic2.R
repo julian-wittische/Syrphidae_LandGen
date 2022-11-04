@@ -84,7 +84,6 @@ MF_LD_CHECK
 MF_LD_pair <- poppr::pair.ia(MF_genind)
 MF_LD_pair
 
-
 ###### Check null alleles
 
 library(PopGenReport)
@@ -118,9 +117,9 @@ MFxval1_priorpop <- xvalDapc(tab(MF, NA.method = "mean"), pop(MF),
 
 # highest success: 62; lowest MSE: 53; consider +-8
 MFxval2_priorpop <- xvalDapc(tab(MF, NA.method = "mean"), pop(MF),
-                             n.pca = 75:95, n.rep = 1000,
+                             n.pca = 80:85, n.rep = 1000,
                              parallel = "snow", ncpus = 4L)
-# result: 50 is the best
+# result: 83 is the best
 
 dapc_priorpop_MF <- dapc(MF, pop(MF), n.pca=83, n.da=1)
 
@@ -129,34 +128,39 @@ scatter(dapc_priorpop_MF, col = c("#FF7F00", "#8F00FF"), cex = 2, legend = TRUE,
         posi.pca = "topleft", cleg = 0.75, xax = 1, yax = 2, inset.solid = 1)
 
 ##### De novo populations
-grpres <- numeric(100)
+grpres <- numeric(1000)
 
-for (i in 1:100){
-  grp <- find.clusters(MF, max.n.clust=40, n.iter=10000, n.pca=1000,
+for (i in 1:1000){
+  grp <- find.clusters(MF, max.n.clust=40, n.iter=100, n.pca=1000,
                        choose.n.clust=FALSE, criterion="diffNgroup")
   grpres[i] <- names(grp$stat)
   print(paste(i, "%"))
 }
-#3 is best
+table(grpres)
+#6 is best but barely
 
 grp <- find.clusters(MF, max.n.clust=40, n.iter=1000000, n.pca=1000)
-3
+6
 
 MFxval1_denovopop <- xvalDapc(tab(MF, NA.method = "mean"), grp$grp,
                               n.pca = 1:100, n.rep = 100,
                               parallel = "snow", ncpus = 4L)
 
 MFxval1_denovopop2 <- xvalDapc(tab(MF, NA.method = "mean"), grp$grp,
-                               n.pca = 1:25, n.rep = 1000,
+                               n.pca = 1:30, n.rep = 1000,
                                parallel = "snow", ncpus = 4L)
 
-dapc_denovopop <- dapc(MF, grp$grp, n.pca=21, n.da=2)
+dapc_denovopop <- dapc(MF, grp$grp, n.pca=21, n.da=5)
 
-scatter(dapc_denovopop, col = c("#000000", "#FF0000", "#66FF66"), cex = 6, legend = TRUE,
+scatter(dapc_denovopop, col = c("#000000", "#FF0000", "#66FF66", "#F17925",
+                                "#CCAA14", "#DEA6CF"), cex = 6, legend = TRUE,
         clabel = TRUE, posi.leg = "bottomleft", scree.pca = FALSE,
         posi.pca = "bottomright", cleg = 2, xax = 1, yax = 2, scree.da=FALSE,
         solid=0.5, mstree=FALSE, cstar=1)
+lvls <- levels(dapc_denovopop$grp) <- c("#000000", "#FF0000", "#66FF66", "#F17925",
+                                        "#CCAA14", "#DEA6CF")
 
+plot(MF@other$xy, col=lvls)
 plot(MF@other$xy, col=dapc_denovopop$grp)
 
 ################################################################################

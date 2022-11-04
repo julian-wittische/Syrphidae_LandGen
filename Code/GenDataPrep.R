@@ -87,7 +87,7 @@ MF_df <- MF_df_raw[,c(-1, -2, -3, -4, -5)]
 MF_geo <-  MF_df_raw[,3:4]
 
 # Fill fragment lengths with 0 to have three characters
-MF_df <- apply(MF_df, 2, FUN=function(x){MFrintf("%03d", x)})
+MF_df <- apply(MF_df, 2, FUN=function(x){sprintf("%03d", x)})
 
 # Create a column with the required format (combine columns by locus)
 for (i in seq(1,ncol(MF_df),2)){
@@ -98,12 +98,13 @@ for (i in seq(1,ncol(MF_df),2)){
 MF_df <- MF_df[,-seq(2, ncol(MF_df), 2)]
 
 # Restore locus names
+MF_df <- apply(MF_df, 2, FUN=function(x)  str_replace(x, "NA", NA_character_))
 colnames(MF_df) <- gsub( "\\..*$", "", colnames(MF_df))
 row.names(MF_df) <- as.vector(MF_df_raw[,2])
 
 # Transform into genind object
 MF_genind <- df2genind(MF_df, ncode=3, ploidy=2, sep="/",
-                       type="codom", NA.char=" NA/ NA")
+                       type="codom", NA.char="NA")
 
 # Add pop information (study area)
 MF_genind@pop <- as.factor(substr(row.names(MF_df), 1, 2))
