@@ -18,6 +18,7 @@ library(hierfstat)
 library(sp)
 library(EcoGenetics)
 library(MASS)
+library(vegan)
 
 ################################################################################
 ############### Basic exploration
@@ -210,6 +211,10 @@ plot(log(empir_geo_dist_MF_LU2), empirLoiselle_EcoGenetics_MF_LU)
 abline(IBD_MF_LU, col="red")
 plot(log(empir_geo_dist_MF_CO2), empirLoiselle_EcoGenetics_MF_CO)
 abline(IBD_MF_CO, col="red")
+
+mantel.correlog(empirLoiselle_EcoGenetics_MF,empir_geo_dist_MF)
+mantel.correlog(empirLoiselle_EcoGenetics_MF_LU,empir_geo_dist_MF_LU)
+mantel.correlog(empirLoiselle_EcoGenetics_MF_CO,empir_geo_dist_MF_CO)
 
 E_MF_LU <- as.vector(empirLoiselle_EcoGenetics_MF_LU)
 E_MF_LU[is.na(E_MF_LU)] <- 0

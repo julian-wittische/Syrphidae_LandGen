@@ -11,6 +11,7 @@ library(adegenet)
 library(sp)
 library(raster)
 library(graph4lg)
+library(stringr)
 source("Code/genind2structure.R")
 
 # # Loading setup script for JuliaCall

@@ -211,6 +211,10 @@ abline(IBD_SP_LU, col="red")
 plot(log(empir_geo_dist_SP_CO2), empirLoiselle_EcoGenetics_SP_CO)
 abline(IBD_SP_CO, col="red")
 
+mantel.correlog(empirLoiselle_EcoGenetics_SP,empir_geo_dist_SP)
+mantel.correlog(empirLoiselle_EcoGenetics_SP_LU,empir_geo_dist_SP_LU)
+mantel.correlog(empirLoiselle_EcoGenetics_SP_CO,empir_geo_dist_SP_CO)
+
 E_SP_LU <- as.vector(empirLoiselle_EcoGenetics_SP_LU)
 E_SP_LU[is.na(E_SP_LU)] <- 0
 
