@@ -49,11 +49,13 @@ t.test(MF_genind_summary$Hexp,MF_genind_summary$Hobs,pair=T,var.equal=TRUE,alter
 # RESULT: Yes! (mean difference is reasonable - similar ton other data sets I have seen)
 
 ### Hardy-Weinberg equilibrium
-hw.test(MF_genind, B=1000)
-HW_LU <- hw.test(MF_genind[MF_genind@pop=="LU"], B=1000)
-HW_CO <- hw.test(MF_genind[MF_genind@pop=="CO"], B=1000)
 
-names(which(HW_LU[,4] < 0.05 & HW_CO[,4] < 0.05))
+HW_MF_LU <- hw.test(MF_genind[MF_genind@pop=="LU"], B=1000000)
+HW_MF_CO <- hw.test(MF_genind[MF_genind@pop=="CO"], B=1000000)
+
+p.adjust(HW_MF_LU[,4], method="BH")
+
+names(which(p.adjust(HW_MF_LU[,4], method="BH") < 0.05 & p.adjust(HW_MF_CO[,4], method="BH") < 0.05))
 # RESULT: MFp142, MFp051, MFp108, MFp141, MFp360  are somewhat in disequilibrium
 # but let us keep them because Alain has subsampled 30 individuals 10 times and they pass
 
