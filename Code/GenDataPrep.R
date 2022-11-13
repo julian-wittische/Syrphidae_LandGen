@@ -12,6 +12,10 @@ library(sp)
 library(raster)
 library(graph4lg)
 library(stringr)
+library(pegas)
+library(hierfstat)
+library(EcoGenetics)
+library(MASS)
 source("Code/genind2structure.R")
 
 # # Loading setup script for JuliaCall

@@ -8,17 +8,6 @@
 #
 # - perform basic popgen analyses, IBD, PCA, and DAPC
 #_______________________________________________________________________________
-
-################################################################################
-############### Loading the INCOMPLETE S. pipiens microsatellite dataset
-
-library(adegenet)
-library(pegas)
-library(hierfstat)
-library(sp)
-library(EcoGenetics)
-library(MASS)
-
 ################################################################################
 ############### Basic exploration
 source("Code/GenDataPrep.R")
