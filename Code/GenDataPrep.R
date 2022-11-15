@@ -16,6 +16,9 @@ library(pegas)
 library(hierfstat)
 library(EcoGenetics)
 library(MASS)
+library(rgeoboundaries)
+library(sf)
+library(ggplot2)
 source("Code/genind2structure.R")
 
 # # Loading setup script for JuliaCall
