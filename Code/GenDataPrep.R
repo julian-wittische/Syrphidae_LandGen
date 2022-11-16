@@ -19,6 +19,8 @@ library(MASS)
 library(rgeoboundaries)
 library(sf)
 library(ggplot2)
+library(dplyr)
+library(poppr)
 source("Code/genind2structure.R")
 
 # # Loading setup script for JuliaCall
