@@ -351,3 +351,12 @@ plot(as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="C
 geo <- as.data.frame(SP_genind_noSpp141_360_080[SP_genind_noSpp141_360_080@pop=="CO"]@other$xy)
 
 #poppr::poppr.amova(SP_genind_noSpp141_360_080, method="pegas")
+
+library(graph4lg)
+
+genind_to_genepop(SP, output = "Data/SPno141.txt")
+table(SP@pop)
+pop_gen_index(SP_genind_noSpp141)
+a<-gen_graph_indep(SP_genind_noSpp141)
+plot(a)
+

@@ -21,6 +21,7 @@ library(sf)
 library(ggplot2)
 library(dplyr)
 library(poppr)
+library(zvau)
 source("Code/genind2structure.R")
 
 # # Loading setup script for JuliaCall
@@ -135,3 +136,4 @@ MF <- MF_genind
 
 # Convert to run STRUCTURE
 genind2structure(MF,  file="Data/MF_STRU.txt", pops=TRUE)
+

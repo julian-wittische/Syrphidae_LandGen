@@ -2,9 +2,12 @@
 ####### Julian Wittische - September 2022 - Hoverfly landscape genetics ########
 ################################################################################
 
-library(graph4lg)
+writeGenPop(SP, "Data/SPno141.gen",
+            comment="Coordinates are in the file SPgeo.txt")
 
-genind_to_genepop(SP_genind_noSpp141, output = "Data/SPno141.txt")
-pop_gen_index(SP_genind_noSpp141)
-a<-gen_graph_indep(SP_genind_noSpp141)
-plot(a)
+write.table(as.data.frame(SP@other$xy), "Data/SPgeo.txt", header=TRUE)
+
+writeGenPop(MF, "Data/MF.gen",
+            comment="Coordinates are in the file MFgeo.txt")
+
+write.table(as.data.frame(MF@other$xy), "Data/MFgeo.txt", header=TRUE)
