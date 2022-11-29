@@ -174,13 +174,13 @@ MF_nodup_communes <-st_join(MF_genind_nodup@other$xy, lux_communes, join = st_wi
 enough <- as.data.frame(count(as_tibble(MF_nodup_communes), shapeName))
 
 # Select only communes with more than twenty individuals 
-enough <- enough[enough$n>20,]
+enough <- enough[enough$n>11,]
 
 # Select only genotypes from individuals from those 20+ communes
 MF_nodup_compop <- MF_genind_nodup
 MF_nodup_compop@pop <- as.factor(MF_nodup_communes$shapeName)
 #  Last one is NA
-MF_nodup_compop <- MF_nodup_compop[MF_nodup_compop@pop %in% enough$shapeName[-11]]
+MF_nodup_compop <- MF_nodup_compop[MF_nodup_compop@pop %in% enough$shapeName[-8]]
 
 # Testing
 HWE.test <- data.frame(sapply(seppop(MF_nodup_compop),
@@ -209,7 +209,7 @@ t(apply(HWE.test.exact, 2, FUN=function(x) p.adjust(x, "BH")))
 MF_nodup_cologne <-st_join(MF_genind_nodup@other$xy, cologne_districts, join = st_within)
 
 enough_COL <- as.data.frame(count(as_tibble(MF_nodup_cologne), STADTBEZIR))
-enough_COL <- enough_COL[enough_COL$n>20,]
+enough_COL <- enough_COL[enough_COL$n>11,]
 
 # Select only genotypes from individuals from those 20+ districts
 MF_nodup_compop_COL <- MF_genind_nodup
