@@ -37,7 +37,9 @@ barplot(MF_genind_summary$Hexp, main="Heterozygosity: expected",ylab="Hexp")
 barplot(MF_genind_summary$Hobs, main="Heterozygosity: observed",ylab="Hobs")
 
 mean(MF_genind_summary$Hexp)
+sd(MF_genind_summary$Hexp)
 mean(MF_genind_summary$Hobs)
+sd(MF_genind_summary$Hobs)
 
 ### Allelic richness
 barplot(allelicrichness(as.loci(MF_genind)), beside = TRUE)

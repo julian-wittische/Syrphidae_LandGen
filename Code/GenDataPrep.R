@@ -76,14 +76,16 @@ table(SP_genind@pop)
 SP_genind_LUX <- SP_genind[SP_genind@pop=="LU"]
 SP_genind_COL <- SP_genind[SP_genind@pop=="CO"]
 
+SP <- SP_genind
+
 # Convert to run STRUCTURE
 # Get rid of Spp141 (LD, HWE, high Fis)
-SP <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
+SPno141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
                                       "Spp231", "Spp273", "Spp476", "Spp051",
                                       "Spp108", "Spp313", "Spp360", "Spp391",
                                       "Spp416"), drop=TRUE]
 
-genind2structure(SP,  file="Data/SP_STRU.txt", pops=TRUE)
+genind2structure(SPno141,  file="Data/SPno141_STRU.txt", pops=TRUE)
 
 ################################################################################
 
@@ -134,6 +136,7 @@ MF_genind_COL <- MF_genind[MF_genind@pop=="CO"]
 
 MF <- MF_genind
 
-# Convert to run STRUCTURE
-genind2structure(MF,  file="Data/MF_STRU.txt", pops=TRUE)
+MFno303 <-MF_genind[loc=names(MF_genind@all.names)[-5]]
 
+# Convert to run STRUCTURE
+genind2structure(MFno303,  file="Data/MFno303_STRU.txt", pops=TRUE)
