@@ -31,6 +31,8 @@ sd(SP_genind_summary$Hobs)
 
 ### Allelic richness
 barplot(allelicrichness(as.loci(SP_genind)), beside = TRUE)
+barplot(allelicrichness(as.loci(SP_genind)), beside = TRUE, xlab="Loci names",
+        ylab="Allelic richness", legend.text=c("Cologne", "Luxembourg"))
 
 ### Is mean observed H significantly lower than mean expected H ?
 par(mfrow = c(1,1))
@@ -40,6 +42,7 @@ t.test(SP_genind_summary$Hexp,SP_genind_summary$Hobs,pair=T,var.equal=TRUE,alter
 
 ### Hardy-Weinberg equilibrium
 
+HW_SP_ALL <- hw.test(SP_genind, B=1000)
 HW_SP_LU <- hw.test(SP_genind[SP_genind@pop=="LU"], B=1000)
 HW_SP_CO <- hw.test(SP_genind[SP_genind@pop=="CO"], B=1000)
 

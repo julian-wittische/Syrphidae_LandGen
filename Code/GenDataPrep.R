@@ -61,9 +61,9 @@ row.names(SP_df) <- as.vector(SP_df_raw[,2])
 SP_genind <- df2genind(SP_df, ncode=3, ploidy=2, sep="/",
                        type="codom", NA.char=" NA/ NA")
 
-# PCA check
-SPpca<- dudi.pca(tab(SP_genind, freq=TRUE, NA.method="mean"), center=TRUE, scale=FALSE)
-s.label(SPpca$li)
+# # PCA check
+# SPpca<- dudi.pca(tab(SP_genind, freq=TRUE, NA.method="mean"), center=TRUE, scale=FALSE)
+# s.label(SPpca$li)
 
 # Add pop information (study area)
 SP_genind@pop <- as.factor(substr(row.names(SP_df), 1, 2))
@@ -123,9 +123,9 @@ row.names(MF_df) <- as.vector(MF_df_raw[,2])
 MF_genind <- df2genind(MF_df, ncode=3, ploidy=2, sep="/",
                        type="codom", NA.char="NA")
 
-# PCA check
-MFpca<- dudi.pca(tab(MF_genind, freq=TRUE, NA.method="mean"), center=TRUE, scale=FALSE)
-s.label(MFpca$li)
+# # PCA check
+# MFpca<- dudi.pca(tab(MF_genind, freq=TRUE, NA.method="mean"), center=TRUE, scale=FALSE)
+# s.label(MFpca$li)
 
 # Add pop information (study area)
 MF_genind@pop <- as.factor(substr(row.names(MF_df), 1, 2))
