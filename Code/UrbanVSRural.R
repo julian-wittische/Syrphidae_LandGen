@@ -1,3 +1,4 @@
+source("Code/GenDataPrep.R")
 LUX_IMP <- raster("Data/LUX_IMP.grd")
 LUX_GRA <- raster("Data/LUX_GRA.grd")
 COL_IMP <- raster("Data/COL_IMP.grd")
