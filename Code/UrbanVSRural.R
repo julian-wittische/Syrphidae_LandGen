@@ -17,6 +17,9 @@ hist(values(COL_GRA))
 
 plot(LUX_IMP>50)
 plot(COL_IMP>50)
+
+################################################################################
+
 SP_genind_LUX@other$xy
 which(extract(LUX_IMP, SP_genind_LUX@other$xy)>90)%in%which(extract(LUX_GRA, SP_genind_LUX@other$xy)>0)
 which(extract(LUX_GRA, SP_genind_LUX@other$xy)>0)%in%which(extract(LUX_IMP, SP_genind_LUX@other$xy)>90)
@@ -24,6 +27,10 @@ which(extract(LUX_GRA, SP_genind_LUX@other$xy)>0)%in%which(extract(LUX_IMP, SP_g
 SP_LUX_urban <- SP_genind_LUX[which(extract(LUX_IMP, SP_genind_LUX@other$xy)>90)]
 
 SP_LUX_grass <- SP_genind_LUX[which(extract(LUX_GRA, SP_genind_LUX@other$xy)>0)]
+
+SP_COL_urban <- SP_genind_COL[which(extract(COL_IMP, SP_genind_COL@other$xy)>90)]
+
+SP_COL_grass <- SP_genind_COL[which(extract(COL_GRA, SP_genind_COL@other$xy)>0)]
 
 wc(SP_LUX_urban)
 wc(SP_LUX_grass)
@@ -35,6 +42,9 @@ sd(SP_LUX_urban_summary$Hexp)
 mean(SP_LUX_urban_summary$Hobs)
 sd(SP_LUX_urban_summary$Hobs)
 
+mean(allelicrichness(as.loci(SP_LUX_urban)))
+sd(allelicrichness(as.loci(SP_LUX_urban)))
+
 SP_LUX_grass_summary <- summary(SP_LUX_grass)
 
 mean(SP_LUX_grass_summary$Hexp)
@@ -42,3 +52,75 @@ sd(SP_LUX_grass_summary$Hexp)
 mean(SP_LUX_grass_summary$Hobs)
 sd(SP_LUX_grass_summary$Hobs)
 
+SP_COL_urban_summary <- summary(SP_COL_urban)
+
+mean(SP_COL_urban_summary$Hexp)
+sd(SP_COL_urban_summary$Hexp)
+mean(SP_COL_urban_summary$Hobs)
+sd(SP_COL_urban_summary$Hobs)
+
+mean(allelicrichness(as.loci(SP_COL_urban)))
+sd(allelicrichness(as.loci(SP_COL_urban)))
+
+SP_COL_grass_summary <- summary(SP_COL_grass)
+
+mean(SP_COL_grass_summary$Hexp)
+sd(SP_COL_grass_summary$Hexp)
+mean(SP_COL_grass_summary$Hobs)
+sd(SP_COL_grass_summary$Hobs)
+
+mean(allelicrichness(as.loci(SP_COL_grass)))
+sd(allelicrichness(as.loci(SP_COL_grass)))
+
+################################################################################
+
+MF_LUX_urban <- MF_genind_LUX[which(extract(LUX_IMP, MF_genind_LUX@other$xy)>90)]
+
+MF_LUX_grass <- MF_genind_LUX[which(extract(LUX_GRA, MF_genind_LUX@other$xy)>0)]
+
+MF_COL_urban <- MF_genind_COL[which(extract(COL_IMP, MF_genind_COL@other$xy)>90)]
+
+MF_COL_grass <- MF_genind_COL[which(extract(COL_GRA, MF_genind_COL@other$xy)>0)]
+
+MF_LUX_urban_summary <- summary(MF_LUX_urban)
+
+mean(MF_LUX_urban_summary$Hexp)
+sd(MF_LUX_urban_summary$Hexp)
+mean(MF_LUX_urban_summary$Hobs)
+sd(MF_LUX_urban_summary$Hobs)
+
+mean(allelicrichness(as.loci(MF_LUX_urban)))
+sd(allelicrichness(as.loci(MF_LUX_urban)))
+
+MF_LUX_grass_summary <- summary(MF_LUX_grass)
+
+mean(MF_LUX_grass_summary$Hexp)
+sd(MF_LUX_grass_summary$Hexp)
+mean(MF_LUX_grass_summary$Hobs)
+sd(MF_LUX_grass_summary$Hobs)
+
+mean(allelicrichness(as.loci(MF_LUX_grass)))
+sd(allelicrichness(as.loci(MF_LUX_grass)))
+
+MF_COL_urban_summary <- summary(MF_COL_urban)
+
+mean(MF_COL_urban_summary$Hexp)
+sd(MF_COL_urban_summary$Hexp)
+mean(MF_COL_urban_summary$Hobs)
+sd(MF_COL_urban_summary$Hobs)
+
+mean(allelicrichness(as.loci(MF_COL_urban)))
+sd(allelicrichness(as.loci(MF_COL_urban)))
+
+MF_COL_grass_summary <- summary(MF_COL_grass)
+
+mean(MF_COL_grass_summary$Hexp)
+sd(MF_COL_grass_summary$Hexp)
+mean(MF_COL_grass_summary$Hobs)
+sd(MF_COL_grass_summary$Hobs)
+
+mean(allelicrichness(as.loci(MF_COL_grass)))
+sd(allelicrichness(as.loci(MF_COL_grass)))
+
+mean(allelicrichness(as.loci(SP_genind)))
+sd(allelicrichness(as.loci(SP_genind)))

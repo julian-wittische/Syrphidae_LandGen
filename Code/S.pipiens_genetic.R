@@ -12,7 +12,7 @@
 ############### Basic exploration
 source("Code/GenDataPrep.R")
 
-SP_genind_summary <- summary(SP_genind)
+SP_genind_summary <- summary(SP_no141)
 
 ### Alleles and sample sizes
 par(mfrow=c(2,2))

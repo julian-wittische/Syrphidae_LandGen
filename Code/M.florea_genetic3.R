@@ -24,7 +24,7 @@ library(vegan)
 ############### Basic exploration
 source("Code/GenDataPrep.R")
 
-MF_genind_summary <- summary(MF_genind)
+MF_genind_summary <- summary(MF_no303)
 
 ### Alleles and sample sizes
 par(mfrow=c(2,2))
