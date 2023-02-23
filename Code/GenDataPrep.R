@@ -22,6 +22,7 @@ library(ggplot2)
 library(dplyr)
 library(poppr)
 library(zvau)
+library(genepop)
 source("Code/genind2structure.R")
 
 # # Loading setup script for JuliaCall
@@ -77,8 +78,6 @@ SP_genind@pop <- replace(SP_genind@pop, which(SP_genind@pop=="SW"), "LU")
 SP_genind@pop  <-droplevels(SP_genind@pop)
 table(SP_genind@pop)
 
-SP_genind_LUX <- SP_genind[SP_genind@pop=="LU"]
-SP_genind_COL <- SP_genind[SP_genind@pop=="CO"]
 
 SP <- SP_genind
 
@@ -88,8 +87,13 @@ SPno141 <- SP_genind[loc=c("Spp010", "Spp053", "Spp080", "Spp142",
                                       "Spp231", "Spp273", "Spp476", "Spp051",
                                       "Spp108", "Spp313", "Spp360", "Spp391",
                                       "Spp416"), drop=TRUE]
+SP_genind <- SPno141
+SP_genind_LUX <- SP_genind[SP_genind@pop=="LU"]
+SP_genind_COL <- SP_genind[SP_genind@pop=="CO"]
+
 
 genind2structure(SPno141,  file="Data/SPno141_STRU.txt", pops=TRUE)
+
 
 ################################################################################
 
@@ -139,12 +143,13 @@ MF_genind@pop <- replace(MF_genind@pop, which(MF_genind@pop=="SW"), "LU")
 MF_genind@pop  <-droplevels(MF_genind@pop)
 table(MF_genind@pop)
 
-MF_genind_LUX <- MF_genind[MF_genind@pop=="LU"]
-MF_genind_COL <- MF_genind[MF_genind@pop=="CO"]
 
 MF <- MF_genind
 
 MFno303 <-MF_genind[loc=names(MF_genind@all.names)[-5]]
+MF_genind <- MFno303
 
+MF_genind_LUX <- MF_genind[MF_genind@pop=="LU"]
+MF_genind_COL <- MF_genind[MF_genind@pop=="CO"]
 # Convert to run STRUCTURE
 genind2structure(MFno303,  file="Data/MFno303_STRU.txt", pops=TRUE)

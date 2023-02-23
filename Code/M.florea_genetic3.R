@@ -124,7 +124,7 @@ MFxval2_priorpop <- xvalDapc(tab(MF, NA.method = "mean"), pop(MF),
                              parallel = "snow", ncpus = 4L)
 # result: 83 is the best
 
-dapc_priorpop_MF <- dapc(MF, pop(MF), n.pca=83, n.da=1)
+dapc_priorpop_MF <- dapc(MFno303, pop(MF), n.pca=83, n.da=1)
 
 scatter(dapc_priorpop_MF, col = c("#FF7F00", "#8F00FF"), cex = 2, legend = TRUE,
         clabel = FALSE, posi.leg = "bottomleft", scree.pca = TRUE,

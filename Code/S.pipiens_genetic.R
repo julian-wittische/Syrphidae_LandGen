@@ -120,7 +120,7 @@ SPxval2_priorpop <- xvalDapc(tab(SP, NA.method = "mean"), pop(SP),
                              parallel = "snow", ncpus = 4L)
 # result: 50 is the best
 
-dapc_priorpop <- dapc(SP, pop(SP), n.pca=50, n.da=1)
+dapc_priorpop <- dapc(SP_genind, pop(SP_genind), n.pca=50, n.da=1)
 
 scatter(dapc_priorpop, col = c("#FF7F00", "#8F00FF"), cex = 2, legend = TRUE,
         clabel = FALSE, posi.leg = "bottomleft", scree.pca = TRUE,
