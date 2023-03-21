@@ -4,28 +4,11 @@ LUX_GRA <- raster("Data/LUX_GRA.grd")
 COL_IMP <- raster("Data/COL_IMP.grd")
 COL_GRA <- raster("Data/COL_GRA.grd")
 
-plot(LUX_IMP)
-plot(LUX_GRA)
-plot(COL_IMP)
-plot(COL_GRA)
-
-par(mar=c(3,3,3,3))
-hist(values(LUX_IMP))
-hist(values(LUX_GRA))
-hist(values(COL_IMP))
-hist(values(COL_GRA))
-
-plot(LUX_IMP>50)
-plot(COL_IMP>50)
-
 ################################################################################
 
 SP_LUX_urban <- SP_genind_LUX[which(extract(LUX_IMP, SP_genind_LUX@other$xy)>90)]
-
 SP_LUX_grass <- SP_genind_LUX[which(extract(LUX_GRA, SP_genind_LUX@other$xy)>0)]
-
 SP_COL_urban <- SP_genind_COL[which(extract(COL_IMP, SP_genind_COL@other$xy)>90)]
-
 SP_COL_grass <- SP_genind_COL[which(extract(COL_GRA, SP_genind_COL@other$xy)>0)]
 
 wc(SP_LUX_urban)
@@ -152,7 +135,7 @@ t.test(Hexp[1,], Hexp[2,], pair=T, var.equal = T, alter="greater")
 
 #using GENEPOP to test for differentiation between urban and rural
 writeGenPop(SP_UR_LUX, "SP_LUX_filtered.gen", comment="infile")
-test_diff("SP_LUX_filtered.gen")
+test_diff("SP_LUX_filtered.gen", pairs=TRUE)
 
 ################################################################################
 SP_UR_COL <- SP_genind_COL[c(which(extract(COL_IMP, SP_genind_COL@other$xy)>90),
@@ -185,7 +168,7 @@ t.test(Hexp[1,], Hexp[2,], pair=T, var.equal = T, alter="greater")
 
 #using GENEPOP to test for differentiation between urban and rural
 writeGenPop(SP_UR_COL, "SP_COL_filtered.gen", comment="infile")
-test_diff("SP_COL_filtered.gen")
+test_diff("SP_COL_filtered.gen", pairs=TRUE)
 
 ################################################################################
 MF_UR_LUX <- MF_genind_LUX[c(which(extract(LUX_IMP, MF_genind_LUX@other$xy)>90),
@@ -218,7 +201,7 @@ t.test(Hexp[1,], Hexp[2,], pair=T, var.equal = T, alter="greater")
 
 #using GENEPOP to test for differentiation between urban and rural
 writeGenPop(MF_UR_LUX, "MF_LUX_filtered.gen", comment="infile")
-test_diff("MF_LUX_filtered.gen")
+test_diff("MF_LUX_filtered.gen", pairs=TRUE)
 
 ################################################################################
 MF_UR_COL <- MF_genind_COL[c(which(extract(COL_IMP, MF_genind_COL@other$xy)>90),
@@ -251,5 +234,5 @@ t.test(Hexp[1,], Hexp[2,], pair=T, var.equal = T, alter="greater")
 
 #using GENEPOP to test for differentiation between urban and rural
 writeGenPop(MF_UR_COL, "MF_COL_filtered.gen", comment="infile")
-test_diff("MF_COL_filtered.gen")
+test_diff("MF_COL_filtered.gen", pairs=TRUE)
 

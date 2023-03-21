@@ -1,6 +1,6 @@
 Genepop
 GenepopInputFile=MF_COL_filtered.gen
-MenuOptions=3:1
+MenuOptions=3:2
 Dememorisation=10000
 BatchNumber=100
 BatchLength=5000
