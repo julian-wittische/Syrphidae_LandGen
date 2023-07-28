@@ -209,11 +209,11 @@ mantel.correlog(empirLoiselle_EcoGenetics_SP,empir_geo_dist_SP)
 mantel_LU <- mantel.correlog(empirLoiselle_EcoGenetics_SP_LU,empir_geo_dist_SP_LU)
 mantel_CO <- mantel.correlog(empirLoiselle_EcoGenetics_SP_CO,empir_geo_dist_SP_CO)
 
-pdf(file="SP_LU.pdf", res=600, height=9, width=9, units="cm")
+jpeg(file="SP_LU.jpg", res=600, height=9, width=9, units="cm")
 plot(mantel_LU)
 dev.off()
 
-pdf(file="SP_CO.pdf", res=600, height=9, width=9, units="cm")
+jpeg(file="SP_CO.jpg", res=600, height=9, width=9, units="cm")
 plot(mantel_CO)
 dev.off()
 
