@@ -215,5 +215,13 @@ plot(log(empir_geo_dist_MF_CO2), empirLoiselle_EcoGenetics_MF_CO)
 abline(IBD_MF_CO, col="red")
 
 mantel.correlog(empirLoiselle_EcoGenetics_MF,empir_geo_dist_MF)
-mantel.correlog(empirLoiselle_EcoGenetics_MF_LU,empir_geo_dist_MF_LU)
-mantel.correlog(empirLoiselle_EcoGenetics_MF_CO,empir_geo_dist_MF_CO)
+mantel_LU <- mantel.correlog(empirLoiselle_EcoGenetics_MF_LU,empir_geo_dist_MF_LU)
+mantel_CO <- mantel.correlog(empirLoiselle_EcoGenetics_MF_CO,empir_geo_dist_MF_CO)
+
+jpeg(file="MF_LU.jpg", res=600, height=9, width=9, units="cm")
+plot(mantel_LU)
+dev.off()
+
+jpeg(file="MF_CO.jpg", res=600, height=9, width=9, units="cm")
+plot(mantel_CO)
+dev.off()
